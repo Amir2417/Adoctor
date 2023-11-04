@@ -1,0 +1,124 @@
+.banner-section{
+    position: relative;
+    padding-top: 250px;
+    padding-bottom: 250px;
+    @media only screen and (max-width: 991px) {
+        padding-top: 150px;
+        padding-bottom: 100px;
+    }
+    .banner-content{
+        position: relative;
+        z-index: 10;
+        .title{
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: capitalize;
+            position: relative;
+            color: $white;
+            @media only screen and (max-width: 991px) {
+                font-size: 30px !important;
+            }
+            span{
+                color: $color__heading;
+            }
+        }
+        .sub-title{
+            color: $white;
+            font-weight: 500;
+            font-size: 18px;
+        }
+    }
+}
+
+.banner-slider{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    .slider-prev, .slider-next{
+        position: absolute;
+        top: 40%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 70px;
+        line-height: 70px;
+        background: $bg--gray;
+        color: $color--heading;
+        border-radius: 0 50px 50px 0;
+        font-size: 18px;
+        z-index: 2;
+        transition: all 0.3s;
+        &:hover{
+            background-color: $base--color;
+            color: $white;
+        }
+    }
+    .slider-next {
+        left: auto;
+        right: 0;
+        margin-left: 0;
+        border-radius: 50px 0 0 50px;
+    }
+}
+
+.banner-flotting-section{
+    margin-top: -50px;
+    &.home{
+        margin-top: 0;
+        .banner-flotting-item{
+            border: 1px solid $border--base;
+        }
+    }
+}
+.banner-flotting-item{
+    position: relative;
+    z-index: 2;
+    background-color: $white;
+    box-shadow: 0px 4px 8px rgba(40, 36, 49, 0.06);
+    padding: 30px;
+    border-radius: 15px;
+    .banner-flotting-item-form{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: -5px;
+        .form-group {
+            position: relative;
+            flex: 0 0 24%;
+            margin: 5px;
+            @media only screen and (max-width: 1199px) {
+                flex: 0 0 32%;
+            }
+            @media only screen and (max-width: 991px) {
+                flex: 0 0 48%;
+            }
+            @media only screen and (max-width: 767px) {
+                flex: 0 0 100%;
+            }
+            &.single{
+                flex: 0 0 74%;
+            }
+            &.btn-search{
+                flex: 0 0 24%;
+            }
+            .search-btn{
+                padding: 12px 25px;
+            }
+            input{
+                caret-color: $base--color;
+            }
+        }
+        .dr-name{
+            i{
+                position: absolute;
+                top: 16px;
+                left: 10px;
+                font-size: 12px;
+            }
+            input{
+                padding-left: 25px;
+            }
+        }
+    }
+}

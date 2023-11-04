@@ -1,0 +1,2 @@
+[27-Jul-2023 15:46:08 UTC] PHP Fatal error:  Cannot redeclare App\Models\User::$casts in /home/appdevsx/script.appdevsx.com/adoctor/app/Models/User.php on line 44
+[27-Jul-2023 15:46:11 UTC] PHP Fatal error:  Cannot redeclare App\Models\User::$casts in /home/appdevsx/script.appdevsx.com/adoctor/app/Models/User.php on line 44
