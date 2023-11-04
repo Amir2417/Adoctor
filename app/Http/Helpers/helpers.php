@@ -414,6 +414,9 @@ function files_path($slug)
         'language-file'     => [
             'path'          => 'backend/files/language',
         ],
+        'prescription-file'     => [
+            'path'          => 'backend/files/prescription',
+        ],
         'site-section'         => [
             'path'          => 'frontend/images/site-section',
         ],

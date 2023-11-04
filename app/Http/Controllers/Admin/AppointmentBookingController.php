@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use Exception;
-use App\Http\Controllers\Controller;
-use App\Models\DoctorAppointment;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use App\Models\UserNotification;
+use App\Models\DoctorAppointment;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\websiteSubscribeNotification;
-use Illuminate\Http\Request;
 
 class AppointmentBookingController extends Controller
 {
@@ -34,7 +38,7 @@ class AppointmentBookingController extends Controller
         if($validator->fails()) return back()->withErrors($validator)->withInput()->with('modal','send-reply');
         $validated       = $validator->validate();
         $appointment_request = DoctorAppointment::find($validated['target']);
-        // dd($appointment_request);
+        
         try{
             Notification::route("mail",$appointment_request->email)->notify(new websiteSubscribeNotification($validated));
             UserNotification::create([
@@ -53,11 +57,55 @@ class AppointmentBookingController extends Controller
     public function bookingDetails($slug){
         $page_title       = "Booking Details";
         $appointment     = DoctorAppointment::with(['doctors','schedules'])->where('slug',$slug)->first();
-        // dd($appointments->doctors->image);
+        
 
         return view('admin.sections.booking-appointment.view',compact(
             'page_title',
             'appointment'
         ));
+    }
+    /**
+     * Method for upload prescription file
+     */
+    public function prescriptionUpload(Request $request,$slug){
+        $data           = DoctorAppointment::with(['doctors','schedules'])->where('slug',$slug)->first();
+        $validator      = Validator::make($request->all(),[
+            'prescription'      => 'required',
+        ]);
+        $validated      = $validator->validate();
+
+        try{
+            if($request->hasFile('prescription')) {
+                
+                $file_name = 'prescription-'.Carbon::parse(now())->format("Y-m-d") . "." .$validated['prescription']->getClientOriginalExtension();
+                $file_link = get_files_path('prescription-file') . '/' . $file_name;
+                
+                (new Filesystem)->cleanDirectory(get_files_path('prescription-file'));
+                File::move($validated['prescription'],$file_link);
+                $data->update([
+                    'prescription'      => $file_name,
+                ]);
+            }
+            
+        }catch(Exception $e){
+            
+            return back()->with(['error'  => ['Something went wrong! Please try again.']]);
+        }
+        return back()->with(['success'  => ['File Uploaded Successfully.']]);
+    }
+    /**
+     * Method for download prescription
+     */
+    public function downloadPrescription($slug)
+    {
+        $data = DoctorAppointment::where('slug', $slug)->first();
+        if ($data) {
+            $file = get_files_path('prescription-file') . '/' . $data->prescription;
+            if (file_exists($file)) {
+                return response()->download($file, $data->prescription);
+            } else {
+                return "File not found in storage: " . $file;
+            }
+        }
     }
 }

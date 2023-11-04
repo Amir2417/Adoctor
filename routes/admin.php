@@ -92,6 +92,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::post('reply-message', 'reply')->name('messages.reply');
         Route::get('booking-details/{slug}','bookingDetails')->name('details');
+        Route::post('prescription-upload/{slug}','prescriptionUpload')->name('prescription.upload');
+        Route::get('download-prescription/{slug}','downloadPrescription')->name('download.prescription');
     });
     Route::controller(HomeServiceController::class)->prefix('home-service')->name('home.service.')->group(function () {
         Route::get('index', 'index')->name('index');

@@ -143,7 +143,7 @@ class DoctorCareController extends Controller
         $to_time        = $validated['to_time'];
         $max_patient    = $validated['max_patient'];
         $validated      = Arr::except($validated,['schedule_day','from_time','to_time','max_patient','branch','department']);
-        // dd($validated);
+        
         try{
             $doctor = Doctor::create($validated);
             if(count($shedule_days) > 0){

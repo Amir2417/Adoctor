@@ -98,9 +98,32 @@
                         <li>{{ __("Day") }}:<span>{{ $appointment->schedules->week->day ?? "" }}</span></li>
                         <li>{{ __("From Time") }}:<span>{{ $parsed_from_time ?? "" }}</span></li>
                         <li>{{ __("To Time") }}:<span>{{ $parsed_to_time ?? "" }}</span></li>
+                        @if (isset($appointment->prescription))
+                            <li>{{ __("Prescription") }}:<span><a href="{{ setRoute('admin.booking.download.prescription',['slug' => $appointment->slug]) }}">{{ $appointment->prescription ?? "" }}</a></span></li>
+                        @endif
+                        
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="col-xl-12 col-lg-12 form-group">
+        <div class="booking-area mb-5">
+            <form action="{{ setRoute('admin.booking.prescription.upload',$appointment->slug) }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="col-xl-12 col-lg-12 form-group">
+                    <h4 class="title">{{ __("Prescription") }}</h4>
+                    <div class="input">
+                        <input type="file" name="prescription">
+                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 form-group">
+                    @include('admin.components.button.form-btn',[
+                        'class'         => "w-100 btn-loading",
+                        'text'          => __("Send Prescription"),
+                    ])
+                </div>
+            </form>
         </div>
     </div>
 </div>
