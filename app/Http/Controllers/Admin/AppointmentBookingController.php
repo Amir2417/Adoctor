@@ -71,13 +71,16 @@ class AppointmentBookingController extends Controller
     public function prescriptionUpload(Request $request,$slug){
         $data           = DoctorAppointment::with(['doctors','schedules','user'])->where('slug',$slug)->first();
         $validator      = Validator::make($request->all(),[
-            'prescription'      => 'required',
+            'prescription'      => 'required|mimes:pdf|max:2048',
         ]);
+        if($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+        }
         $validated      = $validator->validate();
         
         try{
             if($request->hasFile('prescription')) {
-                $file_name = 'prescription-'.Carbon::parse(now())->format("Y-m-d") . "." .$validated['prescription']->getClientOriginalExtension();
+                $file_name = $data->name. '-Prescription-'.Carbon::parse(now())->format("Y-m-d") . "." .$validated['prescription']->getClientOriginalExtension();
                 $file_link = get_files_path('prescription-file') . '/' . $file_name;
                 
                 (new Filesystem)->cleanDirectory(get_files_path('prescription-file'));
@@ -91,12 +94,17 @@ class AppointmentBookingController extends Controller
     
                 ]);
                 $prescription   = get_files_path('prescription-file') . '/' . $data->prescription;
+                if ($data->user_id != null) {
+                    Notification::route("mail",$data->user->email)->notify(new prescriptionNotification($prescription));
+                } else {
+                    Notification::route("mail",$data->email)->notify(new prescriptionNotification($prescription));
+                }
                 
-                Notification::route("mail",$data->user->email)->notify(new prescriptionNotification($prescription));
+                
             }
             
         }catch(Exception $e){
-            
+            dd($e->getMessage());
             return back()->with(['error'  => ['Something went wrong! Please try again.']]);
         }
         return back()->with(['success'  => ['File Uploaded Successfully.']]);

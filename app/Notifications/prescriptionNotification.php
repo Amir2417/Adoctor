@@ -43,6 +43,7 @@ class prescriptionNotification extends Notification
         return (new MailMessage)
                     ->subject('Prescription')
                     ->attach($this->prescription)
+                    ->line('Please check your prescription')
                     ->line('Thank you for using our application!');
     }
 
