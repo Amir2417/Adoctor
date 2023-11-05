@@ -46,4 +46,18 @@ class HistoryController extends Controller
         ));
         
     }
+    /**
+     * Method for download prescription
+     */
+    public function downloadPrescription($slug){
+        $data = DoctorAppointment::where('slug', $slug)->first();
+        if ($data) {
+            $file = get_files_path('prescription-file') . '/' . $data->prescription;
+            if (file_exists($file)) {
+                return response()->download($file, $data->prescription);
+            } else {
+                return "File not found in storage: " . $file;
+            }
+        }
+    }
 }

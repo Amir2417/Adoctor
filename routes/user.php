@@ -34,6 +34,7 @@ Route::prefix("user")->name("user.")->group(function(){
     Route::controller(HistoryController::class)->prefix("history")->name("history.")->group(function(){
         Route::get('/','index')->name('index');
         Route::get('booking-details/{slug}','bookingDetails')->name('details');
+        Route::get('download-prescription/{slug}','downloadPrescription')->name('prescription.download');
     });
 
     //home service history

@@ -56,7 +56,7 @@ class AppointmentBookingController extends Controller
 
     public function bookingDetails($slug){
         $page_title       = "Booking Details";
-        $appointment     = DoctorAppointment::with(['doctors','schedules'])->where('slug',$slug)->first();
+        $appointment      = DoctorAppointment::with(['doctors','schedules'])->where('slug',$slug)->first();
         
 
         return view('admin.sections.booking-appointment.view',compact(
@@ -76,7 +76,6 @@ class AppointmentBookingController extends Controller
 
         try{
             if($request->hasFile('prescription')) {
-                
                 $file_name = 'prescription-'.Carbon::parse(now())->format("Y-m-d") . "." .$validated['prescription']->getClientOriginalExtension();
                 $file_link = get_files_path('prescription-file') . '/' . $file_name;
                 
