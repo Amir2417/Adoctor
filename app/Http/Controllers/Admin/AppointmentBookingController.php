@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\UserNotification;
 use App\Models\DoctorAppointment;
 use App\Http\Controllers\Controller;
+use App\Notifications\prescriptionNotification;
 use Illuminate\Support\Facades\File;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
@@ -68,12 +69,12 @@ class AppointmentBookingController extends Controller
      * Method for upload prescription file
      */
     public function prescriptionUpload(Request $request,$slug){
-        $data           = DoctorAppointment::with(['doctors','schedules'])->where('slug',$slug)->first();
+        $data           = DoctorAppointment::with(['doctors','schedules','user'])->where('slug',$slug)->first();
         $validator      = Validator::make($request->all(),[
             'prescription'      => 'required',
         ]);
         $validated      = $validator->validate();
-
+        
         try{
             if($request->hasFile('prescription')) {
                 $file_name = 'prescription-'.Carbon::parse(now())->format("Y-m-d") . "." .$validated['prescription']->getClientOriginalExtension();
@@ -84,6 +85,14 @@ class AppointmentBookingController extends Controller
                 $data->update([
                     'prescription'      => $file_name,
                 ]);
+                UserNotification::create([
+                    'user_id'   => $data->user_id,
+                    'message'   => "Prescription sent for (Patient:" .$data->name .")". "(Doctor: ".$data->doctors->name.")",
+    
+                ]);
+                $prescription   = get_files_path('prescription-file') . '/' . $data->prescription;
+                
+                Notification::route("mail",$data->user->email)->notify(new prescriptionNotification($prescription));
             }
             
         }catch(Exception $e){

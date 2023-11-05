@@ -10,15 +10,15 @@ use Illuminate\Notifications\Notification;
 class prescriptionNotification extends Notification
 {
     use Queueable;
-
+    protected $prescription;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($prescription)
     {
-        //
+        $this->prescription = $prescription;
     }
 
     /**
@@ -41,8 +41,8 @@ class prescriptionNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->subject('Prescription')
+                    ->attach($this->prescription)
                     ->line('Thank you for using our application!');
     }
 

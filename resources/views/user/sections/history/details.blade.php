@@ -45,7 +45,9 @@
                             <li>{{__("Day")}}<span>{{ $booking->schedules->week->day ?? "" }}</span></li>
                             <li>{{__("From Time")}}<span>{{ $parsed_from_time ?? '' }}</span></li>
                             <li>{{__("To Time")}}<span>{{ $parsed_to_time ?? '' }}</span></li>
-                            <li>{{__("Prescription")}}<span><a href="{{ setRoute('user.history.prescription.download',$booking->slug) }}">{{ $booking->prescription ?? '' }}</a></span></li>
+                            @if (isset($booking->prescription))
+                                <li>{{__("Prescription")}}<span><a href="{{ setRoute('user.history.prescription.download',$booking->slug) }}">{{ $booking->prescription ?? '' }}</a></span></li>
+                            @endif
                         </ul>
                     </div>
                     <div class="list-wrapper pt-20">
