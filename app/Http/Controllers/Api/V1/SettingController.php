@@ -85,10 +85,10 @@ class SettingController extends Controller
         // web links
 
         $about_page_link   = route('about');
-        // dd($about_page_link);
+        
         $privacy_policy = UsefulLink::where('slug','privacy-policy')->first();
         $privacy_policy_link = route('link',$privacy_policy->slug);
-        // dd($privacy_policy_link);
+        
         $web_links =[
             [
                 'name' => "About Us",

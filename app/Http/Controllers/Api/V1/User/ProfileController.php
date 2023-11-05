@@ -159,7 +159,7 @@ class ProfileController extends Controller
     public function logout(Request $request) {
         
         $user = Auth::guard(get_auth_guard())->user();
-        // dd($user);
+        
         $token = $user->token();
         try{
             $token->revoke();
@@ -190,14 +190,23 @@ class ProfileController extends Controller
                 'day'             => $data->schedules->week->day,
                 'from_time'       => $data->schedules->from_time,
                 'to_time'         => $data->schedules->to_time,
+                'prescription'    => $data->prescription,
                 'status'          => $data->status,
                 'date'            => $date,
                 'month'           => $month,
                 'year'            => $year,
             ]; 
         });
+        $prescription_paths = [
+            'base_url'          => url("/"),
+            'path_location'     => files_asset_path_basename("prescription-file"),
+            'default_path'     => files_asset_path_basename("prescription-file"),
+        ];
         
-        return Response::success(['History data fetch successfully.'],$booking,200);
+        return Response::success(['History data fetch successfully.'],[
+            'booking'               => $booking,
+            'prescription_paths'    => $prescription_paths,
+        ],200);
     }
     //user history
 

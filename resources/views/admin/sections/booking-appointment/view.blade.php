@@ -99,7 +99,7 @@
                         <li>{{ __("From Time") }}:<span>{{ $parsed_from_time ?? "" }}</span></li>
                         <li>{{ __("To Time") }}:<span>{{ $parsed_to_time ?? "" }}</span></li>
                         @if (isset($appointment->prescription))
-                            <li>{{ __("Prescription") }}:<span><a href="{{ setRoute('admin.booking.download.prescription',['slug' => $appointment->slug]) }}">{{ $appointment->prescription ?? "" }}</a></span></li>
+                            <li>{{ __("Prescription") }}:<span><a class="btn btn--base" href="{{ setRoute('admin.booking.download.prescription',['slug' => $appointment->slug]) }}">{{ __("Download") }}</a></span></li>
                         @endif
                         
                     </ul>

@@ -17,7 +17,7 @@ use Carbon\Carbon;
 class HomeServiceController extends Controller
 {
     public function store(Request $request){
-        // dd($request->all());
+        
         $validator     = Validator::make($request->all(),[
             'name'   => 'required',
             'phone'    => 'nullable',
@@ -65,7 +65,7 @@ class HomeServiceController extends Controller
         $validated['slug']  = Str::uuid();
         $validated['type']  = [$validated['type']];
 
-        // dd($validated['type']);
+        
         try{
             $confirm_appointment = HomeTestService::create($validated);
             $type  = implode(', ',$confirm_appointment->type ?? []);
@@ -80,7 +80,7 @@ class HomeServiceController extends Controller
                 'message'            => $confirm_appointment->message,
                
             ];
-            // dd($form_data);
+            
             Notification::route("mail",$confirm_appointment->email)->notify(new homeServiceAppointmentNotification($form_data));
         }catch(Exception $e){
             return Response::error(['Something went wrong! Please try again.'],[],404);

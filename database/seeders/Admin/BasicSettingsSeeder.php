@@ -42,17 +42,17 @@ class BasicSettingsSeeder extends Seeder
                 "host" => "appdevs.net",
                 "port" => "465", 
                 "encryption" => "ssl",
-                "username" => "noreply@appdevs.net",
+                "username" => "system@appdevs.net",
                 "password" => "QP2fsLk?80Ac",
-                "from" => "noreply@appdevs.net", 
-                "app_name" => "AppDevs",
+                "from" => "system@appdevs.net", 
+                "app_name" => "ADoctor",
             ],
            
             'site_logo_dark'    => 'seeder/web_logo.png',
             'site_logo'         => 'seeder/web_logo.png',
             'site_fav_dark'     => 'seeder/fav_icon.png',
             'site_fav'          => 'seeder/fav_icon.png',
-            'web_version'       => 'v1.1.0',
+            'web_version'       => 'v2.0.0',
         ];
         BasicSettings::truncate();
         BasicSettings::firstOrCreate($data);

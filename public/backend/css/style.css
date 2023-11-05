@@ -5283,7 +5283,7 @@ body.dark-min-sidebar .header-link {
 
 .booking-area .title {
   border-bottom: 1px solid #eee;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding-bottom: 10px;
 }
 .booking-area {
@@ -5324,6 +5324,10 @@ body.dark-min-sidebar .header-link {
   text-transform: uppercase;
   color: #363333;
   border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
 }
 @media only screen and (max-width: 470px) {
   .booking-area .content .list li {
@@ -5343,7 +5347,6 @@ body.dark-min-sidebar .header-link {
   font-weight: 500;
   font-size: 13px;
   padding-left: 5px;
-  float: right;
 }
 @media only screen and (max-width: 470px) {
   .booking-area .content .list li span {
@@ -5356,9 +5359,6 @@ body.dark-min-sidebar .header-link {
     font-size: 9px;
     font-weight: 400;
   }
-}
-.booking-area .content .list li + li {
-  margin-top: 15px;
 }
 
 

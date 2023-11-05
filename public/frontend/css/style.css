@@ -6155,6 +6155,10 @@ option {
   text-transform: uppercase;
   color: #363333;
   border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
 }
 @media only screen and (max-width: 470px) {
   .booking-area .content .list li {
@@ -6174,7 +6178,6 @@ option {
   font-weight: 500;
   font-size: 13px;
   padding-left: 5px;
-  float: right;
 }
 @media only screen and (max-width: 470px) {
   .booking-area .content .list li span {
@@ -6188,8 +6191,10 @@ option {
     font-weight: 400;
   }
 }
-.booking-area .content .list li + li {
-  margin-top: 15px;
+.booking-area .content .list li span .btn--base{
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 14px;
 }
 .booking-area .booking-form label {
   font-weight: 500;

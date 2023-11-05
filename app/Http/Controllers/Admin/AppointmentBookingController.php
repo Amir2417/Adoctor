@@ -80,10 +80,10 @@ class AppointmentBookingController extends Controller
         
         try{
             if($request->hasFile('prescription')) {
-                $file_name = $data->name. '-Prescription-'.Carbon::parse(now())->format("Y-m-d") . "." .$validated['prescription']->getClientOriginalExtension();
+                $file_name = str_replace(' ', '-', $data->name). '-Prescription-'.Carbon::parse(now())->format("Y-m-d") . "." .$validated['prescription']->getClientOriginalExtension();
                 $file_link = get_files_path('prescription-file') . '/' . $file_name;
                 
-                (new Filesystem)->cleanDirectory(get_files_path('prescription-file'));
+                
                 File::move($validated['prescription'],$file_link);
                 $data->update([
                     'prescription'      => $file_name,
@@ -104,7 +104,7 @@ class AppointmentBookingController extends Controller
             }
             
         }catch(Exception $e){
-            dd($e->getMessage());
+            
             return back()->with(['error'  => ['Something went wrong! Please try again.']]);
         }
         return back()->with(['success'  => ['File Uploaded Successfully.']]);
