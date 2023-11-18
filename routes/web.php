@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AppointmentBookingController as AdminAppointmentBookingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\SiteController;
 use App\Http\Controllers\Frontend\BranchController;
@@ -70,6 +71,8 @@ Route::controller(SiteController::class)->name("frontend.")->group(function(){
     });
 
 });
+
+Route::get('download-prescription/{slug}',[AdminAppointmentBookingController::class,'downloadPrescription'])->name('booking.download.prescription');
 
 
 
