@@ -68,7 +68,7 @@
                         <div class="custom-check-group">
                             <input type="checkbox" name="agree" id="level-1">
                             @php
-                                $data       = App\Models\Admin\UsefulLink::where('type',global_const()::USEFUL_LINK_PRIVACY_POLICY)->first();
+                                $data   = App\Models\Admin\UsefulLink::where('type',global_const()::USEFUL_LINK_PRIVACY_POLICY)->first();
                             @endphp
                             <label for="level-1">{{ __("I have agreed with") }}<a href="{{ setRoute('link',$data->slug) }}" class="text--base">{{ __("Terms Of Use") }} &amp; {{ __("Privacy Policy") }}</a></label>
                         </div>

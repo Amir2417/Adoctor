@@ -1,18 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\V1\User\MoneyTransferController;
-use App\Http\Controllers\Api\V1\User\AddMoneyController;
 use App\Http\Controllers\Api\V1\User\BranchController;
-use App\Http\Controllers\Api\V1\User\DashboardController;
 use App\Http\Controllers\Api\V1\User\HealthPackageController;
-use App\Http\Controllers\Api\V1\User\HomeServiceController;
 use App\Http\Controllers\Api\V1\User\InvestigationController;
-// use App\Http\Controllers\Api\V1\User\MakePaymentController;
-// use App\Http\Controllers\Api\V1\User\MoneyExchangeController;
-// use App\Http\Controllers\Api\V1\User\MoneyOutController;
 use App\Http\Controllers\Api\V1\User\ProfileController;
-// use App\Http\Controllers\Api\V1\User\TransactionController;
-// use App\Http\Controllers\Api\V1\User\WithdrawController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix("user")->name("api.user.")->group(function(){
