@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //fresh
         $this->call([
             AdminSeeder::class,
             RoleSeeder::class,
@@ -56,20 +57,36 @@ class DatabaseSeeder extends Seeder
             LanguageSeeder::class,
             SiteSectionsSeeder::class,
             UsefulLinkSeeder::class,
-
-            // /**
-            //  * Demo seeder
-            // */
-            UserSeeder::class,
-            WeekSeeder::class,
-            HospitalDepartmentSeeder::class,
-            HospitalBranchSeeder::class,
-            DoctorSeeder::class,
-            InvestigationSeeder::class,
-            HealthPackageSeeder::class,
-            HomeTestServiceSeeder::class,
-            DoctorAppointmentSeeder::class,
-
         ]);
+
+        //demo
+        // $this->call([
+        //     AdminSeeder::class,
+        //     RoleSeeder::class,
+        //     BasicSettingsSeeder::class,
+        //     SetupSeoSeeder::class,
+        //     AppSettingsSeeder::class,
+        //     AppOnboardScreensSeeder::class,
+        //     ExtensionSeeder::class,
+        //     AdminHasRoleSeeder::class,
+        //     SetupPageSeeder::class,
+        //     PaymentGatewaySeeder::class,
+        //     TransactionSettingSeeder::class,
+        //     CurrencySeeder::class,
+        //     SetupKycSeeder::class,
+        //     LanguageSeeder::class,
+        //     SiteSectionsSeeder::class,
+        //     UsefulLinkSeeder::class,
+        //     UserSeeder::class,
+        //     WeekSeeder::class,
+        //     HospitalDepartmentSeeder::class,
+        //     HospitalBranchSeeder::class,
+        //     DoctorSeeder::class,
+        //     InvestigationSeeder::class,
+        //     HealthPackageSeeder::class,
+        //     HomeTestServiceSeeder::class,
+        //     DoctorAppointmentSeeder::class,
+
+        // ]);
     }
 }

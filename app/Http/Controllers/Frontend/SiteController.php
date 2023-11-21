@@ -33,6 +33,10 @@ class SiteController extends Controller
         $contact                    = SiteSections::getData($contact_section_slug)->first();
         $banner_slug                = Str::slug(SiteSectionConst::BANNER_SECTION);
         $banner                     = SiteSections::getData($banner_slug)->first();
+        $login_slug                 = Str::slug(SiteSectionConst::LOG_IN_SECTION);
+        $login                      = SiteSections::getData($login_slug)->first();
+        $register_slug              = Str::slug(SiteSectionConst::REGISTER_SECTION);
+        $register                   = SiteSections::getData($register_slug)->first();
         $section_slug               = Str::slug(SiteSectionConst::ABOUT_SECTION);
         $about                      = SiteSections::getData($section_slug)->first();
         $faq_section_slug           = Str::slug(SiteSectionConst::FAQ_SECTION);
@@ -57,6 +61,8 @@ class SiteController extends Controller
         return view('frontend.index',compact(
             'contact',
             'banner',
+            'login',
+            'register',
             'about',
             'faq',
             'testimonial',
@@ -78,6 +84,10 @@ class SiteController extends Controller
     public function doctors(){
 
         $page_title                 = "| Find Doctor";
+        $login_slug                 = Str::slug(SiteSectionConst::LOG_IN_SECTION);
+        $login                      = SiteSections::getData($login_slug)->first();
+        $register_slug              = Str::slug(SiteSectionConst::REGISTER_SECTION);
+        $register                   = SiteSections::getData($register_slug)->first();
         $doctors                    = Doctor::where('status',true)->inRandomOrder()->get();
         $contact_section_slug       = Str::slug(SiteSectionConst::CONTACT_SECTION);
         $contact                    = SiteSections::getData($contact_section_slug)->first();
@@ -92,6 +102,8 @@ class SiteController extends Controller
 
         return view('frontend.pages.find-doctors',compact(
             'page_title',
+            'login',
+            'register',
             'contact',
             'doctors',
             'branches',
@@ -133,6 +145,10 @@ class SiteController extends Controller
       
         $page_title                 = "| Doctors";
         $useful_links               = UsefulLink::where('status',true)->get();
+        $login_slug                 = Str::slug(SiteSectionConst::LOG_IN_SECTION);
+        $login                      = SiteSections::getData($login_slug)->first();
+        $register_slug              = Str::slug(SiteSectionConst::REGISTER_SECTION);
+        $register                   = SiteSections::getData($register_slug)->first();
         $section_slug               = Str::slug(SiteSectionConst::CONTACT_SECTION);
         $contact                    = SiteSections::getData($section_slug)->first();
         $footer_section_slug        = Str::slug(SiteSectionConst::FOOTER_SECTION);
@@ -169,6 +185,8 @@ class SiteController extends Controller
 
         return view('frontend.pages.find-doctors',compact(
             'page_title',
+            'login',
+            'register',
             'doctors',
             'searchBranch',
             'searchDepartment',
@@ -187,6 +205,10 @@ class SiteController extends Controller
     public function about(){
 
         $page_title                 = "| About";
+        $login_slug                 = Str::slug(SiteSectionConst::LOG_IN_SECTION);
+        $login                      = SiteSections::getData($login_slug)->first();
+        $register_slug              = Str::slug(SiteSectionConst::REGISTER_SECTION);
+        $register                   = SiteSections::getData($register_slug)->first();
         $contact_section_slug       = Str::slug(SiteSectionConst::CONTACT_SECTION);
         $contact                    = SiteSections::getData($contact_section_slug)->first();
         $section_slug               = Str::slug(SiteSectionConst::ABOUT_SECTION);
@@ -202,6 +224,8 @@ class SiteController extends Controller
 
         return view('frontend.pages.about',compact(
             'page_title',
+            'login',
+            'register',
             'contact',
             'about',
             'news_letter',
@@ -217,6 +241,10 @@ class SiteController extends Controller
     public function faqs(){
 
         $page_title                 = "| Faq";
+        $login_slug                 = Str::slug(SiteSectionConst::LOG_IN_SECTION);
+        $login                      = SiteSections::getData($login_slug)->first();
+        $register_slug              = Str::slug(SiteSectionConst::REGISTER_SECTION);
+        $register                   = SiteSections::getData($register_slug)->first();
         $contact_section_slug       = Str::slug(SiteSectionConst::CONTACT_SECTION);
         $contact                    = SiteSections::getData($contact_section_slug)->first();
         $section_slug               = Str::slug(SiteSectionConst::FAQ_SECTION);
@@ -232,6 +260,8 @@ class SiteController extends Controller
         
         return view('frontend.pages.faqs',compact(
             'page_title',
+            'login',
+            'register',
             'contact',
             'faq',
             'testimonial',
@@ -247,6 +277,10 @@ class SiteController extends Controller
     public function journals(){
 
         $page_title                 = "| Web Journal";
+        $login_slug                 = Str::slug(SiteSectionConst::LOG_IN_SECTION);
+        $login                      = SiteSections::getData($login_slug)->first();
+        $register_slug              = Str::slug(SiteSectionConst::REGISTER_SECTION);
+        $register                   = SiteSections::getData($register_slug)->first();
         $contact_section_slug       = Str::slug(SiteSectionConst::CONTACT_SECTION);
         $contact                    = SiteSections::getData($contact_section_slug)->first();
         $journal                    = Journal::where('status',true)->paginate(6);
@@ -259,6 +293,8 @@ class SiteController extends Controller
 
         return view('frontend.pages.journals',compact(
             'page_title',
+            'login',
+            'register',
             'contact',
             'journal',
             'app_settings',
@@ -273,6 +309,10 @@ class SiteController extends Controller
     public function journalDetails($slug){
 
         $page_title                 = "| Journal Details";
+        $login_slug                 = Str::slug(SiteSectionConst::LOG_IN_SECTION);
+        $login                      = SiteSections::getData($login_slug)->first();
+        $register_slug              = Str::slug(SiteSectionConst::REGISTER_SECTION);
+        $register                   = SiteSections::getData($register_slug)->first();
         $journal                    = Journal::where('slug',$slug)->first();
         if(!$journal) abort(404);
         $contact_section_slug       = Str::slug(SiteSectionConst::CONTACT_SECTION);
@@ -288,6 +328,8 @@ class SiteController extends Controller
         return view('frontend.pages.journal-details',compact(
             'page_title',
             'contact',
+            'login',
+            'register',
             'journal',
             'total_journals',
             'app_settings',
@@ -302,6 +344,10 @@ class SiteController extends Controller
     public function contact(){
 
         $page_title                 = "| Contact";
+        $login_slug                 = Str::slug(SiteSectionConst::LOG_IN_SECTION);
+        $login                      = SiteSections::getData($login_slug)->first();
+        $register_slug              = Str::slug(SiteSectionConst::REGISTER_SECTION);
+        $register                   = SiteSections::getData($register_slug)->first();
         $section_slug               = Str::slug(SiteSectionConst::CONTACT_SECTION);
         $contact                    = SiteSections::getData($section_slug)->first();
         $footer_section_slug        = Str::slug(SiteSectionConst::FOOTER_SECTION);
@@ -314,6 +360,8 @@ class SiteController extends Controller
         return view('frontend.pages.contact-us',compact(
             'page_title',
             'contact',
+            'login',
+            'register',
             'app_settings',
             'footer',
             'news_letter',
@@ -374,6 +422,10 @@ class SiteController extends Controller
      */
     public function link($slug){
         $link                       = UsefulLink::where('slug',$slug)->first();
+        $login_slug                 = Str::slug(SiteSectionConst::LOG_IN_SECTION);
+        $login                      = SiteSections::getData($login_slug)->first();
+        $register_slug              = Str::slug(SiteSectionConst::REGISTER_SECTION);
+        $register                   = SiteSections::getData($register_slug)->first();
         $useful_links               = UsefulLink::where('status',true)->get();
         $section_slug               = Str::slug(SiteSectionConst::CONTACT_SECTION);
         $contact                    = SiteSections::getData($section_slug)->first();
@@ -385,6 +437,8 @@ class SiteController extends Controller
 
         return view('frontend.pages.link',compact(
             'link',
+            'login',
+            'register',
             'useful_links',
             'contact',
             'app_settings',

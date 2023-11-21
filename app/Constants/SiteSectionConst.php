@@ -12,10 +12,7 @@ class SiteSectionConst{
     const NEWSLETTER_SECTION    = "News Letter Section";
     const CONTACT_SECTION       = "Contact Section";
     const FOOTER_SECTION        = "Footer Section";
-    const SOLUTIONS_SECTION     = "Solutions Section";
-    const MONITORING_SECTION    = "Monitoring Section";
-    const BEST_ITEM_SECTION     = "Best Item Section";
-    const LATEST_ITEM_SECTION   = "Latest Item Section";
-    const GLANCE_SECTION        = "Glance Section";
-    const INTRO_SECTION         = "Intro Section";
+    const LOG_IN_SECTION        = "Login Section";
+    const REGISTER_SECTION      = "Register Section";
+
 }

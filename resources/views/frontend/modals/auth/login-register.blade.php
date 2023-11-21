@@ -1,3 +1,6 @@
+@php
+    $app_local   = get_default_language_code();
+@endphp
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     Start Account
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -11,8 +14,8 @@
                     <img src="{{ get_logo($basic_settings) }}" alt="logo">
                 </a>
             </div>
-            <h5 class="title">{{ __("Log in and Stay Connected") }}</h5>
-            <p>{{ __("Log in and Stay Connected Our secure login process ensures the confidentiality of your information. Log in today and stay connected to your finances, anytime and anywhere.") }}</p>
+            <h5 class="title">{{ @$login->value->language->$app_local->title ?? '' }}</h5>
+            <p>{{ @$login->value->language->$app_local->description ?? '' }}</p>
             <form action="{{ setRoute('user.login.submit') }}" class="account-form" method="POST">
                 @csrf
                 <div class="row">
@@ -46,8 +49,8 @@
             <div class="account-logo text-start">
                 <a class="site-logo" href="{{ setRoute('index') }}"><img src="{{ get_logo($basic_settings) }} " alt="logo"></a>
             </div>
-            <h5 class="title">{{ __("Register for an Account Today") }}</h5>
-            <p>{{ __("Become a part of our community by registering for an account today. Enjoy a range of benefits and features tailored to meet your needs. Our registration page makes it easy to create your account, providing a seamless and user-friendly experience.") }}</p>
+            <h5 class="title">{{ @$register->value->language->$app_local->title ?? '' }}</h5>
+            <p>{{ @$login->value->language->$app_local->description ?? '' }}</p>
             <form action="{{ setRoute('user.register.submit') }}" method="POST" class="account-form">
                 @csrf
                 <div class="row">

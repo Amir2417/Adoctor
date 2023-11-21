@@ -83,6 +83,14 @@ class SetupSectionsController extends Controller
             'contact-section' =>[
                 'view'            => "contactView",
                 'update'          => "contactUpdate",    
+            ],
+            'login-section' =>[
+                'view'            => "loginView",
+                'update'          => "loginUpdate",    
+            ],
+            'register-section' =>[
+                'view'            => "registerView",
+                'update'          => "registerUpdate",    
             ]
         ];
 
@@ -1327,7 +1335,107 @@ class SetupSectionsController extends Controller
         return back()->with(['success' => ['Section updated successfully!']]);
 
     }
-    
+    /**
+     * Method for show login section page
+     * @param string $slug
+     * @param \Illuminate\Http\Request  $request
+     */
+    public function loginView($slug) {
+        $page_title     = "Login Section";
+        $section_slug   = Str::slug(SiteSectionConst::LOG_IN_SECTION);
+        $data           = SiteSections::getData($section_slug)->first();
+        $languages      = $this->languages;
+
+        return view('admin.sections.setup-sections.login-section',compact(
+            'page_title',
+            'data',
+            'languages',
+            'slug'
+        ));
+    }
+    /**
+     * Mehtod for update login section
+     * @param string $slug
+     * @param \Illuminate\Http\Request  $request
+    */
+    public function loginUpdate(Request $request,$slug) {
+        
+        $basic_field_name    = [
+            'title'          => 'required|string|max:100',
+            'description'    => 'required|string',
+            
+        ];
+        $slug           = Str::slug(SiteSectionConst::LOG_IN_SECTION);
+        $section        = SiteSections::where("key",$slug)->first();
+        if($section != null ){
+            $data       = json_decode(json_encode($section->value),true);
+        }else{
+            $data       = [];
+        }
+
+        $data['language']      = $this->contentValidate($request,$basic_field_name);
+        $update_data['key']    = $slug;
+        $update_data['value']  = $data;
+        // dd($update_data);
+        try{
+            SiteSections::updateOrCreate(['key'=>$slug],$update_data);
+        }catch(Exception $e){
+            return back()->with(['error'=>'Something went wrong! Please try again.']);
+        }
+        return back()->with(['success'  =>  ['Section updated successfully!']]);
+
+    }
+    /**
+     * Method for show register section page
+     * @param string $slug
+     * @param \Illuminate\Http\Request  $request
+     */
+    public function registerView($slug) {
+      
+        $page_title     = "Register Section";
+        $section_slug   = Str::slug(SiteSectionConst::REGISTER_SECTION);
+        $data           = SiteSections::getData($section_slug)->first();
+        $languages      = $this->languages;
+
+        return view('admin.sections.setup-sections.register-section',compact(
+            'page_title',
+            'data',
+            'languages',
+            'slug'
+        ));
+    }
+    /**
+     * Mehtod for update register section
+     * @param string $slug
+     * @param \Illuminate\Http\Request  $request
+    */
+    public function registerUpdate(Request $request,$slug) {
+        
+        $basic_field_name    = [
+            'title'          => 'required|string|max:100',
+            'description'    => 'required|string',
+            
+        ];
+        $slug           = Str::slug(SiteSectionConst::REGISTER_SECTION);
+        $section        = SiteSections::where("key",$slug)->first();
+        if($section != null ){
+            $data       = json_decode(json_encode($section->value),true);
+        }else{
+            $data       = [];
+        }
+
+        $data['language']      = $this->contentValidate($request,$basic_field_name);
+        $update_data['key']    = $slug;
+        $update_data['value']  = $data;
+        // dd($update_data);
+        try{
+            SiteSections::updateOrCreate(['key'=>$slug],$update_data);
+        }catch(Exception $e){
+            return back()->with(['error'=>'Something went wrong! Please try again.']);
+        }
+        return back()->with(['success'  =>  ['Section updated successfully!']]);
+
+    }
     /**
      * Method for get languages form record with little modification for using only this class
      * @return array $languages

@@ -415,7 +415,7 @@ function files_path($slug)
             'path'          => 'backend/files/language',
         ],
         'prescription-file'     => [
-            'path'          => 'backend/files/prescription',
+            'path'          => 'frontend/files/prescription',
         ],
         'site-section'         => [
             'path'          => 'frontend/images/site-section',
@@ -983,8 +983,7 @@ function auth_admin_incomming_permission()
 {
     $incomming_access = Route::currentRouteName();
     $auth_admin_permissions = auth_admin_permissions();
-    // dd($auth_admin_permissions);
-    // dd(permission_protected());
+    
     if (auth_is_super_admin() == true) return true;
     if (!in_array($incomming_access, permission_protected())) return true;
     if (in_array($incomming_access, $auth_admin_permissions)) return true;
