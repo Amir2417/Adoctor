@@ -40,6 +40,11 @@
                             'icon'      => "menu-icon las la-coins",
                         ],
                         [
+                            'title'     => __("Fees & Charges"),
+                            'route'     => "admin.trx.settings.index",
+                            'icon'      => "menu-icon las la-wallet",
+                        ],
+                        [
                             'title'     => __("Hospital Departments"),
                             'route'     => "admin.hospital.departments.index",
                             'icon'      => "menu-icon las la-coins",

@@ -18,7 +18,7 @@ class TrxSettingsController extends Controller
     public function index()
     {
         $page_title = "Fees & Charges";
-        $transaction_charges = TransactionSetting::all();
+        $transaction_charges = TransactionSetting::where('slug','appointment')->first();
         return view('admin.sections.trx-settings.index',compact(
             'page_title',
             'transaction_charges'
@@ -35,10 +35,7 @@ class TrxSettingsController extends Controller
             'slug'                              => 'required|string',
             $request->slug.'_fixed_charge'      => 'required|numeric',
             $request->slug.'_percent_charge'    => 'required|numeric',
-            $request->slug.'_min_limit'         => 'required|numeric',
-            $request->slug.'_max_limit'         => 'required|numeric',
-            $request->slug.'_daily_limit'       => 'required|numeric',
-            $request->slug.'_monthly_limit'     => 'required|numeric',
+            
         ]);
         $validated = $validator->validate();
 

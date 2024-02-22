@@ -18,13 +18,11 @@
 @endsection
 
 @section('content')
-    @foreach ($transaction_charges as $item)
         @include('admin.components.trx-settings-charge-block',[
             'route'         => setRoute('admin.trx.settings.charges.update'),
-            'title'         => $item->title,
-            'data'          => $item,
+            'title'         => $transaction_charges->title,
+            'data'          => $transaction_charges,
         ])
-    @endforeach
 @endsection
 
 @push('script')
