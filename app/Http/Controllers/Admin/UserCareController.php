@@ -206,16 +206,19 @@ class UserCareController extends Controller
             'email_verified'        => 'required|boolean',
             'status'                => 'required|boolean',
         ]);
-        $validated = $validator->validate();
-        $validated['address']  = [
-            'country'       => $validated['country'] ?? "",
-            'state'         => $validated['state'] ?? "",
-            'city'          => $validated['city'] ?? "",
-            'zip'           => $validated['zip_code'] ?? "",
-            'address'       => $validated['address'] ?? "",
+        $validated                  = $validator->validate();
+        $validated['address']       = [
+            'country'               => $validated['country'] ?? "",
+            'state'                 => $validated['state'] ?? "",
+            'city'                  => $validated['city'] ?? "",
+            'zip'                   => $validated['zip_code'] ?? "",
+            'address'               => $validated['address'] ?? "",
         ];
-        
-        $validated['full_mobile']       = remove_speacial_char($validated['mobile']);
+        if($validated['mobile'] == ''){
+            $validated['full_mobile']   = null;
+        }else{
+            $validated['full_mobile']   = remove_speacial_char($validated['mobile']);
+        }
 
         $user = User::where('username', $username)->first();
         if(!$user) return back()->with(['error' => ['Opps! User not exists']]);
@@ -223,6 +226,7 @@ class UserCareController extends Controller
         try {
             $user->update($validated);
         } catch (Exception $e) {
+            dd($e->getMessage());
             return back()->with(['error' => ['Something went wrong! Please try again']]);
         }
 

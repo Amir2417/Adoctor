@@ -165,7 +165,7 @@
                             'placeholder'   => __("Write Here")."...",
                         ])
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 form-group">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 form-group">
                         @include('admin.components.form.switcher', [
                             'label'         => __("User Status"),
                             'value'         => old('status',$user->status),
@@ -174,7 +174,7 @@
                             'permission'    => "admin.users.details.update",
                         ])
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 form-group">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 form-group">
                         @include('admin.components.form.switcher', [
                             'label'         => __("Email Verification"),
                             'value'         => old('email_verified',$user->email_verified),
