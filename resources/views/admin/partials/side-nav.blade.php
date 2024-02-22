@@ -322,7 +322,29 @@
                     'title'     => __("Usefull Links"),
                     'icon'      => "menu-icon las la-link",
                 ])
-                
+                @if (admin_permission_by_name("admin.payment.gateway.view"))
+                    <li class="sidebar-menu-header">{{ __("Payment Methods") }}</li>
+                    @php
+                        $payment_add_money_childs  = [
+                            setRoute('admin.payment.gateway.view',['payment-method','automatic']),
+                            setRoute('admin.payment.gateway.view',['payment-method','manual']),
+                        ]
+                    @endphp
+                    <li class="sidebar-menu-item sidebar-dropdown @if (in_array($current_url,$payment_add_money_childs)) active @endif">
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon las la-funnel-dollar"></i>
+                            <span class="menu-title">{{ __("Payment Method") }}</span>
+                        </a>
+                        <ul class="sidebar-submenu">
+                            <li class="sidebar-menu-item">
+                                <a href="{{ setRoute('admin.payment.gateway.view',['payment-method','automatic']) }}" class="nav-link @if ($current_url == setRoute('admin.payment.gateway.view',['payment-method','automatic'])) active @endif">
+                                    <i class="menu-icon las la-ellipsis-h"></i>
+                                    <span class="menu-title">{{ __("Automatic") }}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
                 {{-- Notifications --}}
                 @include('admin.components.side-nav.link-group',[
                     'group_title'       => __("Notification"),

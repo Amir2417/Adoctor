@@ -2,13 +2,15 @@
 
 namespace App\Models\Admin;
 
+use App\Traits\PaymentGateway\Tatum;
 use App\Constants\PaymentGatewayConst;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\PaymentGateway\Razorpay;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PaymentGateway extends Model
 {
-    use HasFactory;
+    use HasFactory,Tatum,Razorpay;
 
     protected $guarded = ['id'];
 
@@ -55,6 +57,13 @@ class PaymentGateway extends Model
         return $this->hasMany(PaymentGatewayCurrency::class, 'payment_gateway_id')->orderBy("id", "DESC");
     }
 
+    public function scopePaymentMethod($query)
+    {
+        return $query->where(function ($q) {
+            $q->where('slug', PaymentGatewayConst::payment_method_slug());
+        });
+    }
+    
     public function scopeAddMoney($query)
     {
         return $query->where(function ($q) {
@@ -80,6 +89,22 @@ class PaymentGateway extends Model
         return $query->where(function ($q) {
             $q->where("status", PaymentGatewayConst::ACTIVE);
         });
+    }
+    public function isCrypto() {
+        if($this->crypto == true) return true;
+        return false;
+    }
+
+    public function cryptoAssets() 
+    {
+        return $this->hasMany(CryptoAsset::class,'payment_gateway_id');
+    }
+
+    public function isAutomatic() {
+        if($this->type == PaymentGatewayConst::AUTOMATIC) {
+            return true;
+        }
+        return false;
     }
     
 }

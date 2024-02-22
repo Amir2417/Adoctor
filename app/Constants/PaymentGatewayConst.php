@@ -9,12 +9,17 @@ class PaymentGatewayConst {
     const ADDMONEY  = "Add Money";
     const MONEYOUT  = "Money Out";
     const ACTIVE    =  true;
+    const PAYMENTMETHOD  = "Payment Method";
 
     const ENV_SANDBOX       = "SANDBOX";
     const ENV_PRODUCTION    = "PRODUCTION";
 
     public static function add_money_slug() {
         return Str::slug(self::ADDMONEY);
+    }
+
+    public static function payment_method_slug() {
+        return Str::slug(self::PAYMENTMETHOD);
     }
 
 

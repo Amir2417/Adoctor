@@ -9,7 +9,7 @@
                     <div class="row align-items-center">
                         <div class="col-xl-2 col-lg-2 form-group">
                             @include('admin.components.form.input-file',[
-                                'label'             => "Gateway Image",
+                                'label'             => __("Gateway Image"),
                                 'name'              => "gateway_currency[".$item->currency_code."][image]",
                                 'class'             => "file-holder",
                                 'old_files_path'    => files_asset_path('payment-gateways'),
@@ -26,7 +26,7 @@
                                         <div class="col-xxl-12 col-xl-6 col-lg-6 form-group">
                                             <div class="form-group">
                                                 @include('admin.components.form.input-amount',[
-                                                    'label'         => "Minimum",
+                                                    'label'         => __("Minimum"),
                                                     'name'          => "gateway_currency[".$item->currency_code."][min_limit]",
                                                     'value'         => old("gateway_currency.".$item->currency_code.".min_limit",$item->min_limit),
                                                     'currency'      => $item->currency_code,      
@@ -36,7 +36,7 @@
                                         <div class="col-xxl-12 col-xl-6 col-lg-6 form-group">
                                             <div class="form-group">
                                                 @include('admin.components.form.input-amount',[
-                                                    'label'         => "Maximum",
+                                                    'label'         => __("Maximum"),
                                                     'name'          => "gateway_currency[".$item->currency_code."][max_limit]",
                                                     'value'         => old("gateway_currency.".$item->currency_code.".max_limit",$item->max_limit),
                                                     'currency'      => $item->currency_code,            
@@ -57,7 +57,7 @@
                                         <div class="col-xxl-12 col-xl-6 col-lg-6 form-group">
                                             <div class="form-group">
                                                 @include('admin.components.form.input-amount',[
-                                                    'label'         => "Fixed",
+                                                    'label'         => __("Fixed"),
                                                     'name'          => "gateway_currency[".$item->currency_code."][fixed_charge]",
                                                     'value'         => old("gateway_currency.".$item->currency_code.".fixed_charge",$item->fixed_charge),
                                                     'currency'      => $item->currency_code,          
@@ -67,7 +67,7 @@
                                         <div class="col-xxl-12 col-xl-6 col-lg-6 form-group">
                                             <div class="form-group">
                                                 @include('admin.components.form.input-amount',[
-                                                    'label'         => "Percent",
+                                                    'label'         => __("Percent"),
                                                     'name'          => "gateway_currency[".$item->currency_code."][percent_charge]",
                                                     'value'         => old("gateway_currency.".$item->currency_code.".percent_charge",$item->percent_charge),
                                                     'currency'      => "%",          
@@ -98,7 +98,7 @@
                                         <div class="col-xxl-12 col-xl-6 col-lg-6 form-group">
                                             <div class="form-group">
                                                 @include('admin.components.form.input',[
-                                                    'label'     => "Symbol",
+                                                    'label'     => __("Symbol"),
                                                     'name'      => "gateway_currency[".$item->currency_code."][currency_symbol]",
                                                     'value'     => old("gateway_currency.".$item->currency_code.".currency_symbol",$item->currency_symbol),
                                                 ])

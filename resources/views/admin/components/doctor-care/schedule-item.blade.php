@@ -1,5 +1,5 @@
 @forelse ($doctor_has_schedule ?? [] as $item)
-{{-- @dd($item->from_time) --}}
+
     <div class="row align-items-end">
         <div class="col-xl-3 col-lg-3 form-group">
             <label>{{ __("Day") }}<span>*</span></label>
@@ -10,7 +10,7 @@
                 @endforeach
             </select>
         </div>
-        {{-- @dd($item) --}}
+
         <div class="col-xl-3 col-lg-3 form-group">
             @include('admin.components.form.input',[
                 'label'         => __("From Time")."*",

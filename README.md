@@ -7,5 +7,7 @@ Feature Update:
 
 1. To Run Project Please Run This Command On Your Terminal
     composer update && composer dumpautoload && php artisan migrate
-4. To Update Basic Settings Seeder Please Run This Command On Your Terminal
+2. To Update Basic Settings Seeder Please Run This Command On Your Terminal
     php artisan db:seed --class=Database\\Seeders\\Admin\\BasicSettingsSeeder
+3. To Update Site Sections Seeder Please Run This Command On Your Terminal
+    php artisan db:seed --class=Database\\Seeders\\Admin\\SiteSectionsSeeder

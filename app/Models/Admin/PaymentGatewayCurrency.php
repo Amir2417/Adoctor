@@ -26,4 +26,8 @@ class PaymentGatewayCurrency extends Model
         'created_at'                => 'date:Y-m-d',
         'updated_at'                => 'date:Y-m-d',
     ];
+
+    public function gateway() {
+        return $this->belongsTo(PaymentGateway::class,"payment_gateway_id");
+    }
 }
