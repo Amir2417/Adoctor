@@ -140,7 +140,7 @@ class AppointmentBookingController extends Controller
         $useful_links               = UsefulLink::where('status',true)->get();
         $news_letter_section        = Str::slug(SiteSectionConst::NEWSLETTER_SECTION);
         $news_letter                = SiteSections::getData($news_letter_section)->first();
-        $payment_gateway   = PaymentGatewayCurrency::whereHas('gateway', function ($gateway) {
+        $payment_gateway            = PaymentGatewayCurrency::whereHas('gateway', function ($gateway) {
             $gateway->where('slug', PaymentGatewayConst::payment_method_slug());
             $gateway->where('status', 1);
         })->get();

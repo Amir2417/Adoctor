@@ -989,5 +989,9 @@
     "Image upload failed! Please try again.",
     "Payment gateway updated successfully!",
     "Payment gateway deleted successfully!",
-    "Automatic Payment Method Edit"
+    "Automatic Payment Method Edit",
+    "Appointment Booking Charges",
+    "Fixed Charge",
+    "Percent Charge",
+    "Charge Updated Successfully!"
 ]

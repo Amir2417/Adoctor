@@ -16,14 +16,14 @@
                         <div class="card-inner-body">
                             <div class="row">
                                 <div class="col-xxl-12 col-xl-6 col-lg-6 form-group">
-                                    <label>{{ __("Fixed Charge*") }}</label>
+                                    <label>{{ __("Fixed Charge") }}*</label>
                                     <div class="input-group">
                                         <input type="text" class="form--control number-input" value="{{ old($data->slug.'_fixed_charge',get_amount($data->fixed_charge)) }}" name="{{$data->slug}}_fixed_charge">
                                         <span class="input-group-text">{{ get_default_currency_code($default_currency) }}</span>
                                     </div>
                                 </div>
                                 <div class="col-xxl-12 col-xl-6 col-lg-6 form-group">
-                                    <label>{{ __("Percent Charge*") }}</label>
+                                    <label>{{ __("Percent Charge") }}*</label>
                                     <div class="input-group">
                                         <input type="text" class="form--control number-input" value="{{ old($data->slug.'_percent_charge',get_amount($data->percent_charge)) }}" name="{{$data->slug}}_percent_charge">
                                         <span class="input-group-text">%</span>
@@ -37,7 +37,7 @@
             <div class="row mb-10-none">
                 <div class="col-xl-12 col-lg-12 form-group">
                     @include('admin.components.button.form-btn',[
-                        'text'          => "Update",
+                        'text'          => __("Update"),
                         'class'         => "w-100 btn-loading",
                         'permission'    => "admin.trx.settings.charges.update",
                     ])
