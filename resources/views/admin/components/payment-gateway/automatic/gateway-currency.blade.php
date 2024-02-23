@@ -7,7 +7,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row align-items-center">
-                        <div class="col-xl-2 col-lg-2 form-group">
+                        <div class="col-xl-4 col-lg-4 form-group">
                             @include('admin.components.form.input-file',[
                                 'label'             => __("Gateway Image"),
                                 'name'              => "gateway_currency[".$item->currency_code."][image]",
@@ -16,69 +16,8 @@
                                 'old_files'         => $item->image,
                             ])
                         </div>
-                        <div class="col-xl-3 col-lg-3 mb-10">
-                            <div class="custom-inner-card">
-                                <div class="card-inner-header">
-                                    <h5 class="title">{{ __("Amount Limit") }}</h5>
-                                </div>
-                                <div class="card-inner-body">
-                                    <div class="row">
-                                        <div class="col-xxl-12 col-xl-6 col-lg-6 form-group">
-                                            <div class="form-group">
-                                                @include('admin.components.form.input-amount',[
-                                                    'label'         => __("Minimum"),
-                                                    'name'          => "gateway_currency[".$item->currency_code."][min_limit]",
-                                                    'value'         => old("gateway_currency.".$item->currency_code.".min_limit",$item->min_limit),
-                                                    'currency'      => $item->currency_code,      
-                                                ])
-                                            </div>
-                                        </div>
-                                        <div class="col-xxl-12 col-xl-6 col-lg-6 form-group">
-                                            <div class="form-group">
-                                                @include('admin.components.form.input-amount',[
-                                                    'label'         => __("Maximum"),
-                                                    'name'          => "gateway_currency[".$item->currency_code."][max_limit]",
-                                                    'value'         => old("gateway_currency.".$item->currency_code.".max_limit",$item->max_limit),
-                                                    'currency'      => $item->currency_code,            
-                                                ])
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 mb-10">
-                            <div class="custom-inner-card">
-                                <div class="card-inner-header">
-                                    <h5 class="title">{{ __("Charge") }}</h5>
-                                </div>
-                                <div class="card-inner-body">
-                                    <div class="row">
-                                        <div class="col-xxl-12 col-xl-6 col-lg-6 form-group">
-                                            <div class="form-group">
-                                                @include('admin.components.form.input-amount',[
-                                                    'label'         => __("Fixed"),
-                                                    'name'          => "gateway_currency[".$item->currency_code."][fixed_charge]",
-                                                    'value'         => old("gateway_currency.".$item->currency_code.".fixed_charge",$item->fixed_charge),
-                                                    'currency'      => $item->currency_code,          
-                                                ])
-                                            </div>
-                                        </div>
-                                        <div class="col-xxl-12 col-xl-6 col-lg-6 form-group">
-                                            <div class="form-group">
-                                                @include('admin.components.form.input-amount',[
-                                                    'label'         => __("Percent"),
-                                                    'name'          => "gateway_currency[".$item->currency_code."][percent_charge]",
-                                                    'value'         => old("gateway_currency.".$item->currency_code.".percent_charge",$item->percent_charge),
-                                                    'currency'      => "%",          
-                                                ])
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 mb-10">
+                        
+                        <div class="col-xl-8 col-lg-8 mb-10">
                             <div class="custom-inner-card">
                                 <div class="card-inner-header">
                                     <h5 class="title">{{ __("Rate") }}</h5>

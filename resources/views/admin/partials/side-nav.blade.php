@@ -118,10 +118,6 @@
                                         'route'     => "admin.users.email.unverified",
                                     ],
                                     [
-                                        'title'     => __("KYC Unverified"),
-                                        'route'     => "admin.users.kyc.unverified", 
-                                    ],
-                                    [
                                         'title'     => __("All Users"),
                                         'route'     => "admin.users.index",
                                     ],
@@ -324,7 +320,7 @@
 
                 @include('admin.components.side-nav.link',[
                     'route'     => 'admin.useful.links.index',
-                    'title'     => __("Usefull Links"),
+                    'title'     => __("Useful Links"),
                     'icon'      => "menu-icon las la-link",
                 ])
                 @if (admin_permission_by_name("admin.payment.gateway.view"))

@@ -986,7 +986,12 @@ Percent,Percent,Por ciento,نسبه مئويه
 The gateway name has already been taken.,The gateway name has already been taken.,El nombre de la puerta de entrada ya ha sido tomado.,تم بالفعل أخذ اسم البوابة.
 Payment gateway added successfully!,Payment gateway added successfully!,¡PAGO GIERTWAY agregado con éxito!,وأضاف بوابة الدفع بنجاح!
 Payment gateway status updated successfully!,Payment gateway status updated successfully!,Estado de la pasarela de pago actualizado correctamente!,تم تحديث حالة بوابة الدفع بنجاح!
-Image upload failed! Please try again.,Image upload failed! Please try again.,¡Falló la carga de la imagen! Inténtalo de nuevo.,فشل تحميل الصورة! حاول مرة اخرى.
-Payment gateway updated successfully!,Payment gateway updated successfully!,¡Pase de entrada actualizada con éxito!,تم تحديث بوابة الدفع بنجاح!
-Payment gateway deleted successfully!,Payment gateway deleted successfully!,¡Pague Piesway eliminado con éxito!,تم حذف بوابة الدفع بنجاح!
+Image upload failed! Please try again.,Image upload failed! Please try again.,¡Falló la carga de imagen! Inténtalo de nuevo.,فشل تحميل الصورة! حاول مرة اخرى.
+Payment gateway updated successfully!,Payment gateway updated successfully!,¡Pase de pasar por la pasarela actualizada con éxito!,تم تحديث بوابة الدفع بنجاح!
+Payment gateway deleted successfully!,Payment gateway deleted successfully!,¡Pague pasarela eliminada con éxito!,تم حذف بوابة الدفع بنجاح!
 Automatic Payment Method Edit,Automatic Payment Method Edit,Método de pago automático Editar,تحرير طريقة الدفع التلقائي
+Appointment Booking Charges,Appointment Booking Charges,Cargos de reserva de citas,رسوم حجز المواعيد
+Fixed Charge,Fixed Charge,Cargo fijo,تهمة ثابتة
+Percent Charge,Percent Charge,Porcentaje de cargo,تكلفة في المئة
+Charge Updated Successfully!,Charge Updated Successfully!,¡Cargo actualizado con éxito!,تم تحديث الرسوم بنجاح!
+Useful Links,Useful Links,Enlaces útiles,روابط مفيدة

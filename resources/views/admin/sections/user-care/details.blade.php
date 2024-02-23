@@ -186,7 +186,7 @@
                     
                     <div class="col-xl-12 col-lg-12 form-group mt-4">
                         @include('admin.components.button.form-btn',[
-                            'text'          => "Update",
+                            'text'          => __("Update"),
                             'permission'    => "admin.users.details.update",
                             'class'         => "w-100 btn-loading",
                         ])
