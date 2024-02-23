@@ -22,9 +22,9 @@
                                 <li>{{ __("Email") }}:<span class="text-lowercase">{{ $patient->email ?? "" }}</span></li>
                                 <li>{{ __("Type") }}:<span>{{ $patient->type ?? "" }}</span></li>
                                 <li>{{ __("Gender") }}:<span>{{ $patient->gender ?? "" }}</span></li>
-                                <li>{{ __("Total Fees") }}:<span>{{ $patient->details->total_charge ?? "" }}</span></li>
-                                <li>{{ __("Payable Amount") }}:<span>{{ $patient-> ?? "" }}</span></li>
-                                <li>{{ __("Gender") }}:<span>{{ $patient->gender ?? "" }}</span></li>
+                                <li>{{ __("Docrtor Fees") }}:<span>{{ get_amount($patient->details->doctor_fees,get_default_currency_code()) }}</span></li>
+                                <li>{{ __("Fees & Charges") }}:<span>{{ get_amount($patient->details->total_charge,get_default_currency_code()) }}</span></li>
+                                <li>{{ __("Payable Amount") }}:<span>{{ get_amount($patient->details->payable_amount,get_default_currency_code()) }}</span></li>
                             </ul>
                         </div>
                         <div class="btn-area mt-20">

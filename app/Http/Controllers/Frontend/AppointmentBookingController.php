@@ -97,6 +97,7 @@ class AppointmentBookingController extends Controller
         $payable_amount     = $amount + floatval($total_charge);
 
         $data               = [
+            'doctor_fees'   => $amount,
             'fixed_charge'  => floatval($fixed_charge),
             'percent_charge'=> floatval($percent_charge),
             'total_charge'  => floatval($total_charge),
