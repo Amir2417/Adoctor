@@ -14,10 +14,11 @@ use App\Models\DoctorAppointment;
 use App\Models\Admin\SiteSections;
 use App\Constants\SiteSectionConst;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\PaymentGateway;
 use Illuminate\Support\Facades\Auth;
 use App\Constants\PaymentGatewayConst;
 use App\Models\Admin\DoctorHasSchedule;
-use App\Models\Admin\PaymentGateway;
+use App\Models\Admin\TransactionSetting;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Admin\PaymentGatewayCurrency;
 use Illuminate\Support\Facades\Notification;
@@ -88,6 +89,20 @@ class AppointmentBookingController extends Controller
         $find_doctor        = Doctor::where('slug',$slug)->first();
         if(!$find_doctor) return back()->with(['error' =>  ['Doctor not found!']]);
 
+        $transaction_fees   = TransactionSetting::where('slug','appointment')->first();
+        $amount             = floatval($find_doctor->fees);
+        $fixed_charge       = $transaction_fees->fixed_charge;
+        $percent_charge     = ($amount / 100) * $transaction_fees->percent_charge;
+        $total_charge       = $fixed_charge + $percent_charge;
+        $payable_amount     = $amount + floatval($total_charge);
+
+        $data               = [
+            'fixed_charge'  => floatval($fixed_charge),
+            'percent_charge'=> floatval($percent_charge),
+            'total_charge'  => floatval($total_charge),
+            'payable_amount'=> floatval($payable_amount),
+        ];
+
         if(auth()->check()){
             $validated['user_id']   = auth()->user()->id;
         }
@@ -115,6 +130,7 @@ class AppointmentBookingController extends Controller
 
         $next_patient_appointment_no = $alrady_appointed_patient + 1;
         $validated['patient_number'] = $next_patient_appointment_no;
+        $validated['details']        = $data;
         try{
            $patient_slug = DoctorAppointment::create($validated);
         }catch(Exception $e){

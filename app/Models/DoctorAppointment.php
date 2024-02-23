@@ -19,6 +19,7 @@ class DoctorAppointment extends Model
         'type'              => 'string',
         'gender'            => 'string',
         'message'           => 'string',
+        'details'           => 'object',
         'status'            => 'integer',
     ];
     public function schedules(){
