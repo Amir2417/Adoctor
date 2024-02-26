@@ -161,7 +161,6 @@ class AppointmentBookingController extends Controller
             $gateway->where('slug', PaymentGatewayConst::payment_method_slug());
             $gateway->where('status', 1);
         })->get();
-       
 
         return view('frontend.pages.appointment-booking-preview',compact(
             'page_title',
@@ -170,7 +169,8 @@ class AppointmentBookingController extends Controller
             'footer',
             'app_settings',
             'useful_links',
-            'news_letter'
+            'news_letter',
+            'payment_gateway'
         ));
     }
     /**
