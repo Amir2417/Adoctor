@@ -33,7 +33,7 @@
                             <div class="user-action-btn">
                                 @include('admin.components.link.custom',[
                                     'href'          => setRoute('admin.users.login.logs',$user->username),
-                                    'class'         => "bg--base two",
+                                    'class'         => "bg--info two",
                                     'icon'          => "las la-sign-in-alt me-1",
                                     'text'          => __("Login Logs"),
                                     'permission'    => "admin.users.login.logs",
@@ -50,7 +50,7 @@
                             </div>
                             <div class="user-action-btn">
                                 @include('admin.components.link.custom',[
-                                    'class'         => "bg--base four login-as-member",
+                                    'class'         => "bg--success four login-as-member",
                                     'icon'          => "las la-user-check me-1",
                                     'text'          => __("Login as Member"),
                                     'permission'    => "admin.users.login.as.member",
@@ -59,7 +59,7 @@
                             <div class="user-action-btn">
                                 @include('admin.components.link.custom',[
                                     'href'          => setRoute('admin.users.mail.logs',$user->username),
-                                    'class'         => "bg--base five",
+                                    'class'         => "bg--warning five",
                                     'icon'          => "las la-history me-1",
                                     'text'          => __("Email Logs"),
                                     'permission'    => "admin.users.mail.logs",
