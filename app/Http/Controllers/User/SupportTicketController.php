@@ -80,7 +80,7 @@ class SupportTicketController extends Controller
         $validated = $validator->validate();
         $validated['token']         = generate_unique_string('support_tickets','token',16);
         $validated['user_id']       = auth()->user()->id;
-        $validated['status']        = 0;
+        $validated['status']        = 3;
         $validated['type']          = SupportTicketConst::TYPE_USER;
         $validated['created_at']    = now();
         $validated = Arr::except($validated,['attachment']);
@@ -147,7 +147,6 @@ class SupportTicketController extends Controller
     }
 
     public function messageSend(Request $request) {
-        // dd("test");
         $validator = Validator::make($request->all(),[
             'message'       => 'required|string|max:200',
             'support_token' => 'required|string',

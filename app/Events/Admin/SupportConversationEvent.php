@@ -3,10 +3,7 @@
 namespace App\Events\Admin;
 
 use App\Models\SupportTicket;
-use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -20,7 +17,6 @@ class SupportConversationEvent implements ShouldBroadcast
 
     /**
      * Create a new event instance.
-     *
      * @return void
      */
     public function __construct(SupportTicket $support_ticket,$conversation)
@@ -31,7 +27,6 @@ class SupportConversationEvent implements ShouldBroadcast
 
     /**
      * Get the channels the event should broadcast on.
-     *
      * @return \Illuminate\Broadcasting\Channel|array
      */
     public function broadcastOn()

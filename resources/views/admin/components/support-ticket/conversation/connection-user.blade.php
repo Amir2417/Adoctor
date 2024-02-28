@@ -3,7 +3,7 @@
     @if (isset($support_ticket) && isset($support_ticket->token))
         @if ($basic_settings->broadcast_config != null && $basic_settings->broadcast_config->method == "pusher")
 
-            <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+            <script src="https://js.pusher.com/7.2/pusher.js"></script>
             <script>
                 var primaryKey = "{{ $basic_settings->broadcast_config->primary_key ?? '' }}";
                 var cluster = "{{ $basic_settings->broadcast_config->cluster ?? "" }}";
@@ -34,13 +34,9 @@
                 });
 
                 $(document).on("keyup",".message-input-event",function(event){
-                    // if(e.which == 13) {
-                    //     $(this).removeClass("message-input-event");
-                    //     eventInit($(this),'message-input-event');
-                    // }
-
+                   
                     if(event.keyCode == 13 && !event.shiftKey) {
-                        // messageTrigger(message,$(this));
+                        
 
                         $(this).removeClass("message-input-event");
                         eventInit($(this),'message-input-event');
@@ -54,9 +50,9 @@
                 });
 
                 function eventInit(e,removeClass) {
-                    // console.log(e,removeClass);
+                    
                     var inputValue = $(".message-input").val();
-                    // console.log(inputValue);
+                    
                     if(inputValue.length == 0) return false;
                     var CSRF = "{{ csrf_token() }}";
                     var data = {
@@ -65,9 +61,9 @@
                         support_token: token,
                     };
 
-                    // console.log(data);
+                    
                     $.post(URL,data,function(response) {
-                        // Executed
+                       
                     }).done(function(response){
                         $(".message-input").val("");
                         $(e).addClass(removeClass);

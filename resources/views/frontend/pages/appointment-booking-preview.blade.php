@@ -71,7 +71,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="shedule-option collepse d-none pt-10">
+                                <div class="shedule-option collapse pt-10">
                                     @foreach ($payment_gateway as $item)
                                     <div class="shedule-item">
                                         <div class="shedule-inner">
@@ -103,7 +103,23 @@
 @endsection
 @push('script')
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+        var onlinePaymentRadio = document.getElementById('onlinePayment');
+        var cashPaymentRadio = document.getElementById('cashPayment');
+        var collapseElement = document.querySelector('.shedule-option.collapse');
 
+        onlinePaymentRadio.addEventListener('change', function() {
+            if (this.checked) {
+                collapseElement.style.display = 'flex';
+            }
+        });
+
+        cashPaymentRadio.addEventListener('change', function() {
+            if (this.checked) {
+                collapseElement.style.display = 'none';
+            }
+        });
+    });
     
 </script>
 @endpush
