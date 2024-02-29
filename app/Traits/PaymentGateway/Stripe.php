@@ -43,8 +43,8 @@ trait Stripe {
                     [
                         'price_data'    => [
                             'product_data'      => [
-                                'name'          => "Send Remittance",
-                                'description'   => "Send Remittance Payment Currency " . $output['currency']->currency_code,
+                                'name'          => "Appointment Booking",
+                                'description'   => "Appointment Booking Payment Currency " . $output['currency']->currency_code,
                                 'images'        => [
                                     [
                                         get_logo()
@@ -90,12 +90,8 @@ trait Stripe {
                 'id'        => $output['currency']->id,
                 'alias'     => $output['currency']->alias
             ],
-            'payment_method'=> $output['currency'],
             'amount'        => json_decode(json_encode($output['amount']),true),
             'response'      => $response,
-            'creator_table' => auth()->guard(get_auth_guard())->user()->getTable(),
-            'creator_id'    => auth()->guard(get_auth_guard())->user()->id,
-            'creator_guard' => get_auth_guard(),
             'user_record'   => $output['form_data']['identifier'],
         ];
        
@@ -172,7 +168,7 @@ trait Stripe {
     public function stripeSuccess($output) {
         $output['capture']      = $output['tempData']['data']->response ?? "";
         // need to insert new transaction in database
-        $status = global_const()::REMITTANCE_STATUS_PENDING;
+        $status = global_const()::APPROVED;
         try{
             $transaction_response = $this->createTransaction($output,$status);
         }catch(Exception $e) {

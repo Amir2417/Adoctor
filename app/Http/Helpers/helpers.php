@@ -449,8 +449,8 @@ function get_amount($amount, $currency = null, $precision = null)
     return $amount;
 }
 
-function get_logo($basic_settings, $type = null)
-{
+function get_logo($basic_settings = null, $type = null){
+    if($basic_settings == null) $basic_settings = BasicSettingsProvider::get();
     $logo = "";
     if ($type == 'white') {
         if (!$basic_settings->site_logo) {
@@ -459,7 +459,6 @@ function get_logo($basic_settings, $type = null)
             $logo = files_asset_path('image-assets') . "/" . $basic_settings->site_logo;
         }
     }
-
     if ($type == 'dark') {
         if (!$basic_settings->site_logo_dark) {
             $logo = files_asset_path('default');
@@ -467,7 +466,6 @@ function get_logo($basic_settings, $type = null)
             $logo = files_asset_path('image-assets') . "/" . $basic_settings->site_logo_dark;
         }
     }
-
     if ($type == null) {
         if (!$basic_settings->site_logo) {
             if (!$basic_settings->site_logo_dark) {
@@ -479,12 +477,10 @@ function get_logo($basic_settings, $type = null)
             $logo = files_asset_path('image-assets') . "/" . $basic_settings->site_logo;
         }
     }
-
     return $logo;
 }
 
-function get_logo_public_path($basic_settings, $type = null)
-{
+function get_logo_public_path($basic_settings, $type = null){
     $logo = "";
     if ($type == 'white') {
         if (!$basic_settings->site_logo) {
@@ -517,8 +513,8 @@ function get_logo_public_path($basic_settings, $type = null)
     return $logo;
 }
 
-function get_fav($basic_settings, $type = null)
-{
+function get_fav($basic_settings = null, $type = null){
+    if(!$basic_settings) $basic_settings = BasicSettingsProvider::get();
     $fav = "";
     if ($type == 'white') {
         if (!$basic_settings->site_fav) {
@@ -527,7 +523,6 @@ function get_fav($basic_settings, $type = null)
             $fav = files_asset_path('image-assets') . "/" . $basic_settings->site_fav;
         }
     }
-
     if ($type == 'dark') {
         if (!$basic_settings->site_fav_dark) {
             $fav = files_asset_path('default');
@@ -535,7 +530,6 @@ function get_fav($basic_settings, $type = null)
             $fav = files_asset_path('image-assets') . "/" . $basic_settings->site_fav_dark;
         }
     }
-
     if ($type == null) {
         if (!$basic_settings->site_fav) {
             if (!$basic_settings->site_fav_dark) {
@@ -547,7 +541,6 @@ function get_fav($basic_settings, $type = null)
             $fav = files_asset_path('image-assets') . "/" . $basic_settings->site_fav;
         }
     }
-
     return $fav;
 }
 

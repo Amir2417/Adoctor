@@ -273,7 +273,7 @@ class AppointmentBookingController extends Controller
             
             $token = PaymentGatewayHelper::getToken($request->all(),$gateway);
            
-            $temp_data = TemporaryData::where("type",PaymentGatewayConst::PAYPAL)->where("identifier",$token)->first();
+            $temp_data = TemporaryData::where("identifier",$token)->first();
             
 
             if(DoctorAppointment::where('callback_ref', $token)->exists()) {
@@ -295,6 +295,7 @@ class AppointmentBookingController extends Controller
             
             if($instance instanceof RedirectResponse) return $instance;
         }catch(Exception $e) {
+            dd($e->getMessage());
             return redirect()->route("frontend.find.doctor")->with(['error' => [$e->getMessage()]]);
         }
         return redirect()->route("frontend.find.doctor")->with(['success' => ['Congratulations! Appointment Booking Confirmed Successfully.']]);

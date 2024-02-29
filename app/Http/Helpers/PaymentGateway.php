@@ -159,10 +159,10 @@ class PaymentGateway {
 
     public function chargeCalculate($currency,$receiver_currency = null) {
         $temporary_data     = DoctorAppointment::where('slug',$this->request_data['identifier'])->first();
-        
-        $amount                 = $temporary_data->details->payable_amount;
-        $fees                   = $temporary_data->details->total_charge;
         $sender_currency_rate   = $currency->rate;
+        
+        $amount                 = $temporary_data->details->payable_amount * $sender_currency_rate;
+        $fees                   = $temporary_data->details->total_charge;
         
         ($sender_currency_rate == "" || $sender_currency_rate == null) ? $sender_currency_rate = 0 : $sender_currency_rate;
         ($amount == "" || $amount == null) ? $amount : $amount;
@@ -174,13 +174,13 @@ class PaymentGateway {
            
 
             $data = [
-                'requested_amount'          => $amount,
+                'requested_amount'          => floatval($amount),
                 'sender_cur_code'           => $currency->currency_code,
                 'sender_cur_rate'           => $sender_currency_rate ?? 0,
                 'receiver_cur_code'         => $receiver_currency->currency_code,
                 'receiver_cur_rate'         => $receiver_currency->rate ?? 0,
                 'total_charge'              => $fees,
-                'total_amount'              => $amount,
+                'total_amount'              => floatval($amount),
                 'exchange_rate'             => $exchange_rate,
                 'default_currency'          => get_default_currency_code(),
             ];
@@ -189,11 +189,11 @@ class PaymentGateway {
             $exchange_rate      = $default_currency->rate;
             
             $data = [
-                'requested_amount'          => $amount,
+                'requested_amount'          => floatval($amount),
                 'sender_cur_code'           => $currency->currency_code,
                 'sender_cur_rate'           => $sender_currency_rate ?? 0,
                 'total_charge'              => $fees,
-                'total_amount'              => $amount,
+                'total_amount'              => floatval($amount),
                 'exchange_rate'             => $exchange_rate,
                 'default_currency'          => get_default_currency_code(),
             ];
@@ -271,7 +271,7 @@ class PaymentGateway {
     public function responseReceive() {
         $this->authenticateTempData();
         $method_name = $this->getResponseMethod($this->output['gateway']);
-      
+        
         if(method_exists($this,$method_name)) {
             return $this->$method_name($this->output);
         }
