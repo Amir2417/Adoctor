@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('doctor_appointments', function (Blueprint $table) {
             $table->string('details')->nullable();
+            $table->text('callback_ref')->nullable();
         });
     }
 

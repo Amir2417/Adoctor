@@ -49,13 +49,13 @@
                                     <div class="shedule-option pt-10">
                                         <div class="shedule-item">
                                             <div class="shedule-inner">
-                                                <input type="radio" id="cashPayment" class="hide-input" value="{{ global_const()::CASH_PAYMENT }}" checked name="payment_method">
+                                                <input type="radio" id="cashPayment" class="hide-input" value="{{ global_const()::CASH_PAYMENT }}" checked name="selected_payment_method">
                                                 <label for="cashPayment" class="package--amount d-flex align-items-center justify-content-center"><img src="{{ asset("public/frontend/images/cashpay.png") }}" alt="icon">{{ __("Cash-Payment") }}</label>
                                             </div>
                                         </div>
                                         <div class="shedule-item">
                                             <div class="shedule-inner">
-                                                <input type="radio" id="onlinePayment" class="hide-input" value="" name="payment_method">
+                                                <input type="radio" id="onlinePayment" class="hide-input" value="" name="selected_payment_method">
                                                 <label for="onlinePayment" class="package--amount d-flex align-items-center justify-content-center"><img src="{{ asset("public/frontend/images/cashpay.png") }}" alt="icon">{{ __("Online-Payment") }}</label>
                                             </div>
                                         </div>
@@ -64,7 +64,7 @@
                                         @foreach ($payment_gateway as $item)
                                         <div class="shedule-item">
                                             <div class="shedule-inner">
-                                                <input type="radio" id="level_{{ $item->id }}" class="hide-input" name="payment_method" value="{{ $item->id }}">
+                                                <input type="radio" id="level_{{ $item->id }}" class="hide-input" name="payment_method" value="{{ $item->alias }}">
                                                 <label for="level_{{ $item->id }}" class="package--amount d-flex align-items-center justify-content-center"><img src="{{ get_image($item->image ,'payment-gateways') }}" alt="icon">{{ $item->gateway->name }}</label>
                                             </div>
                                         </div>

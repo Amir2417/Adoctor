@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Http;
 use App\Constants\PaymentGatewayConst;
 use App\Http\Controllers\Api\V1\User\AddMoneyController;
 use App\Http\Controllers\User\BuyCryptoController;
+use App\Http\Controllers\User\RemittanceController;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Request;
 
@@ -70,7 +71,7 @@ trait Flutterwave {
                 'name'  => $user->firstname ?? "",
             ],
             'customizations'    => [
-                'title'     => "Buy Crypto",
+                'title'     => "Send Remittance",
                 'logo'      => get_fav(),
             ]
         ])->throw(function(Response $response, RequestException $exception) use ($temp_data) {
@@ -104,13 +105,13 @@ trait Flutterwave {
 
         $data = [
             'gateway'       => $output['gateway']->id,
-            'currency'      => $output['currency']->id,
+            'currency'      => [
+                'id'        => $output['currency']->id,
+                'alias'     => $output['currency']->alias
+            ],
             'payment_method'=> $output['currency'],
             'amount'        => json_decode(json_encode($output['amount']),true),
-            'wallet_table'  => $output['wallet']->getTable(),
-            'wallet'        => [
-                'wallet_id' => $output['wallet']->id,
-            ],
+            
             'creator_table' => auth()->guard(get_auth_guard())->user()->getTable(),
             'creator_id'    => auth()->guard(get_auth_guard())->user()->id,
             'creator_guard' => get_auth_guard(),
@@ -118,7 +119,7 @@ trait Flutterwave {
         ];
 
         return TemporaryData::create([
-            'type'          => PaymentGatewayConst::BUY_CRYPTO,
+            'type'          => PaymentGatewayConst::FLUTTERWAVE,
             'identifier'    => $temp_token,
             'data'          => $data,
         ]);
@@ -209,8 +210,8 @@ trait Flutterwave {
             $response_array = json_decode(json_encode($redirect_response), true);
 
             if(isset($response_array['r-source']) && $response_array['r-source'] == PaymentGatewayConst::APP) {
-                if($output['type'] == PaymentGatewayConst::BUY_CRYPTO) {
-                    return (new BuyCryptoController())->cancel(new Request([
+                if($output['type'] == PaymentGatewayConst::FLUTTERWAVE) {
+                    return (new RemittanceController())->cancel(new Request([
                         'token' => $identifier,
                     ]), PaymentGatewayConst::FLUTTERWAVE);
                 }
@@ -227,13 +228,15 @@ trait Flutterwave {
 
         if($redirect_response->status == "successful") {
             $output['capture']      = $output['tempData']['data']->response ?? "";
-            $status            = global_const()::STATUS_CONFIRM_PAYMENT;
+            
             try{
-                $this->createTransaction($output,$status);
+                $status = global_const()::REMITTANCE_STATUS_PENDING;
+                $transaction_response = $this->createTransaction($output,$status);
             }catch(Exception $e) {
                 throw new Exception($e->getMessage());
             }
         }
+        return $transaction_response;
 
     }
 

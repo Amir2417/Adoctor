@@ -13,17 +13,16 @@ trait Paypal
     public function paypalInit($output = null) {
         
         if(!$output) $output = $this->output;
-        
+     
         $credentials = $this->getPaypalCredentials($output);
         $config = $this->paypalConfig($credentials,$output['amount']);
         $paypalProvider = new PayPalClient;
         $paypalProvider->setApiCredentials($config);
         $paypalProvider->getAccessToken();
         $redirection = $this->getRedirection();
-       
+        
         $url_parameter = $this->getUrlParams();
         
-
         $response = $paypalProvider->createOrder([
             "intent" => "CAPTURE",
             "application_context" => [
@@ -34,23 +33,28 @@ trait Paypal
                 0 => [
                     "amount" => [
                         "currency_code" => $output['amount']->sender_cur_code ?? '',
+                        // "value" => 1,
                         "value" => get_amount($output['amount']->total_amount, null, 2),
                     ]
                 ]
             ]
         ]);
         
+        
         if(isset($response['id']) && $response['id'] != "" && isset($response['status']) && $response['status'] == "CREATED" && isset($response['links']) && is_array($response['links'])) {
             foreach($response['links'] as $item) {
                 if($item['rel'] == "approve") {
                     $this->paypalJunkInsert($response);
+                    
                     if(request()->expectsJson()) {
+                        
                         $this->output['redirection_response']   = $response;
                         $this->output['redirect_links']         = $response['links'];
                         $this->output['redirect_url']           = $item['href'];
                         return $this->get();
                         break;
                     }
+                    
                     return redirect()->away($item['href']);
                     break;
                 }
@@ -160,25 +164,19 @@ trait Paypal
     public function paypalJunkInsert($response) {
 
         $output = $this->output;
-       
+        
         $data = [
             'gateway'       => $output['gateway']->id,
-            'currency'      => $output['currency']->id,
-            'payment_method'=> $output['currency'],
+            'currency'      => [
+                'id'        => $output['currency']->id,
+                'alias'     => $output['currency']->alias
+            ],
             'amount'        => json_decode(json_encode($output['amount']),true),
             'response'      => $response,
-            'wallet_table'  => $output['wallet']->getTable(),
-            'wallet'        => [
-                'wallet_id' => $output['wallet']->id,
-            ],
-            'creator_table' => auth()->guard(get_auth_guard())->user()->getTable(),
-            'creator_id'    => auth()->guard(get_auth_guard())->user()->id,
-            'creator_guard' => get_auth_guard(),
             'user_record'   => $output['form_data']['identifier'],
         ];
-        
         return TemporaryData::create([
-            'type'          => PaymentGatewayConst::BUY_CRYPTO,
+            'type'          => PaymentGatewayConst::PAYPAL,
             'identifier'    => $response['id'],
             'data'          => $data,
         ]);
@@ -188,14 +186,15 @@ trait Paypal
         if(!$output) $output = $this->output;
         
         $token = $this->output['tempData']['identifier'] ?? "";
-
+        
         $credentials = $this->getPaypalCredentials($output);
         $config = $this->paypalConfig($credentials,$output['amount']);
         $paypalProvider = new PayPalClient;
+        
         $paypalProvider->setApiCredentials($config);
         $paypalProvider->getAccessToken();
         $response = $paypalProvider->capturePaymentOrder($token);
-       
+        
         if(isset($response['status']) && $response['status'] == 'COMPLETED') {
             return $this->paypalPaymentCaptured($response,$output);
         }else {
@@ -208,14 +207,14 @@ trait Paypal
     public function paypalPaymentCaptured($response,$output) {
         // payment successfully captured record saved to database
         $output['capture'] = $response;
-        $status            = global_const()::STATUS_CONFIRM_PAYMENT;
+        $status = global_const()::APPROVED;
         try{
-            $this->createTransaction($output,$status);
+            $transaction_response = $this->createTransaction($output,$status);
         }catch(Exception $e) {
             throw new Exception($e->getMessage());
         }
 
-        return true;
+        return $transaction_response;
     }
 
     public static function isPaypal($gateway) {

@@ -41,4 +41,5 @@ return array(
     '1e298922c3e2134d42dcdb03e6d5f55a' => $vendorDir . '/torann/geoip/src/helpers.php',
     'bab4ed692c1fd3872849227e2a85791e' => $vendorDir . '/unicodeveloper/laravel-paystack/src/Support/helpers.php',
     '48a6375642125665354baf6b7954ed7f' => $baseDir . '/app/Http/Helpers/helpers.php',
+    'a35fd9d0ca3d8093c2e5abcbcfb2f7c9' => $baseDir . '/app/Http/Helpers/PaymentGateway.php',
 );

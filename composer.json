@@ -42,7 +42,8 @@
             "Project\\Installer\\": "resources/installer/src/"
         },
         "files": [
-            "app/Http/Helpers/helpers.php"
+            "app/Http/Helpers/helpers.php",
+            "app/Http/Helpers/PaymentGateway.php"
         ]
     },
     "autoload-dev": {

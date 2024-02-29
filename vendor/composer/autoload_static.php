@@ -42,6 +42,7 @@ class ComposerStaticInit14d380c8858c0c9eee306377916b48cd
         '1e298922c3e2134d42dcdb03e6d5f55a' => __DIR__ . '/..' . '/torann/geoip/src/helpers.php',
         'bab4ed692c1fd3872849227e2a85791e' => __DIR__ . '/..' . '/unicodeveloper/laravel-paystack/src/Support/helpers.php',
         '48a6375642125665354baf6b7954ed7f' => __DIR__ . '/../..' . '/app/Http/Helpers/helpers.php',
+        'a35fd9d0ca3d8093c2e5abcbcfb2f7c9' => __DIR__ . '/../..' . '/app/Http/Helpers/PaymentGateway.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -845,6 +846,7 @@ class ComposerStaticInit14d380c8858c0c9eee306377916b48cd
         'App\\Http\\Controllers\\User\\SupportTicketController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/SupportTicketController.php',
         'App\\Http\\Controllers\\User\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/UserController.php',
         'App\\Http\\Controllers\\User\\WithdrawalController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/WithdrawalController.php',
+        'App\\Http\\Helpers\\PaymentGateway' => __DIR__ . '/../..' . '/app/Http/Helpers/PaymentGateway.php',
         'App\\Http\\Helpers\\Response' => __DIR__ . '/../..' . '/app/Http/Helpers/Response.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Admin\\AdminDeleteGuard' => __DIR__ . '/../..' . '/app/Http/Middleware/Admin/AdminDeleteGuard.php',
@@ -6003,14 +6005,6 @@ class ComposerStaticInit14d380c8858c0c9eee306377916b48cd
         'PhpParser\\PrettyPrinterAbstract' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinterAbstract.php',
         'PhpParser\\PrettyPrinter\\Standard' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinter/Standard.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
-        'Project\\Installer\\Controllers\\BaseController' => __DIR__ . '/../..' . '/resources/installer/src/Controllers/BaseController.php',
-        'Project\\Installer\\Helpers\\ConfigHelper' => __DIR__ . '/../..' . '/resources/installer/src/Helpers/ConfigHelper.php',
-        'Project\\Installer\\Helpers\\DBHelper' => __DIR__ . '/../..' . '/resources/installer/src/Helpers/DBHelper.php',
-        'Project\\Installer\\Helpers\\ErrorHelper' => __DIR__ . '/../..' . '/resources/installer/src/Helpers/ErrorHelper.php',
-        'Project\\Installer\\Helpers\\Helper' => __DIR__ . '/../..' . '/resources/installer/src/Helpers/Helper.php',
-        'Project\\Installer\\Helpers\\RequirementHelper' => __DIR__ . '/../..' . '/resources/installer/src/Helpers/RequirementHelper.php',
-        'Project\\Installer\\Helpers\\URLHelper' => __DIR__ . '/../..' . '/resources/installer/src/Helpers/URLHelper.php',
-        'Project\\Installer\\Helpers\\ValidationHelper' => __DIR__ . '/../..' . '/resources/installer/src/Helpers/ValidationHelper.php',
         'Psr\\Clock\\ClockInterface' => __DIR__ . '/..' . '/psr/clock/src/ClockInterface.php',
         'Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
         'Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',

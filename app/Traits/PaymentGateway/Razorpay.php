@@ -2,6 +2,7 @@
 namespace App\Traits\PaymentGateway;
 
 use Exception;
+use App\Models\User;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
 use App\Models\TemporaryData;
@@ -24,9 +25,11 @@ trait Razorpay  {
         if(!$output) $output = $this->output;
 
         $request_credentials = $this->getRazorpayRequestCredentials($output);
-
+       
         try{
             if($this->razorpay_btn_pay) {
+                // create link for btn pay
+                
                 return $this->razorpayCreateLinkForBtnPay($output);
             }
             return $this->createRazorpayPaymentLink($output, $request_credentials);
@@ -41,10 +44,12 @@ trait Razorpay  {
      */
     public function razorpayCreateLinkForBtnPay($output)
     {
-        $temp_record_token = generate_unique_string('temporary_datas','identifier','',35);
+        
+        
+        $temp_record_token = generate_unique_string('temporary_datas','identifier');
         
         $temp_data = $this->razorPayJunkInsert($temp_record_token); // create temporary information
-
+        
         $btn_link = $this->generateLinkForBtnPay($temp_record_token, PaymentGatewayConst::RAZORPAY);
 
         if(request()->expectsJson()) {
@@ -88,14 +93,16 @@ trait Razorpay  {
        
         $data = $temp_data->data; // update the data variable 
         $order = $data->razorpay_order;
+        $user = User::where('id',$temp_data->data->creator_id)->first();
+       
         $order_id                   = $order->id;
         $request_credentials        = $this->getRazorpayRequestCredentials($output);
         $output['order_id']         = $order_id;
         $output['key']              = $request_credentials->key_id;
         $output['callback_url']     = $data->callback_url;
         $output['cancel_url']       = $data->cancel_url;
-        $output['user']             = auth()->guard(get_auth_guard())->user();
-
+        $output['user']             = $user;
+       
         return view('payment-gateway.btn-pay.razorpay', compact('output'));
     }
 
@@ -195,13 +202,12 @@ trait Razorpay  {
 
         $data = [
             'gateway'       => $output['gateway']->id,
-            'currency'      => $output['currency']->id,
+            'currency'      => [
+                'id'        => $output['currency']->id,
+                'alias'     => $output['currency']->alias
+            ],
             'payment_method'=> $output['currency'],
             'amount'        => json_decode(json_encode($output['amount']),true),
-            'wallet_table'  => $output['wallet']->getTable(),
-            'wallet'        => [
-                'wallet_id' => $output['wallet']->id,
-            ],
             'creator_table' => auth()->guard(get_auth_guard())->user()->getTable(),
             'creator_id'    => auth()->guard(get_auth_guard())->user()->id,
             'creator_guard' => get_auth_guard(),
@@ -211,7 +217,7 @@ trait Razorpay  {
         ];
 
         return TemporaryData::create([
-            'type'          => PaymentGatewayConst::BUY_CRYPTO,
+            'type'          => PaymentGatewayConst::RAZORPAY,
             'identifier'    => $temp_token,
             'data'          => $data,
         ]);
@@ -288,6 +294,7 @@ trait Razorpay  {
      */
     public function razorpaySuccess($output) 
     {
+        
         $reference              = $output['tempData']['identifier'];
         $order_info             = $output['tempData']['data']->razorpay_order ?? false;
         $output['callback_ref'] = $reference;
@@ -302,6 +309,7 @@ trait Razorpay  {
         }
 
         if(isset($redirect_response->razorpay_payment_id) && isset($redirect_response->razorpay_order_id) && isset($redirect_response->razorpay_signature)) {
+           
             // Response Data
             $output['capture']      = $output['tempData']['data']->callback_data ?? "";
 
@@ -315,20 +323,31 @@ trait Razorpay  {
             $generated_signature = hash_hmac("sha256", $request_order_id . "|" . $razorpay_payment_id, $key_secret);
 
             if($generated_signature == $redirect_response->razorpay_signature) {
-
+ 
                 if(!$this->searchWithReferenceInTransaction($reference)) {
+                   
                     try{
-                        $this->createTransaction($output, global_const()::STATUS_CONFIRM_PAYMENT,false);
+                        $status = global_const()::REMITTANCE_STATUS_PENDING;
+                        $transaction_response = $this->createTransaction($output,$status,false);
+                        
                     }catch(Exception $e) {
+                         
                         throw new Exception($e->getMessage());
                     }
+                    
+                    return $transaction_response;
+                }else{
+                    $transaction    = Transaction::where('callback_ref',$reference)->first();
+                    return $transaction->trx_id;
                 }
 
             }else {
-                throw new Exception("Payment Failed, Invalid Signature Found!");
+                 
+                throw new Exception("Payment Failed, Invalid Signature Found");
             }
             
         }
+     
     }
 
     /**
@@ -336,7 +355,7 @@ trait Razorpay  {
      */
     public function razorpayCallbackResponse($response_data, $gateway)
     {
-        
+
         $entity = $response_data['entity'] ?? false;
         $event  = $response_data['event'] ?? false;
 
@@ -347,14 +366,13 @@ trait Razorpay  {
             $temp_data = TemporaryData::where('identifier', $token)->first();
 
             // if transaction is already exists need to update status, balance & response data
-            $transaction = Transaction::where('callback_ref', $token)->first();
-            
-            $status = global_const()::STATUS_CONFIRM_PAYMENT;
+            $transaction = Transaction::where('callback_ref', $temp_data->identifier)->first();
+
+            $status = global_const()::REMITTANCE_STATUS_CONFIRM_PAYMENT;
 
             if($temp_data) {
-                $gateway_currency_id = $temp_data->data->currency ?? null;
+                $gateway_currency_id = $temp_data->data->currency->id ?? null;
                 $gateway_currency = PaymentGatewayCurrency::find($gateway_currency_id);
-                
                 if($gateway_currency) {
 
                     $requested_amount = $temp_data->data->amount->requested_amount ?? 0;
@@ -362,24 +380,24 @@ trait Razorpay  {
                         $this->currency_input_name  => $temp_data->data->user_record,
                     ];
 
-                    $get_wallet_model = PaymentGatewayConst::registerWallet()[$temp_data->data->creator_guard];
-                    $user_wallet = $get_wallet_model::find($temp_data->data->wallet->wallet_id);
-                    $this->predefined_user_wallet = $user_wallet;
-                    $this->predefined_guard = $user_wallet->user->modelGuardName();
-                    $this->predefined_user = $user_wallet->user;
+                    $user    = User::where('id',$temp_data->data->creator_id)->first();
+                    $this->predefined_guard = $user->modelGuardName();;
+                    $this->predefined_user = $user;
 
                     $this->output['tempData'] = $temp_data;
                 }
 
                 $this->request_data = $validator_data;
+
                 $this->gateway();
+                
             }
 
             $output                     = $this->output;
             $output['callback_ref']     = $token;
             $output['capture']          = $response_data;
 
-            if($transaction && $transaction->status != global_const()::STATUS_CONFIRM_PAYMENT) {
+            if($transaction && $transaction->status != global_const()::REMITTANCE_STATUS_CONFIRM_PAYMENT) {
 
                 $update_data                        = json_decode(json_encode($transaction->details), true);
                 $update_data['gateway_response']    = $response_data;
@@ -389,13 +407,12 @@ trait Razorpay  {
                     'status'    => $status,
                     'details'   => $update_data
                 ]);
-
-                // update balance
-                $this->updateWalletBalance($output);
             }else {
                 // create new transaction with success
-                $this->createTransaction($output, $status,false);
+
+               $this->createTransaction($output,global_const()::REMITTANCE_STATUS_PENDING,false);
             }
+          
             logger("Transaction Created Successfully");
         }
     }

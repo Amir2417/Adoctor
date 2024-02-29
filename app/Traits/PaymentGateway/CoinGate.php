@@ -116,7 +116,7 @@ trait CoinGate {
             'cancel_url'        => $this->setGatewayRoute($redirection['cancel_url'],PaymentGatewayConst::COIN_GATE,$url_parameter),
             'success_url'       => $this->setGatewayRoute($redirection['return_url'],PaymentGatewayConst::COIN_GATE,$url_parameter),
         ]);
-       
+        
         if($response->failed()) {
             $message = json_decode($response->body(),true);
             throw new Exception($message['message']);
@@ -151,14 +151,14 @@ trait CoinGate {
 
         $data = [
             'gateway'       => $output['gateway']->id,
-            'currency'      => $output['currency']->id,
+            'currency'      => [
+                'id'        => $output['currency']->id,
+                'alias'     => $output['currency']->alias
+            ],
             'payment_method'=> $output['currency'],
             'amount'        => json_decode(json_encode($output['amount']),true),
             'response'      => $response,
-            'wallet_table'  => $output['wallet']->getTable(),
-            'wallet'        => [
-                'wallet_id' => $output['wallet']->id,
-            ],
+            
             'creator_table' => auth()->guard(get_auth_guard())->user()->getTable(),
             'creator_id'    => auth()->guard(get_auth_guard())->user()->id,
             'creator_guard' => get_auth_guard(),
@@ -166,7 +166,7 @@ trait CoinGate {
         ];
         
         return TemporaryData::create([
-            'type'          => PaymentGatewayConst::BUY_CRYPTO,
+            'type'          => PaymentGatewayConst::COIN_GATE,
             'identifier'    => $temp_identifier,
             'data'          => $data,
         ]);
@@ -183,11 +183,12 @@ trait CoinGate {
 
             // need to insert new transaction in database
             try{
-                $this->createTransaction($output, global_const()::STATUS_PENDING);
+                $transaction_response = $this->createTransaction($output, PaymentGatewayConst::STATUSPENDING);
             }catch(Exception $e) {
                 throw new Exception($e->getMessage());
             }
         }
+        return $transaction_response;
     }
 
     public static function isCoinGate($gateway) {
@@ -212,9 +213,9 @@ trait CoinGate {
         if(!$output) $output = $this->output;
 
         $callback_status = $callback_data['status'] ?? "";
-        
-        if(isset($output['transaction']) && $output['transaction'] != null && $output['transaction']->status != global_const()::STATUS_CONFIRM_PAYMENT) { // if transaction already created & status is not success
-            
+
+        if(isset($output['transaction']) && $output['transaction'] != null && $output['transaction']->status != global_const()::REMITTANCE_STATUS_CONFIRM_PAYMENT) { // if transaction already created & status is not success
+
             // Just update transaction status and update user wallet if needed
             if($callback_status == $this->coinGate_status_paid) {
 
@@ -226,12 +227,12 @@ trait CoinGate {
 
                 try{
                     DB::table($output['transaction']->getTable())->where('id',$output['transaction']->id)->update([
-                        'status'        => global_const()::STATUS_CONFIRM_PAYMENT,
+                        'status'        => global_const()::REMITTANCE_STATUS_CONFIRM_PAYMENT,
                         'details'       => json_encode($transaction_details),
                         'callback_ref'  => $reference,
                     ]);
 
-                    $this->updateWalletBalance($output);
+                   
                     DB::commit();
                     
                 }catch(Exception $e) {
@@ -242,10 +243,10 @@ trait CoinGate {
             }
         }else { // need to create transaction and update status if needed
 
-            $status = global_const()::STATUS_PENDING;
+            $status = global_const()::REMITTANCE_STATUS_PENDING;
 
             if($callback_status == $this->coinGate_status_paid) {
-                $status = global_const()::STATUS_CONFIRM_PAYMENT;
+                $status = global_const()::REMITTANCE_STATUS_CONFIRM_PAYMENT;
             }
 
             $this->createTransaction($output, $status);

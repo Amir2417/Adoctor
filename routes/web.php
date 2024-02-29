@@ -44,6 +44,12 @@ Route::controller(SiteController::class)->name("frontend.")->group(function(){
         Route::post('store','store')->name('store');
         Route::get('preview/{slug}','preview')->name('preview');
         Route::post('confirm/{slug}','confirm')->name('confirm');
+
+        //payment method 
+        Route::get('success/response/{gateway}','success')->name('payment.success');
+        Route::get('success/{gateway}','successPagadito')->name('payment.success.pagadito')->withoutMiddleware(['auth','verification.guard','kyc.verification.guard','user.google.two.factor']);
+        Route::get("cancel/response/{gateway}",'cancel')->name('payment.cancel');
+        Route::post("callback/response/{gateway}",'callback')->name('payment.callback')->withoutMiddleware(['web','auth','verification.guard','kyc.verification.guard','user.google.two.factor']);
     });
 
     //investigation

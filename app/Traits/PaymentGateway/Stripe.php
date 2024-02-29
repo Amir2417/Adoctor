@@ -20,6 +20,7 @@ trait Stripe {
     }
 
     public function createStripeCheckout($output) {
+        
         $request_credentials = $this->getStripeRequestCredentials($output);
         
         $stripe_client = new StripeClient($request_credentials->token);
@@ -29,8 +30,9 @@ trait Stripe {
 
         $redirection = $this->getRedirection();
         $url_parameter = $this->getUrlParams();
-
+        
         $user = auth()->guard(get_auth_guard())->user();
+        
         try{
             $checkout = $stripe_client->checkout->sessions->create([
                 'mode'              => 'payment',
@@ -41,8 +43,8 @@ trait Stripe {
                     [
                         'price_data'    => [
                             'product_data'      => [
-                                'name'          => "Buy Crypto",
-                                'description'   => "Buy Crypto To Wallet (" . $output['wallet']->currency->code . "). Payment Currency " . $output['currency']->currency_code,
+                                'name'          => "Send Remittance",
+                                'description'   => "Send Remittance Payment Currency " . $output['currency']->currency_code,
                                 'images'        => [
                                     [
                                         get_logo()
@@ -56,6 +58,7 @@ trait Stripe {
                     ]
                 ],
             ]);
+            
             
 
             $response_array = json_decode(json_encode($checkout->getLastResponse()->json), true);
@@ -83,22 +86,21 @@ trait Stripe {
         
         $data = [
             'gateway'       => $output['gateway']->id,
-            'currency'      => $output['currency']->id,
+            'currency'      => [
+                'id'        => $output['currency']->id,
+                'alias'     => $output['currency']->alias
+            ],
             'payment_method'=> $output['currency'],
             'amount'        => json_decode(json_encode($output['amount']),true),
             'response'      => $response,
-            'wallet_table'  => $output['wallet']->getTable(),
-            'wallet'        => [
-                'wallet_id' => $output['wallet']->id,
-            ],
             'creator_table' => auth()->guard(get_auth_guard())->user()->getTable(),
             'creator_id'    => auth()->guard(get_auth_guard())->user()->id,
             'creator_guard' => get_auth_guard(),
             'user_record'   => $output['form_data']['identifier'],
         ];
-
+       
         return TemporaryData::create([
-            'type'          => PaymentGatewayConst::BUY_CRYPTO,
+            'type'          => PaymentGatewayConst::STRIPE,
             'identifier'    => $temp_identifier,
             'data'          => $data,
         ]);
@@ -170,12 +172,13 @@ trait Stripe {
     public function stripeSuccess($output) {
         $output['capture']      = $output['tempData']['data']->response ?? "";
         // need to insert new transaction in database
-        $status            = global_const()::STATUS_CONFIRM_PAYMENT;
+        $status = global_const()::REMITTANCE_STATUS_PENDING;
         try{
-            $this->createTransaction($output,$status);
+            $transaction_response = $this->createTransaction($output,$status);
         }catch(Exception $e) {
             throw new Exception($e->getMessage());
         }
+        return $transaction_response;
     }
 
     public function isStripe($gateway) 

@@ -104,13 +104,12 @@ trait SslCommerz {
         
         $data = [
             'gateway'       => $output['gateway']->id,
-            'currency'      => $output['currency']->id,
+            'currency'      => [
+                'id'        => $output['currency']->id,
+                'alias'     => $output['currency']->alias
+            ],
             'payment_method'=> $output['currency'],
             'amount'        => json_decode(json_encode($output['amount']),true),
-            'wallet_table'  => $output['wallet']->getTable(),
-            'wallet'        => [
-                'wallet_id' => $output['wallet']->id,
-            ],
             'creator_table' => auth()->guard(get_auth_guard())->user()->getTable(),
             'creator_id'    => auth()->guard(get_auth_guard())->user()->id,
             'creator_guard' => get_auth_guard(),
@@ -118,7 +117,7 @@ trait SslCommerz {
         ];
         
         return TemporaryData::create([
-            'type'          => PaymentGatewayConst::BUY_CRYPTO,
+            'type'          => PaymentGatewayConst::SSLCOMMERZ,
             'identifier'    => $temp_token,
             'data'          => $data,
         ]);
@@ -204,19 +203,19 @@ trait SslCommerz {
         $response_status = $output['capture']->status ?? "";
 
         if($response_status == "SUCCESS") {
-            $status            = global_const()::STATUS_CONFIRM_PAYMENT;
+            $status = global_const()::REMITTANCE_STATUS_CONFIRM_PAYMENT;
         }else {
-            $status            = global_const()::STATUS_CONFIRM_PAYMENT;
+            $status = global_const()::REMITTANCE_STATUS_PENDING;
         }
 
         if(!$this->searchWithReferenceInTransaction($reference)) {
             // need to insert new transaction in database
             try{
-                $this->createTransaction($output, $status);
+                $transaction_response = $this->createTransaction($output, $status);
             }catch(Exception $e) {
                 throw new Exception($e->getMessage());
             }
-            return true;
+            return $transaction_response;
         }
 
     }
@@ -239,7 +238,7 @@ trait SslCommerz {
 
                 try{
                     DB::table($output['transaction']->getTable())->where('id',$output['transaction']->id)->update([
-                        'status'        => global_const()::STATUS_CONFIRM_PAYMENT,
+                        'status'        => PaymentGatewayConst::STATUSSUCCESS,
                         'details'       => json_encode($transaction_details),
                         'callback_ref'  => $reference,
                     ]);
@@ -255,10 +254,10 @@ trait SslCommerz {
             }
         }else { // need to create transaction and update status if needed
 
-            $status = global_const()::STATUS_CONFIRM_PAYMENT;
+            $status = PaymentGatewayConst::STATUSPENDING;
 
             if($callback_status == "VALID") {
-                $status = global_const()::STATUS_CONFIRM_PAYMENT;
+                $status = PaymentGatewayConst::STATUSSUCCESS;
             }
 
             $this->createTransaction($output, $status, false);
