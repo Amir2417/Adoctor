@@ -300,4 +300,13 @@ class AppointmentBookingController extends Controller
         }
         return redirect()->route("frontend.find.doctor")->with(['success' => ['Congratulations! Appointment Booking Confirmed Successfully.']]);
     }
+    public function cancel(Request $request, $gateway) {
+        if($request->has('token')) {
+            $identifier = $request->token;
+            if($temp_data = TemporaryData::where('identifier', $identifier)->first()) {
+                $temp_data->delete();
+            }
+        }
+        return redirect()->route('frontend.find.doctor');
+    }
 }

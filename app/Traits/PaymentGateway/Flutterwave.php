@@ -9,8 +9,10 @@ use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use App\Constants\PaymentGatewayConst;
 use App\Http\Controllers\Api\V1\User\AddMoneyController;
+use App\Http\Controllers\Frontend\AppointmentBookingController;
 use App\Http\Controllers\User\BuyCryptoController;
 use App\Http\Controllers\User\RemittanceController;
+use App\Models\DoctorAppointment;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Request;
 
@@ -53,8 +55,11 @@ trait Flutterwave {
 
         $redirection = $this->getRedirection();
         $url_parameter = $this->getUrlParams();
-
-        $user = auth()->guard(get_auth_guard())->user();
+        if(auth()->check()){
+            $user = auth()->guard(get_auth_guard())->user();
+        }else{
+            $user  = DoctorAppointment::where('slug',$output['form_data']['identifier'])->first();
+        }
 
         $temp_data = $this->flutterWaveJunkInsert($temp_record_token); // create temporary information
 
@@ -71,7 +76,7 @@ trait Flutterwave {
                 'name'  => $user->firstname ?? "",
             ],
             'customizations'    => [
-                'title'     => "Send Remittance",
+                'title'     => "Appoitment Booking",
                 'logo'      => get_fav(),
             ]
         ])->throw(function(Response $response, RequestException $exception) use ($temp_data) {
@@ -112,9 +117,7 @@ trait Flutterwave {
             'payment_method'=> $output['currency'],
             'amount'        => json_decode(json_encode($output['amount']),true),
             
-            'creator_table' => auth()->guard(get_auth_guard())->user()->getTable(),
-            'creator_id'    => auth()->guard(get_auth_guard())->user()->id,
-            'creator_guard' => get_auth_guard(),
+            
             'user_record'   => $output['form_data']['identifier'],
         ];
 
@@ -211,7 +214,7 @@ trait Flutterwave {
 
             if(isset($response_array['r-source']) && $response_array['r-source'] == PaymentGatewayConst::APP) {
                 if($output['type'] == PaymentGatewayConst::FLUTTERWAVE) {
-                    return (new RemittanceController())->cancel(new Request([
+                    return (new AppointmentBookingController())->cancel(new Request([
                         'token' => $identifier,
                     ]), PaymentGatewayConst::FLUTTERWAVE);
                 }
@@ -230,7 +233,7 @@ trait Flutterwave {
             $output['capture']      = $output['tempData']['data']->response ?? "";
             
             try{
-                $status = global_const()::REMITTANCE_STATUS_PENDING;
+                $status = global_const()::APPROVED;
                 $transaction_response = $this->createTransaction($output,$status);
             }catch(Exception $e) {
                 throw new Exception($e->getMessage());
