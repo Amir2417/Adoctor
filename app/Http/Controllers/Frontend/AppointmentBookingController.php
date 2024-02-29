@@ -295,7 +295,6 @@ class AppointmentBookingController extends Controller
             
             if($instance instanceof RedirectResponse) return $instance;
         }catch(Exception $e) {
-            dd($e->getMessage());
             return redirect()->route("frontend.find.doctor")->with(['error' => [$e->getMessage()]]);
         }
         return redirect()->route("frontend.find.doctor")->with(['success' => ['Congratulations! Appointment Booking Confirmed Successfully.']]);
@@ -308,5 +307,67 @@ class AppointmentBookingController extends Controller
             }
         }
         return redirect()->route('frontend.find.doctor');
+    }
+    /**
+     * Method for buy crypto SSL Commerz Success
+     * @param $gateway
+     * @param \Illuminate\Http\Request $request
+     */
+    public function postSuccess(Request $request, $gateway)
+    {
+        try{
+            $token = PaymentGatewayHelper::getToken($request->all(),$gateway);
+            $temp_data = TemporaryData::where("identifier",$token)->first();
+            
+            // Auth::guard($temp_data->data->creator_guard)->loginUsingId($temp_data->data->creator_id);
+        }catch(Exception $e) {
+            return redirect()->route('index');
+        }
+        return $this->success($request, $gateway);
+    }
+    /**
+     * Method for buy crypto SSL Commerz Cancel
+     * @param $gateway
+     * @param \Illuminate\Http\Request $request
+     */
+    public function postCancel(Request $request, $gateway)
+    {
+        try{
+            $token = PaymentGatewayHelper::getToken($request->all(),$gateway);
+            $temp_data = TemporaryData::where("identifier",$token)->first();
+            Auth::guard($temp_data->data->creator_guard)->loginUsingId($temp_data->data->creator_id);
+        }catch(Exception $e) {
+            
+            return redirect()->route('index');
+        }
+        return $this->cancel($request, $gateway);
+    }
+    /**
+     * Method for buy crypto Callback
+     * @param $gateway
+     * @param \Illuminate\Http\Request $request
+     */
+    public function callback(Request $request,$gateway) {
+
+        $callback_token = $request->get('token');
+        $callback_data = $request->all();
+
+        try{
+            PaymentGatewayHelper::init([])->handleCallback($callback_token,$callback_data,$gateway);
+        }catch(Exception $e) {
+            // handle Error
+            logger($e);
+        }
+    }
+    /**
+     * Redirect Users for collecting payment via Button Pay (JS Checkout)
+     */
+    public function redirectBtnPay(Request $request, $gateway)
+    {
+        try{
+            return PaymentGatewayHelper::init([])->handleBtnPay($gateway, $request->all());
+        }catch(Exception $e) {
+            return redirect()->route('index')->with(['error' => [$e->getMessage()]]);
+        }
     }
 }

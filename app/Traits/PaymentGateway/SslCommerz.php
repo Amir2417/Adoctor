@@ -4,6 +4,7 @@ namespace App\Traits\PaymentGateway;
 use Exception;
 use Illuminate\Support\Str;
 use App\Models\TemporaryData;
+use App\Models\DoctorAppointment;
 use Illuminate\Support\Facades\DB;
 use App\Http\Helpers\PaymentGateway;
 use Illuminate\Http\Client\Response;
@@ -46,7 +47,11 @@ trait SslCommerz {
         $redirection = $this->getRedirection();
         $url_parameter = $this->getUrlParams();
         
-        $user = auth()->guard(get_auth_guard())->user();
+        if(auth()->check()){
+            $user = auth()->guard(get_auth_guard())->user();
+        }else{
+            $user  = DoctorAppointment::where('slug',$output['form_data']['identifier'])->first();
+        }
 
         $temp_data = $this->sslCommerzJunkInsert($temp_record_token); // create temporary information
         
@@ -67,7 +72,7 @@ trait SslCommerz {
             'cus_country'   => $user->address->country ?? "",
             'cus_phone'     => " ",
             'shipping_method'   => "No",
-            'product_name'      => "Send Remittance",
+            'product_name'      => "Appointment Booking",
             'product_category'  => " ",
             'product_profile'   => " ",
         ])->throw(function(Response $response, RequestException $exception) use ($temp_data) {
@@ -108,11 +113,9 @@ trait SslCommerz {
                 'id'        => $output['currency']->id,
                 'alias'     => $output['currency']->alias
             ],
-            'payment_method'=> $output['currency'],
+            
             'amount'        => json_decode(json_encode($output['amount']),true),
-            'creator_table' => auth()->guard(get_auth_guard())->user()->getTable(),
-            'creator_id'    => auth()->guard(get_auth_guard())->user()->id,
-            'creator_guard' => get_auth_guard(),
+            
             'user_record'   => $output['form_data']['identifier'],
         ];
         
@@ -196,36 +199,38 @@ trait SslCommerz {
     }
 
     public function sslcommerzSuccess($output) {
-       
+        
         $reference              = $output['tempData']['identifier'];
         $output['capture']      = $output['tempData']['data']->response ?? "";
         $output['callback_ref'] = $reference;
         $response_status = $output['capture']->status ?? "";
-
+        
         if($response_status == "SUCCESS") {
-            $status = global_const()::REMITTANCE_STATUS_CONFIRM_PAYMENT;
+            $status = global_const()::APPROVED;
         }else {
-            $status = global_const()::REMITTANCE_STATUS_PENDING;
+            $status = global_const()::APPROVED;
         }
 
         if(!$this->searchWithReferenceInTransaction($reference)) {
             // need to insert new transaction in database
             try{
+                
                 $transaction_response = $this->createTransaction($output, $status);
             }catch(Exception $e) {
                 throw new Exception($e->getMessage());
             }
             return $transaction_response;
         }
+        
 
     }
 
     public function sslcommerzCallbackResponse($reference,$callback_data, $output = null) {
-
+     
         if(!$output) $output = $this->output;
 
         $callback_status = $callback_data['status'] ?? "";
-        if(isset($output['transaction']) && $output['transaction'] != null && $output['transaction']->status != PaymentGatewayConst::STATUSSUCCESS) { // if transaction already created & status is not success
+        if(isset($output['transaction']) && $output['transaction'] != null && $output['transaction']->status != global_const()::APPROVED) { // if transaction already created & status is not success
 
             // Just update transaction status and update user wallet if needed
             if($callback_status == "VALID") {
@@ -238,12 +243,11 @@ trait SslCommerz {
 
                 try{
                     DB::table($output['transaction']->getTable())->where('id',$output['transaction']->id)->update([
-                        'status'        => PaymentGatewayConst::STATUSSUCCESS,
+                        'status'        => global_const()::APPROVED,
                         'details'       => json_encode($transaction_details),
                         'callback_ref'  => $reference,
                     ]);
 
-                    $this->updateWalletBalance($output);
                     DB::commit();
                     
                 }catch(Exception $e) {
@@ -254,10 +258,10 @@ trait SslCommerz {
             }
         }else { // need to create transaction and update status if needed
 
-            $status = PaymentGatewayConst::STATUSPENDING;
+            $status = global_const()::APPROVED;
 
             if($callback_status == "VALID") {
-                $status = PaymentGatewayConst::STATUSSUCCESS;
+                $status = global_const()::APPROVED;
             }
 
             $this->createTransaction($output, $status, false);

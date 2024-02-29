@@ -50,6 +50,13 @@ Route::controller(SiteController::class)->name("frontend.")->group(function(){
         Route::get('success/{gateway}','successPagadito')->name('payment.success.pagadito')->withoutMiddleware(['auth','verification.guard','kyc.verification.guard','user.google.two.factor']);
         Route::get("cancel/response/{gateway}",'cancel')->name('payment.cancel');
         Route::post("callback/response/{gateway}",'callback')->name('payment.callback')->withoutMiddleware(['web','auth','verification.guard','kyc.verification.guard','user.google.two.factor']);
+
+        // POST Route For Unauthenticated Request ssl commerz
+        Route::post('success/response/{gateway}', 'postSuccess')->name('payment.success')->withoutMiddleware(['auth','verification.guard','kyc.verification.guard','user.google.two.factor']);
+        Route::post('cancel/response/{gateway}', 'postCancel')->name('payment.cancel')->withoutMiddleware(['auth','verification.guard','kyc.verification.guard','user.google.two.factor']);
+
+        //redirect with Btn Pay
+        Route::get('redirect/btn/checkout/{gateway}', 'redirectBtnPay')->name('payment.btn.pay')->withoutMiddleware(['auth','verification.guard','kyc.verification.guard','user.google.two.factor']);
     });
 
     //investigation

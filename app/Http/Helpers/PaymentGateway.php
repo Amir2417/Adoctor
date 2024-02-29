@@ -471,10 +471,11 @@ class PaymentGateway {
         DB::beginTransaction();
         try{
             $data->update([
-                'status'    => $status,
-                'details'   => $details
+                'status'          => $status,
+                'details'         => $details,
+                'callback_ref'    => $output['callback_ref'] ?? null,
             ]);
-
+            
             DB::commit();
         }catch(Exception $e) {
             DB::rollBack();
@@ -595,7 +596,7 @@ class PaymentGateway {
 
     public function searchWithReferenceInTransaction($reference) {
 
-        $transaction = DB::table('transactions')->where('callback_ref',$reference)->first();
+        $transaction = DB::table('doctor_appointments')->where('callback_ref',$reference)->first();
 
         if($transaction) {
             return $transaction;
@@ -613,7 +614,7 @@ class PaymentGateway {
         }
         
 
-        $transaction = Transaction::where('callback_ref',$reference)->first();
+        $transaction = DoctorAppointment::where('callback_ref',$reference)->first();
         $this->output['callback_ref']       = $reference;
         $this->output['capture']            = $callback_data;
 

@@ -93,7 +93,11 @@ trait Razorpay  {
        
         $data = $temp_data->data; // update the data variable 
         $order = $data->razorpay_order;
-        $user = User::where('id',$temp_data->data->creator_id)->first();
+        if(auth()->check()){
+            $user = User::where('id',$temp_data->data->creator_id)->first();
+        }else{
+            
+        }
        
         $order_id                   = $order->id;
         $request_credentials        = $this->getRazorpayRequestCredentials($output);
@@ -154,7 +158,7 @@ trait Razorpay  {
             'currency' => $output['currency']->currency_code,
             'expire_by' => now()->addMinutes(20)->timestamp,
             'reference_id' => $temp_record_token,
-            'description' => 'Add Money',
+            'description' => 'Appointment Booking',
             'customer' => [
                 'name' => $user->firstname ?? "",
                 'email' => $user->email ?? "",
@@ -199,7 +203,6 @@ trait Razorpay  {
         $this->setUrlParams("token=" . $temp_token); // set Parameter to URL for identifying when return success/cancel
         $redirection = $this->getRedirection();
         $url_parameter = $this->getUrlParams();
-
         $data = [
             'gateway'       => $output['gateway']->id,
             'currency'      => [
@@ -208,14 +211,12 @@ trait Razorpay  {
             ],
             'payment_method'=> $output['currency'],
             'amount'        => json_decode(json_encode($output['amount']),true),
-            'creator_table' => auth()->guard(get_auth_guard())->user()->getTable(),
-            'creator_id'    => auth()->guard(get_auth_guard())->user()->id,
+            'creator_id'    => auth()->guard(get_auth_guard())->user()->id ?? '',
             'creator_guard' => get_auth_guard(),
             'callback_url'  => $this->setGatewayRoute($redirection['return_url'],PaymentGatewayConst::RAZORPAY,$url_parameter),
             'cancel_url'    => $this->setGatewayRoute($redirection['cancel_url'],PaymentGatewayConst::RAZORPAY,$url_parameter),
             'user_record'   => $output['form_data']['identifier'],
         ];
-
         return TemporaryData::create([
             'type'          => PaymentGatewayConst::RAZORPAY,
             'identifier'    => $temp_token,

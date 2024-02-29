@@ -79,7 +79,7 @@
                         {{-- IF gateway is razorpay need to show the callback URL --}}
                         @if ($gateway->isRazorpay($gateway))
                             {{ __("Callback URL") }} <br>
-                            {{ setRoute('user.buy.crypto.payment.callback',[$gateway->alias, 'token' => payment_gateway_const()::CALLBACK_HANDLE_INTERNAL]) }}
+                            {{ setRoute('frontend.appointment.booking.payment.callback',[$gateway->alias, 'token' => payment_gateway_const()::CALLBACK_HANDLE_INTERNAL]) }}
                         @endif
                     </div>
                     <div class="col-xl-3 col-lg-3 form-group">
