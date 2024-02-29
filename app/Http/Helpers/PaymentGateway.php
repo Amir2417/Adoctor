@@ -482,6 +482,39 @@ class PaymentGateway {
         }
         return $data->id;
     }
+    public function insertRecordWeb($output, $status) {
+        $data  = DoctorAppointment::where('slug',$output['form_data']['identifier'])->first();
+       
+        if($this->predefined_user) {
+            $user = $this->predefined_user;
+        }else {
+            $user = auth()->guard('web')->user();
+        }
+        $details                   = [
+            'doctor_fees'       => $data->details->doctor_fees,
+            'fixed_charge'      => $data->details->fixed_charge,
+            'percent_charge'    => $data->details->percent_charge,
+            'total_charge'      => $data->details->total_charge,
+            'payable_amount'    => $data->details->payable_amount,
+            'payment_method'    => $output['gateway']->name,
+            'currency'          => get_default_currency_code(),
+        ];
+        
+       
+        DB::beginTransaction();
+        try{
+            $data->update([
+                'status'    => $status,
+                'details'   => $details
+            ]);
+
+            DB::commit();
+        }catch(Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+        }
+        return $data->id;
+    }
 
     public function removeTempData($output) {
         try{

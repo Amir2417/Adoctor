@@ -96,7 +96,12 @@ class PaymentGatewayConst {
             'cancel_url'    => 'frontend.appointment.booking.payment.cancel',
             'callback_url'  => 'frontend.appointment.booking.payment.callback',
             'btn_pay'       => 'frontend.appointment.booking.payment.btn.pay',
-          
+            'web'           => [
+                'return_url'    => 'frontend.appointment.booking.payment.success',
+                'cancel_url'    => 'frontend.appointment.booking.payment.cancel',
+                'callback_url'  => 'frontend.appointment.booking.payment.callback',
+                'btn_pay'       => 'frontend.appointment.booking.payment.btn.pay',
+            ],
             'api'       => [
                 'return_url'    => 'api.frontend.appointment.booking.payment.success',
                 'cancel_url'    => 'api.frontend.appointment.booking.payment.cancel',
