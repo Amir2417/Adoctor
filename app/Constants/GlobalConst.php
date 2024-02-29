@@ -28,6 +28,8 @@ class GlobalConst {
     const SETUP_PAGE = 'SETUP_PAGE';
     const USEFUL_LINK_PRIVACY_POLICY = "PRIVACY_POLICY";
 
+    const CASH_PAYMENT    = "Cash Payment";
+
 
 
  }

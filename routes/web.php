@@ -43,7 +43,7 @@ Route::controller(SiteController::class)->name("frontend.")->group(function(){
         Route::get('/appointment-booking/{slug}','appointmentBooking')->name('index');
         Route::post('store','store')->name('store');
         Route::get('preview/{slug}','preview')->name('preview');
-        Route::get('confirm/{slug}','confirm')->name('confirm');
+        Route::post('confirm/{slug}','confirm')->name('confirm');
     });
 
     //investigation

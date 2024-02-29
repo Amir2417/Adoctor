@@ -178,48 +178,71 @@ class AppointmentBookingController extends Controller
      * @param string $slug
      * @param \Illuminate\Http\Request  $request
      */
-    public function confirm($slug){
-        
-        $confirm_appointment = DoctorAppointment::with(['doctors','schedules'])->where('slug',$slug)->first();
-
-        if(!$confirm_appointment) return back()->with(['error' => ['Appointment not found!']]);
-
-        $from_time        = $confirm_appointment->schedules->from_time ?? '';
-        $parsed_from_time = Carbon::createFromFormat('H:i', $from_time)->format('h A');
-
-        $to_time          = $confirm_appointment->schedules->to_time ?? '';
-        $parsed_to_time   = Carbon::createFromFormat('H:i', $to_time)->format('h A');
-        $form_data = [
-            'name'               => $confirm_appointment->name,
-            'email'              => $confirm_appointment->email,
-            'phone'              => $confirm_appointment->phone,
-            'type'               => $confirm_appointment->type,
-            'gender'             => $confirm_appointment->gender,
-            'schedule'           => $confirm_appointment->schedules->week->day,
-            'doctor_name'        => $confirm_appointment->doctors->name,
-            'doctor_speciality'  => $confirm_appointment->doctors->speciality,
-            'from_time'          => $parsed_from_time,
-            'to_time'            => $parsed_to_time,
-            'serial_number'      => $confirm_appointment->patient_number,
-            
-        ];
-        try{
-            Notification::route("mail",$confirm_appointment->email)->notify(new patientAppointmentNotification($form_data));
-            $confirm_appointment->update([
-                'status'    => 1,
+    public function confirm(Request $request,$slug){
+        if($request->payment_method == global_const()::CASH_PAYMENT){
+            $validator           = Validator::make($request->all(),[
+                'payment_method' => 'required'
             ]);
-            if(auth()->check()){
-                UserNotification::create([
-                    'user_id'  => auth()->user()->id,
-                    'message'  => "Your appointment (Doctor: ".$confirm_appointment->doctors->name.",
-                    Day: ".$confirm_appointment->schedules->week->day.", Time: ".$parsed_from_time."-".$parsed_to_time.", Serial Number: ".$confirm_appointment->patient_number.") Successfully booked.", 
+            $validated          = $validator->validate();
+
+            $confirm_appointment = DoctorAppointment::with(['doctors','schedules'])->where('slug',$slug)->first();
+
+            if(!$confirm_appointment) return back()->with(['error' => ['Appointment not found!']]);
+
+            $from_time        = $confirm_appointment->schedules->from_time ?? '';
+            $parsed_from_time = Carbon::createFromFormat('H:i', $from_time)->format('h A');
+
+            $to_time          = $confirm_appointment->schedules->to_time ?? '';
+            $parsed_to_time   = Carbon::createFromFormat('H:i', $to_time)->format('h A');
+
+            $data                   = [
+                'doctor_fees'       => $confirm_appointment->details->doctor_fees,
+                'fixed_charge'      => $confirm_appointment->details->fixed_charge,
+                'percent_charge'    => $confirm_appointment->details->percent_charge,
+                'total_charge'      => $confirm_appointment->details->total_charge,
+                'payable_amount'    => $confirm_appointment->details->payable_amount,
+                'payment_method'    => $validated['payment_method'],
+                'currency'          => get_default_currency_code(),
+            ];
+            
+            $form_data = [
+                'name'               => $confirm_appointment->name,
+                'email'              => $confirm_appointment->email,
+                'phone'              => $confirm_appointment->phone,
+                'type'               => $confirm_appointment->type,
+                'gender'             => $confirm_appointment->gender,
+                'schedule'           => $confirm_appointment->schedules->week->day,
+                'doctor_name'        => $confirm_appointment->doctors->name,
+                'doctor_speciality'  => $confirm_appointment->doctors->speciality,
+                'from_time'          => $parsed_from_time,
+                'to_time'            => $parsed_to_time,
+                'serial_number'      => $confirm_appointment->patient_number,
+                
+            ];
+            try{
+                Notification::route("mail",$confirm_appointment->email)->notify(new patientAppointmentNotification($form_data));
+                $confirm_appointment->update([
+                    'status'    => 1,
+                    'details'   => $data,
                 ]);
+                if(auth()->check()){
+                    UserNotification::create([
+                        'user_id'  => auth()->user()->id,
+                        'message'  => "Your appointment (Doctor: ".$confirm_appointment->doctors->name.",
+                        Day: ".$confirm_appointment->schedules->week->day.", Time: ".$parsed_from_time."-".$parsed_to_time.", Serial Number: ".$confirm_appointment->patient_number.") Successfully booked.", 
+                    ]);
+                }
             }
+            catch(Exception $e){
+                return back()->with(['error' => ['Something went wrong! Please try again.']]);
+            }
+            return redirect()->route('frontend.find.doctor')->with(['success' => ['Congratulations! Appointment Booking Confirmed Successfully.']]);
+        }else{
+            $validator   = Validator::make($request->all(),[
+                'payment_method' => 'required'
+            ]);
         }
-        catch(Exception $e){
-            return back()->with(['error' => ['Something went wrong! Please try again.']]);
-        }
-        return redirect()->route('frontend.find.doctor')->with(['success' => ['Congratulations! Appointment Booking Confirmed Successfully.']]);
+        
 
     }
 }
