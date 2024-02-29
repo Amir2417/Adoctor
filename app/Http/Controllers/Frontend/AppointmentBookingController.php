@@ -102,10 +102,10 @@ class AppointmentBookingController extends Controller
 
         $data               = [
             'doctor_fees'   => $amount,
-            'fixed_charge'  => floatval($fixed_charge),
-            'percent_charge'=> floatval($percent_charge),
-            'total_charge'  => floatval($total_charge),
-            'payable_amount'=> floatval($payable_amount),
+            'fixed_charge'  => get_amount(floatval($fixed_charge),null,2),
+            'percent_charge'=> get_amount(floatval($percent_charge),null,2),
+            'total_charge'  => get_amount(floatval($total_charge),null,2),
+            'payable_amount'=> get_amount(floatval($payable_amount),null,2),
         ];
 
         if(auth()->check()){
