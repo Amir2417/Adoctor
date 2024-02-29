@@ -52,7 +52,7 @@ class PaymentGatewaySeeder extends Seeder
 
             array('payment_gateway_id' => '5003','name' => 'SSLCommerz BDT','alias' => 'payment-method-sslcommerz-bdt-automatic','currency_code' => 'BDT','currency_symbol' => '৳','image' => 'seeder/sslcommerz.webp','min_limit' => '100.00000000','max_limit' => '50000.00000000','percent_charge' => '0.00000000','fixed_charge' => '1.00000000','rate' => '110.07','created_at' => '2023-09-27 16:11:53','updated_at' => '2023-09-27 16:12:04'),
 
-            array('payment_gateway_id' => '5004','name' => 'Razorpay USD','alias' => 'payment-method-razorpay-usd-automatic','currency_code' => 'USD','currency_symbol' => NULL,'image' => 'seeder/razor-pay.webp','min_limit' => '1.00000000','max_limit' => '1000.00000000','percent_charge' => '2.00000000','fixed_charge' => '1.00000000','rate' => '1','created_at' => '2023-11-09 17:36:05','updated_at' => '2023-11-09 17:36:05'),
+            array('payment_gateway_id' => '5004','name' => 'Razorpay INR','alias' => 'payment-method-razorpay-inr-automatic','currency_code' => 'INR','currency_symbol' => NULL,'image' => 'seeder/razor-pay.webp','min_limit' => '1.00000000','max_limit' => '1000.00000000','percent_charge' => '2.00000000','fixed_charge' => '1.00000000','rate' => '82.92','created_at' => '2023-11-09 17:36:05','updated_at' => '2023-11-09 17:36:05'),
             
             array('payment_gateway_id' => '5005','name' => 'Pagadito USD','alias' => 'payment-method-pagadito-usd-automatic','currency_code' => 'USD','currency_symbol' => '$','image' => 'seeder/pagadito.webp','min_limit' => '1.00000000','max_limit' => '1000.00000000','percent_charge' => '2.00000000','fixed_charge' => '1.00000000','rate' => '1','created_at' => '2024-01-08 04:11:48','updated_at' => '2024-01-08 04:12:21'),
 
@@ -60,7 +60,7 @@ class PaymentGatewaySeeder extends Seeder
         
             array('payment_gateway_id' => '5007','name' => 'CoinGate USDT','alias' => 'payment-method-coingate-usdt-automatic','currency_code' => 'USDT','currency_symbol' => '$','image' => 'seeder/coin_gate.png','min_limit' => '1.00000000','max_limit' => '1000.00000000','percent_charge' => '3.00000000','fixed_charge' => '2.00000000','rate' => '1','created_at' => '2023-08-07 12:06:12','updated_at' => '2023-08-07 12:36:10'),
             
-            array('payment_gateway_id' => '5008','name' => 'Tatum ETH','alias' => 'payment-method-tatum-eth-automatic','currency_code' => 'ETH','currency_symbol' => 'ETH','image' => 'seeder/tatum.jpg','min_limit' => '1','max_limit' => '1000.00000000','percent_charge' => '2.00000000','fixed_charge' => '1.00000000','rate' => '0.00034','created_at' => '2023-11-07 17:10:38','updated_at' => '2023-11-07 17:44:00'),
+            array('payment_gateway_id' => '5008','name' => 'Tatum ETH','alias' => 'payment-method-tatum-eth-automatic','currency_code' => 'ETH','currency_symbol' => 'ETH','image' => 'seeder/tatum.jpg','min_limit' => '1','max_limit' => '1000.00000000','percent_charge' => '2.00000000','fixed_charge' => '1.00000000','rate' => '0.00029','created_at' => '2023-11-07 17:10:38','updated_at' => '2023-11-07 17:44:00'),
             
         );
 

@@ -5,6 +5,7 @@ use Exception;
 use Stripe\StripeClient;
 use Illuminate\Support\Str;
 use App\Models\TemporaryData;
+use App\Models\DoctorAppointment;
 use App\Http\Helpers\PaymentGateway;
 use App\Constants\PaymentGatewayConst;
 
@@ -30,8 +31,11 @@ trait Stripe {
 
         $redirection = $this->getRedirection();
         $url_parameter = $this->getUrlParams();
-        
-        $user = auth()->guard(get_auth_guard())->user();
+        if(auth()->check()){
+            $user = auth()->guard(get_auth_guard())->user();
+        }else{
+            $user  = DoctorAppointment::where('slug',$output['form_data']['identifier'])->first();
+        }
         
         try{
             $checkout = $stripe_client->checkout->sessions->create([

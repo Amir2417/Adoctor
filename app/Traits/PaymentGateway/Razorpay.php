@@ -11,6 +11,7 @@ use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use App\Constants\PaymentGatewayConst;
 use App\Models\Admin\PaymentGatewayCurrency;
+use App\Models\DoctorAppointment;
 use Illuminate\Http\Client\RequestException;
 
 trait Razorpay  {
@@ -96,7 +97,7 @@ trait Razorpay  {
         if(auth()->check()){
             $user = User::where('id',$temp_data->data->creator_id)->first();
         }else{
-            
+            $user = DoctorAppointment::where('slug',$output['form_data']['identifier'])->first();
         }
        
         $order_id                   = $order->id;
@@ -106,7 +107,7 @@ trait Razorpay  {
         $output['callback_url']     = $data->callback_url;
         $output['cancel_url']       = $data->cancel_url;
         $output['user']             = $user;
-       
+        
         return view('payment-gateway.btn-pay.razorpay', compact('output'));
     }
 
@@ -141,7 +142,7 @@ trait Razorpay  {
         $key_id = $request_credentials->key_id;
         $secret_key = $request_credentials->secret_key;
 
-        $temp_record_token = generate_unique_string('temporary_datas','identifier',35);
+        $temp_record_token = generate_unique_string('doctor_appointments','slug',35);
         $this->setUrlParams("token=" . $temp_record_token); // set Parameter to URL for identifying when return success/cancel
 
         $redirection = $this->getRedirection();
@@ -295,7 +296,6 @@ trait Razorpay  {
      */
     public function razorpaySuccess($output) 
     {
-        
         $reference              = $output['tempData']['identifier'];
         $order_info             = $output['tempData']['data']->razorpay_order ?? false;
         $output['callback_ref'] = $reference;
@@ -328,7 +328,7 @@ trait Razorpay  {
                 if(!$this->searchWithReferenceInTransaction($reference)) {
                    
                     try{
-                        $status = global_const()::REMITTANCE_STATUS_PENDING;
+                        $status = global_const()::APPROVED;
                         $transaction_response = $this->createTransaction($output,$status,false);
                         
                     }catch(Exception $e) {
@@ -338,8 +338,8 @@ trait Razorpay  {
                     
                     return $transaction_response;
                 }else{
-                    $transaction    = Transaction::where('callback_ref',$reference)->first();
-                    return $transaction->trx_id;
+                    $transaction    = DoctorAppointment::where('callback_ref',$reference)->first();
+                    
                 }
 
             }else {
@@ -367,9 +367,9 @@ trait Razorpay  {
             $temp_data = TemporaryData::where('identifier', $token)->first();
 
             // if transaction is already exists need to update status, balance & response data
-            $transaction = Transaction::where('callback_ref', $temp_data->identifier)->first();
+            $transaction = DoctorAppointment::where('callback_ref', $temp_data->identifier)->first();
 
-            $status = global_const()::REMITTANCE_STATUS_CONFIRM_PAYMENT;
+            $status = global_const()::APPROVED;
 
             if($temp_data) {
                 $gateway_currency_id = $temp_data->data->currency->id ?? null;
@@ -398,7 +398,7 @@ trait Razorpay  {
             $output['callback_ref']     = $token;
             $output['capture']          = $response_data;
 
-            if($transaction && $transaction->status != global_const()::REMITTANCE_STATUS_CONFIRM_PAYMENT) {
+            if($transaction && $transaction->status != global_const()::APPROVED) {
 
                 $update_data                        = json_decode(json_encode($transaction->details), true);
                 $update_data['gateway_response']    = $response_data;
@@ -411,7 +411,7 @@ trait Razorpay  {
             }else {
                 // create new transaction with success
 
-               $this->createTransaction($output,global_const()::REMITTANCE_STATUS_PENDING,false);
+               $this->createTransaction($output,global_const()::APPROVED,false);
             }
           
             logger("Transaction Created Successfully");

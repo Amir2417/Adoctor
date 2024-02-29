@@ -394,7 +394,6 @@ class PaymentGateway {
         }else {
             $user = auth()->guard(get_auth_guard())->user();
         }
-        
         $inserted_id = $this->$record_handler($output,$status);
         $trx_id     = DoctorAppointment::where('id',$inserted_id)->first();
 
@@ -457,12 +456,14 @@ class PaymentGateway {
         }else {
             $user = auth()->guard('web')->user();
         }
+        $gateway_payable  = $data->details->payable_amount * $output['currency']->rate;
         $details                   = [
             'doctor_fees'       => $data->details->doctor_fees,
             'fixed_charge'      => $data->details->fixed_charge,
             'percent_charge'    => $data->details->percent_charge,
             'total_charge'      => $data->details->total_charge,
             'payable_amount'    => $data->details->payable_amount,
+            'gateway_payable'   => $gateway_payable,
             'payment_method'    => $output['gateway']->name,
             'currency'          => get_default_currency_code(),
         ];
@@ -734,7 +735,7 @@ class PaymentGateway {
         $temp_token = $request_data['token'];
 
         $temp_data = TemporaryData::where('identifier', $temp_token)->first();
-       
+        
         if(!$temp_data) throw new Exception("Requested with invalid token");
         
         $this->request_data = $temp_data->toArray();

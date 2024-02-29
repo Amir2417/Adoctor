@@ -21,9 +21,9 @@
             "order_id": "{{ $output['order_id'] }}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
             "callback_url": "{!! $output['callback_url'] !!}",
             "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
-                "name": "{{ $output['user']->fullname }}", //your customer's name
-                "email": "{{ $output['user']->email }}",
-                "contact": "{{ $output['user']->full_mobile }}" //Provide the customer's phone number for better conversion rates 
+                "name": "{{ !empty($output['user']->fullname) ? $output['user']->fullname : $output['user']->name }}", //your customer's name
+                "email": "{{ !empty($output['user']->email) ? $output['user']->email : $output['user']->email }}",
+                "contact": "{{ !empty($output['user']->full_mobile) ? $output['user']->full_mobile : (!empty($output['user']->phone) ? $output['user']->phone : '01111111111') }}" //Provide the customer's phone number for better conversion rates 
             },
             "theme": {
                 "color": "{{ $basic_settings->base_color }}"

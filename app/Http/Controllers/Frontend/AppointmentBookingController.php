@@ -268,7 +268,7 @@ class AppointmentBookingController extends Controller
      * @param \Illuminate\Http\Request $request
      */
     public function success(Request $request, $gateway){
-        
+      
         try{
             
             $token = PaymentGatewayHelper::getToken($request->all(),$gateway);
