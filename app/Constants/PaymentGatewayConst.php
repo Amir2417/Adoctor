@@ -14,7 +14,11 @@ class PaymentGatewayConst {
     const ENV_SANDBOX       = "SANDBOX";
     const ENV_PRODUCTION    = "PRODUCTION";
 
-    const APP           = "APP";
+    const NOT_USED                  = "NOT-USED";
+    const USED                      = "USED";
+    const SENT                      = "SENT";
+    const ASSET_TYPE_WALLET         = "WALLET";
+    const APP                       = "APP";
     const PAYPAL                    = 'paypal';
     const G_PAY                     = 'gpay';
     const COIN_GATE                 = 'coingate';

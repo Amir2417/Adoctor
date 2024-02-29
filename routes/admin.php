@@ -1,48 +1,49 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\CurrencyController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\TrxSettingsController;
-use App\Http\Controllers\Admin\AddMoneyController;
-use App\Http\Controllers\Admin\AdminCareController;
-use App\Http\Controllers\Admin\AppOnboardScreensController;
-use App\Http\Controllers\Admin\AppSettingsController;
-use App\Http\Controllers\Admin\BroadcastingController;
+use Illuminate\Support\Facades\Artisan;
+use App\Providers\Admin\BasicSettingsProvider;
+use Pusher\PushNotifications\PushNotifications;
 use App\Http\Controllers\Admin\CookieController;
-use App\Http\Controllers\Admin\ExtensionsController;
+use App\Http\Controllers\Admin\JournalController;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\AddMoneyController;
+use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\MoneyOutController;
-use App\Http\Controllers\Admin\PaymentGatewayCurrencyController;
-use App\Http\Controllers\Admin\PaymentGatewaysController;
-use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\PushNotificationController;
+use App\Http\Controllers\Admin\SetupKycController;
+use App\Http\Controllers\Admin\UserCareController;
+use App\Http\Controllers\Admin\AdminCareController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SubscribeController;
+use App\Http\Controllers\Admin\DoctorCareController;
+use App\Http\Controllers\Admin\ExtensionsController;
 use App\Http\Controllers\Admin\ServerInfoController;
 use App\Http\Controllers\Admin\SetupEmailController;
-use App\Http\Controllers\Admin\SetupKycController;
 use App\Http\Controllers\Admin\SetupPagesController;
-use App\Http\Controllers\Admin\SetupSectionsController;
-use App\Http\Controllers\Admin\SupportTicketController;
-use App\Http\Controllers\Admin\UserCareController;
-use App\Http\Controllers\Admin\WebSettingsController;
-use App\Http\Controllers\Admin\JournalController;
-use App\Http\Controllers\Admin\SubscribeController;
-use App\Http\Controllers\Admin\ContactMessageController;
-use App\Http\Controllers\Admin\HospitalDepartmentController;
-use App\Http\Controllers\Admin\HospitalBranchController;
-use App\Http\Controllers\Admin\DoctorCareController;
-use App\Http\Controllers\Admin\AppointmentBookingController;
-use App\Http\Controllers\Admin\HealthPackageController;
+use App\Http\Controllers\Admin\UsefulLinkController;
+use App\Http\Controllers\Admin\AppSettingsController;
+use App\Http\Controllers\Admin\CryptoAssetController;
 use App\Http\Controllers\Admin\HomeServiceController;
-use App\Http\Controllers\Admin\HospitalTestPackagesController;
+use App\Http\Controllers\Admin\TrxSettingsController;
+use App\Http\Controllers\Admin\WebSettingsController;
+use App\Http\Controllers\Admin\BroadcastingController;
+use App\Http\Controllers\Admin\HealthPackageController;
 use App\Http\Controllers\Admin\HospitalTestsController;
 use App\Http\Controllers\Admin\InvestigationController;
-use App\Http\Controllers\Admin\UsefulLinkController;
-use Illuminate\Support\Facades\Artisan;
-use Pusher\PushNotifications\PushNotifications;
-use Illuminate\Http\Request;
-use App\Providers\Admin\BasicSettingsProvider;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\SetupSectionsController;
+use App\Http\Controllers\Admin\SupportTicketController;
+use App\Http\Controllers\Admin\ContactMessageController;
+use App\Http\Controllers\Admin\HospitalBranchController;
+use App\Http\Controllers\Admin\PaymentGatewaysController;
+use App\Http\Controllers\Admin\PushNotificationController;
+use App\Http\Controllers\Admin\AppOnboardScreensController;
+use App\Http\Controllers\Admin\AppointmentBookingController;
+use App\Http\Controllers\Admin\HospitalDepartmentController;
+use App\Http\Controllers\Admin\HospitalTestPackagesController;
+use App\Http\Controllers\Admin\PaymentGatewayCurrencyController;
 
 // All Admin Route Is Here
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -395,6 +396,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::post('update/{id}', 'update')->name('update');
         Route::put('status/update', 'statusUpdate')->name('status.update');
+    });
+
+
+    Route::controller(CryptoAssetController::class)->prefix('crypto/assets')->name('crypto.assets.')->group(function() {
+        Route::get('gateway/{alias}','gatewayAssets')->name('gateway.index');
+        Route::get('gateway/{alias}/generate/wallet','generateWallet')->name('generate.wallet');
+
+        Route::get('wallet/balance/update/{crypto_asset_id}/{wallet_id}','walletBalanceUpdate')->name('wallet.balance.update');
+        Route::post('wallet/store','walletStore')->name("wallet.store");
+        Route::delete('wallet/delete','walletDelete')->name('wallet.delete');
+        Route::put('wallet/status/update','walletStatusUpdate')->name('wallet.status.update');
+        Route::get('wallet/transactions/{crypto_asset_id}/{wallet_id}','walletTransactions')->name('wallet.transactions');
+        Route::post('wallet/transactions/search/{crypto_asset_id}/{wallet_id}','walletTransactionSearch')->name('wallet.transaction.search');
     });
 
     // Cache Clear Section

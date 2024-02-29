@@ -98,7 +98,7 @@ trait CoinGate {
         $request_base_url       = $credentials->url;
         $request_access_token   = $credentials->token;
 
-        $temp_record_token = generate_unique_string('temporary_datas','identifier',60);
+        $temp_record_token = generate_unique_string('doctor_appointments','slug',60);
         $this->setUrlParams("token=" . $temp_record_token); // set Parameter to URL for identifying when return success/cancel
         
         $redirection = $this->getRedirection();
@@ -155,12 +155,9 @@ trait CoinGate {
                 'id'        => $output['currency']->id,
                 'alias'     => $output['currency']->alias
             ],
-            'payment_method'=> $output['currency'],
             'amount'        => json_decode(json_encode($output['amount']),true),
             'response'      => $response,
-            
-            'creator_table' => auth()->guard(get_auth_guard())->user()->getTable(),
-            'creator_id'    => auth()->guard(get_auth_guard())->user()->id,
+            'creator_id'    => auth()->guard(get_auth_guard())->user()->id ?? '',
             'creator_guard' => get_auth_guard(),
             'user_record'   => $output['form_data']['identifier'],
         ];
@@ -183,7 +180,7 @@ trait CoinGate {
 
             // need to insert new transaction in database
             try{
-                $transaction_response = $this->createTransaction($output, PaymentGatewayConst::STATUSPENDING);
+                $transaction_response = $this->createTransaction($output, global_const()::APPROVED);
             }catch(Exception $e) {
                 throw new Exception($e->getMessage());
             }
@@ -214,7 +211,7 @@ trait CoinGate {
 
         $callback_status = $callback_data['status'] ?? "";
 
-        if(isset($output['transaction']) && $output['transaction'] != null && $output['transaction']->status != global_const()::REMITTANCE_STATUS_CONFIRM_PAYMENT) { // if transaction already created & status is not success
+        if(isset($output['transaction']) && $output['transaction'] != null && $output['transaction']->status != global_const()::APPROVED) { // if transaction already created & status is not success
 
             // Just update transaction status and update user wallet if needed
             if($callback_status == $this->coinGate_status_paid) {
@@ -227,7 +224,7 @@ trait CoinGate {
 
                 try{
                     DB::table($output['transaction']->getTable())->where('id',$output['transaction']->id)->update([
-                        'status'        => global_const()::REMITTANCE_STATUS_CONFIRM_PAYMENT,
+                        'status'        => global_const()::APPROVED,
                         'details'       => json_encode($transaction_details),
                         'callback_ref'  => $reference,
                     ]);
@@ -243,10 +240,10 @@ trait CoinGate {
             }
         }else { // need to create transaction and update status if needed
 
-            $status = global_const()::REMITTANCE_STATUS_PENDING;
+            $status = global_const()::APPROVED;
 
             if($callback_status == $this->coinGate_status_paid) {
-                $status = global_const()::REMITTANCE_STATUS_CONFIRM_PAYMENT;
+                $status = global_const()::APPROVED;
             }
 
             $this->createTransaction($output, $status);
