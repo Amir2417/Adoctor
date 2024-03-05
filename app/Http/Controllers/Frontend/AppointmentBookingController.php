@@ -16,7 +16,6 @@ use App\Models\Admin\SiteSections;
 use App\Constants\SiteSectionConst;
 use App\Models\Admin\BasicSettings;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\PaymentGateway;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Constants\PaymentGatewayConst;
@@ -127,15 +126,16 @@ class AppointmentBookingController extends Controller
 
         $validated['schedule_id'] = $validated['schedule'];
 
-        $alrady_appointed_patient = DoctorAppointment::where('doctor_id',$find_doctor->id)->where('schedule_id',$validated['schedule_id'])->count();
+        $already_appointed_patient = DoctorAppointment::where('doctor_id',$find_doctor->id)->where('schedule_id',$validated['schedule_id'])->count();
 
-        if($alrady_appointed_patient >= $schedule->max_patient) {
+        if($already_appointed_patient >= $schedule->max_patient) {
             return back()->with(['error' => ['Appiontment Limit is over!']]);
         }
 
-        $next_patient_appointment_no = $alrady_appointed_patient + 1;
+        $next_patient_appointment_no = $already_appointed_patient + 1;
         $validated['patient_number'] = $next_patient_appointment_no;
         $validated['details']        = $data;
+       
         try{
            $patient_slug = DoctorAppointment::create($validated);
         }catch(Exception $e){
@@ -275,7 +275,6 @@ class AppointmentBookingController extends Controller
            
             $temp_data = TemporaryData::where("identifier",$token)->first();
             
-
             if(DoctorAppointment::where('callback_ref', $token)->exists()) {
                 if(!$temp_data) return redirect()->route('frontend.find.doctor')->with(['success' => ['Congratulations! Appointment Booking Confirmed Successfully.']]);;
             }else {
@@ -284,8 +283,6 @@ class AppointmentBookingController extends Controller
 
             $update_temp_data = json_decode(json_encode($temp_data->data),true);
             $update_temp_data['callback_data']  = $request->all();
-            
-
             $temp_data->update([
                 'data'  => $update_temp_data,
             ]);
@@ -337,7 +334,6 @@ class AppointmentBookingController extends Controller
             $temp_data = TemporaryData::where("identifier",$token)->first();
             Auth::guard($temp_data->data->creator_guard)->loginUsingId($temp_data->data->creator_id);
         }catch(Exception $e) {
-            
             return redirect()->route('index');
         }
         return $this->cancel($request, $gateway);
@@ -355,7 +351,6 @@ class AppointmentBookingController extends Controller
         try{
             PaymentGatewayHelper::init([])->handleCallback($callback_token,$callback_data,$gateway);
         }catch(Exception $e) {
-            // handle Error
             logger($e);
         }
     }
@@ -369,5 +364,19 @@ class AppointmentBookingController extends Controller
         }catch(Exception $e) {
             return redirect()->route('index')->with(['error' => [$e->getMessage()]]);
         }
+    }
+    /**
+     * Method for buy crypto redirect html form
+     */
+    public function redirectUsingHTMLForm(Request $request, $gateway)
+    {
+        $temp_data = TemporaryData::where('identifier', $request->token)->first();
+        
+        if(!$temp_data || $temp_data->data->action_type != PaymentGatewayConst::REDIRECT_USING_HTML_FORM) return back()->with(['error' => ['Request token is invalid!']]);
+        $redirect_form_data = $temp_data->data->redirect_form_data;
+        $action_url         = $temp_data->data->action_url;
+        $form_method        = $temp_data->data->form_method;
+        
+        return view('payment-gateway.redirect-form', compact('redirect_form_data', 'action_url', 'form_method'));
     }
 }

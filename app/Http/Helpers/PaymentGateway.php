@@ -33,10 +33,11 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\ValidationException;
 use App\Notifications\patientAppointmentNotification;
 use App\Models\Admin\PaymentGateway as PaymentGatewayModel;
+use App\Traits\PaymentGateway\PerfectMoney;
 
 class PaymentGateway {
 
-    use Paypal, CoinGate,Tatum, Stripe, Flutterwave, SslCommerz, Razorpay,PagaditoTrait;
+    use Paypal, CoinGate,Tatum, Stripe, Flutterwave, SslCommerz, Razorpay,PagaditoTrait,PerfectMoney;
 
     protected $request_data;
     protected $output;
@@ -78,24 +79,18 @@ class PaymentGateway {
             ]);
         }
         
-        
-        
         $this->output['gateway']            = $gateway_currency->gateway;
         $this->output['currency']           = $gateway_currency;
         $this->output['amount']             = $this->amount();
         $this->output['form_data']          = $this->request_data;
        
         if($gateway_currency->gateway->isAutomatic()) {
-            
             $this->output['distribute']         = $this->gatewayDistribute($gateway_currency->gateway);
             $this->output['record_handler']     = $this->generateRecordHandler();
         }else {
-            
             $this->output['distribute']         = "handleManualPayment";
             $this->output['gateway_type']       = PaymentGatewayConst::MANUAL;
         }
-     
-
         return $this;
     }
 
@@ -328,6 +323,9 @@ class PaymentGateway {
                 break;
             case PaymentGatewayConst::PAGADITO:
                 return $response['param1'] ?? "";
+                break;
+            case PaymentGatewayConst::PERFECT_MONEY:
+                return $response['PAYMENT_ID'] ?? "";
                 break;
             default:
                 throw new Exception("Oops! Gateway not registered in getToken method");

@@ -2,9 +2,8 @@
 
 namespace Database\Seeders\User;
 
-use App\Models\DoctorAppointment;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\DoctorAppointment;
 
 class DoctorAppointmentSeeder extends Seeder
 {
@@ -35,8 +34,7 @@ class DoctorAppointmentSeeder extends Seeder
             array('doctor_id' => '5','schedule_id' => '9','user_id' => NULL,'slug' => '066be087-b008-4007-8c8f-d0bb45405817','name' => 'Christian Rollins','phone' => '+1 (133) 343-5251','email' => 'lygi@mailinator.com','age' => '25 Years','type' => 'followup','gender' => 'male','message' => 'Aspernatur veritatis','patient_number' => '2','status' => '1','created_at' => '2023-07-08 11:20:41','updated_at' => '2023-07-08 11:21:03'),
             array('doctor_id' => '4','schedule_id' => '8','user_id' => NULL,'slug' => 'fe1455ca-9bda-40db-9ec8-abf1b52185d7','name' => 'Xerxes Murphy','phone' => '+1 (864) 117-2421','email' => 'zemy@mailinator.com','age' => '25 Years','type' => 'new','gender' => 'male','message' => 'Et fugiat totam vol','patient_number' => '2','status' => '1','created_at' => '2023-07-08 11:22:00','updated_at' => '2023-07-08 11:22:24'),
             array('doctor_id' => '4','schedule_id' => '8','user_id' => NULL,'slug' => '99adcff9-c073-470e-8c81-15c2cb8af326','name' => 'Stewart Booker','phone' => '+1 (182) 615-3604','email' => 'tecemyqycy@mailinator.com','age' => '25 Years','type' => 'report','gender' => 'female','message' => 'Sit voluptas minus','patient_number' => '3','status' => '1','created_at' => '2023-07-08 11:22:37','updated_at' => '2023-07-08 11:22:59'),
-            array('doctor_id' => '2','schedule_id' => '3','user_id' => NULL,'slug' => '1f90a524-d1c5-4f2b-80da-4c944c978ce2','name' => 'Bell Avila','phone' => '+1 (378) 695-1292','email' => 'weko@mailinator.com','age' => '25 Years','type' => 'report','gender' => 'male','message' => 'Ad est ullam elit e','patient_number' => '3','status' => '1','created_at' => '2023-07-08 11:23:13','updated_at' => '2023-07-08 11:23:37'),
-            
+            array('doctor_id' => '2','schedule_id' => '3','user_id' => NULL,'slug' => '1f90a524-d1c5-4f2b-80da-4c944c978ce2','name' => 'Bell Avila','phone' => '+1 (378) 695-1292','email' => 'weko@mailinator.com','age' => '25 Years','type' => 'report','gender' => 'male','message' => 'Ad est ullam elit e','patient_number' => '3','status' => '1','created_at' => '2023-07-08 11:23:13','updated_at' => '2023-07-08 11:23:37'), 
         );
 
         DoctorAppointment::insert($doctor_appointments);

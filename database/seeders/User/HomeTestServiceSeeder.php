@@ -3,7 +3,6 @@
 namespace Database\Seeders\User;
 
 use App\Models\HomeTestService;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class HomeTestServiceSeeder extends Seeder

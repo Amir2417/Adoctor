@@ -35,6 +35,8 @@ class PaymentGatewayConst {
     const PROJECT_CURRENCY_SINGLE   = "PROJECT_CURRENCY_SINGLE";
     const CALLBACK_HANDLE_INTERNAL  = "CALLBACK_HANDLE_INTERNAL";
 
+    const REDIRECT_USING_HTML_FORM = "REDIRECT_USING_HTML_FORM";
+
     public static function add_money_slug() {
         return Str::slug(self::ADDMONEY);
     }
@@ -100,17 +102,20 @@ class PaymentGatewayConst {
             'cancel_url'    => 'frontend.appointment.booking.payment.cancel',
             'callback_url'  => 'frontend.appointment.booking.payment.callback',
             'btn_pay'       => 'frontend.appointment.booking.payment.btn.pay',
+            'redirect_form' => 'frontend.appointment.booking.payment.redirect.form',
             'web'           => [
                 'return_url'    => 'frontend.appointment.booking.payment.success',
                 'cancel_url'    => 'frontend.appointment.booking.payment.cancel',
                 'callback_url'  => 'frontend.appointment.booking.payment.callback',
                 'btn_pay'       => 'frontend.appointment.booking.payment.btn.pay',
+                'redirect_form' => 'frontend.appointment.booking.payment.redirect.form',
             ],
             'api'       => [
                 'return_url'    => 'api.frontend.appointment.booking.payment.success',
                 'cancel_url'    => 'api.frontend.appointment.booking.payment.cancel',
                 'callback_url'  => 'frontend.appointment.booking.payment.callback',
                 'btn_pay'       => 'api.frontend.appointment.booking.payment.btn.pay',
+                'redirect_form' => 'frontend.appointment.booking.payment.redirect.form',
             ],
         ];
     }

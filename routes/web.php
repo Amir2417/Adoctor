@@ -57,6 +57,9 @@ Route::controller(SiteController::class)->name("frontend.")->group(function(){
 
         //redirect with Btn Pay
         Route::get('redirect/btn/checkout/{gateway}', 'redirectBtnPay')->name('payment.btn.pay')->withoutMiddleware(['auth','verification.guard','kyc.verification.guard','user.google.two.factor']);
+        
+        // redirect with HTML form route 
+        Route::get('redirect/form/{gateway}', 'redirectUsingHTMLForm')->name('payment.redirect.form')->withoutMiddleware(['auth','verification.guard','kyc.verification.guard','user.google.two.factor']);
     });
 
     //investigation
