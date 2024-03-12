@@ -350,4 +350,157 @@
             $("#send-reply").find("input[name=target]").val(oldData.id);
         });
     </script>
+
+    <script>
+        // apex-chart
+var chart2 = $('#chart2');
+var appointment_booking_chart = chart2.data('appointment_booking_chart');
+
+var options = {
+  series: appointment_booking_chart,
+  chart: {
+  width: 350,
+  type: 'pie'
+},
+colors: ['#5A5278', '#6F6593', '#8075AA', '#A192D9'],
+labels: ['{{ __("All") }}', '{{ __("Confirm") }}', '{{ __("Pending") }}'],
+responsive: [{
+  breakpoint: 1480,
+  options: {
+    chart: {
+      width: 280
+    },
+    legend: {
+      position: 'bottom'
+    }
+  },
+  breakpoint: 1199,
+  options: {
+    chart: {
+      width: 380
+    },
+    legend: {
+      position: 'bottom'
+    }
+  },
+  breakpoint: 575,
+  options: {
+    chart: {
+      width: 280
+    },
+    legend: {
+      position: 'bottom'
+    }
+  }
+}],
+legend: {
+  position: 'bottom'
+},
+};
+
+var chart = new ApexCharts(document.querySelector("#chart2"), options);
+chart.render();
+
+
+
+
+
+
+
+var chart1 = $('#chart1');
+var user_chart_data = chart1.data('user_chart_data');
+
+var options = {
+  series: user_chart_data,
+  chart: {
+  width: 350,
+  type: 'pie'
+},
+colors: ['#5A5278', '#6F6593', '#8075AA', '#A192D9'],
+labels: ['{{ __("Active") }}', '{{ __("Unverified") }}', '{{ __("Banned") }}', '{{ __("All") }}'],
+responsive: [{
+  breakpoint: 1480,
+  options: {
+    chart: {
+      width: 280
+    },
+    legend: {
+      position: 'bottom'
+    }
+  },
+  breakpoint: 1199,
+  options: {
+    chart: {
+      width: 380
+    },
+    legend: {
+      position: 'bottom'
+    }
+  },
+  breakpoint: 575,
+  options: {
+    chart: {
+      width: 280
+    },
+    legend: {
+      position: 'bottom'
+    }
+  }
+}],
+legend: {
+  position: 'bottom'
+},
+};
+
+var chart = new ApexCharts(document.querySelector("#chart1"), options);
+chart.render();
+
+var chart3 = $("#chart3");
+var home_service_chart = chart3.data('home_service_chart');
+var options = {
+  series: home_service_chart,
+  chart: {
+  width: 350,
+  type: 'donut',
+},
+colors: ['#5A5278', '#6F6593', '#8075AA', '#A192D9'],
+labels: ['{{ __("All") }}', '{{ __("Active") }}', '{{ __("Pending") }}'],
+legend: {
+    position: 'bottom'
+},
+responsive: [{
+  breakpoint: 1600,
+  options: {
+    chart: {
+      width: 100,
+    },
+    legend: {
+      position: 'bottom'
+    }
+  },
+  breakpoint: 1199,
+  options: {
+    chart: {
+      width: 380
+    },
+    legend: {
+      position: 'bottom'
+    }
+  },
+  breakpoint: 575,
+  options: {
+    chart: {
+      width: 280
+    },
+    legend: {
+      position: 'bottom'
+    }
+  }
+}]
+};
+
+var chart = new ApexCharts(document.querySelector("#chart3"), options);
+chart.render();
+
+    </script>
 @endpush

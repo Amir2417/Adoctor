@@ -80,7 +80,7 @@
             </div>
             <div class="copyright-area">
                 <div class="copyright-wrapper">
-                    <p>© {{ __("Created by") }} <span class="text--base">{{ $basic_settings->site_name}}</span> 2023.</p>
+                    <p>© {{ __("Created by") }} <span class="text--base">{{ $basic_settings->site_name}}</span> 2024.</p>
                     <ul class="footer-social-list">
                         @php
                             $items = $footer->value->social_links ?? [];

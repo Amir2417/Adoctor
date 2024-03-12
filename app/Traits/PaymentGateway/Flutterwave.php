@@ -60,9 +60,12 @@ trait Flutterwave {
         }else{
             $user  = DoctorAppointment::where('slug',$output['form_data']['identifier'])->first();
         }
-
-        $temp_data = $this->flutterWaveJunkInsert($temp_record_token); // create temporary information
-
+        $booking_data   = DoctorAppointment::where('slug',$output['form_data']['identifier'])->first();
+        if($booking_data->authenticated == true){
+            $temp_data = $this->flutterWaveJunkInsert($temp_record_token); // create temporary information
+        }else{
+            $temp_data = $this->flutterWaveJunkInsertForUnAuth($temp_record_token);
+        }
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $request_credentials->token,
         ])->post($endpoint,[
@@ -106,6 +109,29 @@ trait Flutterwave {
     }
 
     public function flutterWaveJunkInsert($temp_token) {
+        $output = $this->output;
+
+        $data = [
+            'gateway'       => $output['gateway']->id,
+            'currency'      => [
+                'id'        => $output['currency']->id,
+                'alias'     => $output['currency']->alias
+            ],
+            'payment_method'=> $output['currency'],
+            'amount'        => json_decode(json_encode($output['amount']),true),
+            'creator_table' => auth()->guard(get_auth_guard())->user()->getTable() ?? '',
+            'creator_id'    => auth()->guard(get_auth_guard())->user()->id ?? '',
+            'creator_guard' => get_auth_guard() ?? '',
+            'user_record'   => $output['form_data']['identifier'],
+        ];
+
+        return TemporaryData::create([
+            'type'          => PaymentGatewayConst::FLUTTERWAVE,
+            'identifier'    => $temp_token,
+            'data'          => $data,
+        ]);
+    }
+    public function flutterWaveJunkInsertForUnAuth($temp_token) {
         $output = $this->output;
 
         $data = [

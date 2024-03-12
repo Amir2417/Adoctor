@@ -177,62 +177,19 @@ class CurrencyController extends Controller
         $request->merge(['old_flag' => $currency->flag]);
 
         $validator = Validator::make($request->all(),[
-            'currency_type'      => 'required|string',
             'currency_country'   => 'required|string',
             'currency_name'      => 'required|string',
             'currency_code'      => ['required','string',Rule::unique('currencies','code')->ignore($currency->id)],
             'currency_symbol'    => 'required|string',
-            // 'currency_rate'      => 'required|numeric',
-            // 'currency_option'    => 'required|string',
+            
             'currency_target'    => 'nullable|string',
-            // 'currency_role'      => 'required|string',
         ]);
         if($validator->fails()) {
             return back()->withErrors($validator)->withInput()->with('modal','currency_edit');
         }
         $validated = $validator->validate();
 
-        // $roles = [
-        //     'both'  => [
-        //         'sender'    => true,
-        //         'receiver'  => true,
-        //     ],
-        //     'sender'    => [
-        //         'sender'    => true,
-        //         'receiver'  => false,
-        //     ],
-        //     'receiver'  => [
-        //         'sender'    => false,
-        //         'receiver'  => true,
-        //     ]
-        // ];
-        // foreach($roles as $key => $item) {
-        //     if($key == $validated['currency_role']) {
-        //         foreach($item as $column => $value) {
-        //             $validated[$column] = $value;
-        //         }
-        //     }   
-        // }
-
-        // $default = [
-        //     '1' => true,
-        //     '0'  => false,
-        // ];
-
-        // // If Default is already available
-        // if($default[$validated['currency_option']] == true) {
-        //     $check_default = Currency::where('default',true);
-        //     if($check_default->count() > 0) {
-        //         try{
-        //             $check_default->update([
-        //                 'default'       => false,
-        //             ]);
-        //         }catch(Exception $e) {
-        //             return back()->with(['error' => ['Default currency make faild! Please try again.']]);
-        //         }
-        //     }
-        // }
-        // $validated['currency_default']   = $default[$validated['currency_option']];
+        
         $validated = Arr::except($validated,['currency_role','currency_flag','currency_option']);
 
         if($request->hasFile('currency_flag')) {

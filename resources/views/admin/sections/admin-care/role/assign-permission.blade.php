@@ -38,7 +38,7 @@
                     @include('admin.components.link.add-default',[
                         'href'          => "#permission-assign-add",
                         'class'         => "modal-btn",
-                        'text'          => "Add New",
+                        'text'          => __("Add New"),
                         'permission'    => "admin.admins.role.permission.assign",
                     ])
                 </div>

@@ -66,8 +66,12 @@ trait Stripe {
             
 
             $response_array = json_decode(json_encode($checkout->getLastResponse()->json), true);
-
-            $this->stripeJunkInsert($response_array, $temp_record_token);
+            $booking_data   = DoctorAppointment::where('slug',$output['form_data']['identifier'])->first();
+            if($booking_data->authenticated == true){
+                $this->stripeJunkInsert($response_array, $temp_record_token);
+            }else{
+                $this->stripeJunkInsertForUnAuth($response_array, $temp_record_token);
+            }
         }catch(Exception $e) {
             throw new Exception($e->getMessage());
         }
@@ -86,6 +90,29 @@ trait Stripe {
     }
 
     public function stripeJunkInsert($response, $temp_identifier) {
+        $output = $this->output;
+        
+        $data = [
+            'gateway'       => $output['gateway']->id,
+            'currency'      => [
+                'id'        => $output['currency']->id,
+                'alias'     => $output['currency']->alias
+            ],
+            'amount'        => json_decode(json_encode($output['amount']),true),
+            'response'      => $response,
+            'creator_table' => auth()->guard(get_auth_guard())->user()->getTable() ?? '',
+            'creator_id'    => auth()->guard(get_auth_guard())->user()->id ?? '',
+            'creator_guard' => get_auth_guard() ?? '',
+            'user_record'   => $output['form_data']['identifier'],
+        ];
+       
+        return TemporaryData::create([
+            'type'          => PaymentGatewayConst::STRIPE,
+            'identifier'    => $temp_identifier,
+            'data'          => $data,
+        ]);
+    }
+    public function stripeJunkInsertForUnAuth($response, $temp_identifier) {
         $output = $this->output;
         
         $data = [

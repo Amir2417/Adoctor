@@ -1,6 +1,6 @@
 <div class="custom-card mb-10">
     <div class="card-header">
-        <h6 class="title">{{ $title ?? "" }}</h6>
+        <h6 class="title">{{ __($title) ?? "" }}</h6>
     </div>
     <div class="card-body">
         <form class="card-form" method="POST" action="{{ $route ?? "" }}">

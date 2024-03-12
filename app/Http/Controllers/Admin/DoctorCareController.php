@@ -194,7 +194,7 @@ class DoctorCareController extends Controller
             $errors = ['error' => ['Something went wrong! Please try again.'] ];
             return Response::error($errors,null,500);
         }
-        $success = ['success' => ['Doctor status updated successfully!']];
+        $success = ['success' => [__('Doctor status updated successfully!')]];
         return Response::success($success);
     }
     /**

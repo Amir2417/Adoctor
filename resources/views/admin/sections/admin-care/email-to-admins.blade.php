@@ -46,7 +46,7 @@
                         @include('admin.components.button.form-btn',[
                             'class'         => "w-100 btn-loading",
                             'permission'    => "admin.admins.send.email",
-                            'text'          => "Send Email",
+                            'text'          => __("Send Email"),
                         ])
                     </div>
                 </div>

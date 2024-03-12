@@ -21,6 +21,8 @@ class DoctorAppointment extends Model
         'message'           => 'string',
         'details'           => 'object',
         'callback_ref'      => 'string',
+        'site_type'              => 'string',
+        'authenticated'     => 'string',
         'status'            => 'integer',
     ];
     public function schedules(){

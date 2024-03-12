@@ -96,7 +96,7 @@
 
             var actionRoute =  "{{ setRoute('admin.admins.role.permission.dalete') }}";
             var target      = oldData.id;
-            var message     = "Are you sure to delete this permission? It will also delete all permissions against this role.";
+            var message     = `{{ __("Are you sure to delete this permission? It will also delete all permissions against this role.") }}`;
 
             openDeleteModal(actionRoute,target,message);
         });

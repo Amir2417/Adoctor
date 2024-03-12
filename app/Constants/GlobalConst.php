@@ -30,6 +30,9 @@ class GlobalConst {
 
     const CASH_PAYMENT    = "Cash Payment";
 
+    const WEB             = "web";
+    const API             = "api";
+
 
 
  }

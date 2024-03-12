@@ -69,7 +69,7 @@ class InvestigationController extends Controller
         }catch(Exception $e){
             return Response::error(['error' => ['Something went wrong! Please try again.']],null,500);
         }
-        return Response::success(['success' => ['Investigation status updated successfully!']]);
+        return Response::success(['success' => [__('Investigation status updated successfully!')]]);
     }
     
     public function update(Request $request){

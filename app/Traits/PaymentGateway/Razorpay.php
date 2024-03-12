@@ -48,9 +48,12 @@ trait Razorpay  {
         
         
         $temp_record_token = generate_unique_string('temporary_datas','identifier');
-        
-        $temp_data = $this->razorPayJunkInsert($temp_record_token); // create temporary information
-        
+        $booking_data   = DoctorAppointment::where('slug',$output['form_data']['identifier'])->first();
+        if($booking_data->authenticated == true){
+            $temp_data = $this->razorPayJunkInsert($temp_record_token); // create temporary information
+        }else{
+            $temp_data = $this->razorPayJunkInsertForUnAuth($temp_record_token);
+        }
         $btn_link = $this->generateLinkForBtnPay($temp_record_token, PaymentGatewayConst::RAZORPAY);
 
         if(request()->expectsJson()) {
@@ -212,8 +215,33 @@ trait Razorpay  {
             ],
             'payment_method'=> $output['currency'],
             'amount'        => json_decode(json_encode($output['amount']),true),
+            'creator_table' => auth()->guard(get_auth_guard())->user()->getTable() ?? '',
             'creator_id'    => auth()->guard(get_auth_guard())->user()->id ?? '',
-            'creator_guard' => get_auth_guard(),
+            'creator_guard' => get_auth_guard() ?? '',
+            'callback_url'  => $this->setGatewayRoute($redirection['return_url'],PaymentGatewayConst::RAZORPAY,$url_parameter),
+            'cancel_url'    => $this->setGatewayRoute($redirection['cancel_url'],PaymentGatewayConst::RAZORPAY,$url_parameter),
+            'user_record'   => $output['form_data']['identifier'],
+        ];
+        return TemporaryData::create([
+            'type'          => PaymentGatewayConst::RAZORPAY,
+            'identifier'    => $temp_token,
+            'data'          => $data,
+        ]);
+    }
+    public function razorPayJunkInsertForUnAuth($temp_token){
+        $output = $this->output;
+
+        $this->setUrlParams("token=" . $temp_token); // set Parameter to URL for identifying when return success/cancel
+        $redirection = $this->getRedirection();
+        $url_parameter = $this->getUrlParams();
+        $data = [
+            'gateway'       => $output['gateway']->id,
+            'currency'      => [
+                'id'        => $output['currency']->id,
+                'alias'     => $output['currency']->alias
+            ],
+            'payment_method'=> $output['currency'],
+            'amount'        => json_decode(json_encode($output['amount']),true),
             'callback_url'  => $this->setGatewayRoute($redirection['return_url'],PaymentGatewayConst::RAZORPAY,$url_parameter),
             'cancel_url'    => $this->setGatewayRoute($redirection['cancel_url'],PaymentGatewayConst::RAZORPAY,$url_parameter),
             'user_record'   => $output['form_data']['identifier'],

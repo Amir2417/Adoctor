@@ -189,7 +189,7 @@ class HospitalBranchController extends Controller
             return Response::error($errors,null,500);
         }
 
-        $success = ['success' => ['Hospital Branch status updated successfully!']];
+        $success = ['success' => [__('Hospital Branch status updated successfully!')]];
         return Response::success($success);
     }
 }

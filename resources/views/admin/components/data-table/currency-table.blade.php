@@ -4,7 +4,7 @@
             <th></th>
             <th>{{ __("Name") }} | {{ __("Code") }}</th>
             <th>{{ __("Symbol") }}</th>
-            <th>{{ __("Type") }} | {{ __("Rate") }}</th>
+            <th>{{ __("Rate") }}</th>
             <th>{{ __("Role") }}</th>
             <th>{{ __("Status") }}</th>
             <th></th>
@@ -24,7 +24,7 @@
                     @endif
                     <br> <span>{{ $item->code }}</span></td>
                 <td>{{ $item->symbol }}</td>
-                <td><span class="text--info">{{ $item->type }}</span> <br> 1 {{ get_default_currency_code($default_currency) }} = {{ get_amount($item->rate,$item->code) }}</td>
+                <td>1 {{ get_default_currency_code($default_currency) }} = {{ get_amount($item->rate,$item->code) }}</td>
                 <td>
                     @if ($item->both)
                         <span class="badge badge--success">{{ __("Sender") }}</span>
@@ -39,7 +39,7 @@
                     @include('admin.components.form.switcher',[
                         'name'          => 'currency_status',
                         'value'         => $item->status,
-                        'options'       => ['Enable' => 1,'Disable' => 0],
+                        'options'       => [__('Enable') => 1,__('Disable') => 0],
                         'onload'        => true,
                         'data_target'   => $item->code,
                         'permission'    => "admin.currency.status.update",

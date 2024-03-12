@@ -52,9 +52,12 @@ trait SslCommerz {
         }else{
             $user  = DoctorAppointment::where('slug',$output['form_data']['identifier'])->first();
         }
-
-        $temp_data = $this->sslCommerzJunkInsert($temp_record_token); // create temporary information
-        
+        $booking_data   = DoctorAppointment::where('slug',$output['form_data']['identifier'])->first();
+        if($booking_data->authenticated == true){
+            $temp_data = $this->sslCommerzJunkInsert($temp_record_token); // create temporary information
+        }else{
+            $temp_data = $this->sslCommerzJunkInsertForUnAuth($temp_record_token);
+        }
         $response = Http::asForm()->post($endpoint, [
             'store_id'      => $this->request_credentials->store_id,
             'store_passwd'  => $this->request_credentials->secret_key,
@@ -113,9 +116,30 @@ trait SslCommerz {
                 'id'        => $output['currency']->id,
                 'alias'     => $output['currency']->alias
             ],
-            
             'amount'        => json_decode(json_encode($output['amount']),true),
-            
+            'creator_table' => auth()->guard(get_auth_guard())->user()->getTable() ?? '',
+            'creator_id'    => auth()->guard(get_auth_guard())->user()->id ?? '',
+            'creator_guard' => get_auth_guard() ?? '',
+            'user_record'   => $output['form_data']['identifier'],
+        ];
+        
+        return TemporaryData::create([
+            'type'          => PaymentGatewayConst::SSLCOMMERZ,
+            'identifier'    => $temp_token,
+            'data'          => $data,
+        ]);
+    }
+    public function sslCommerzJunkInsertForUnAuth($temp_token) {
+        $output = $this->output;
+
+        
+        $data = [
+            'gateway'       => $output['gateway']->id,
+            'currency'      => [
+                'id'        => $output['currency']->id,
+                'alias'     => $output['currency']->alias
+            ],
+            'amount'        => json_decode(json_encode($output['amount']),true),
             'user_record'   => $output['form_data']['identifier'],
         ];
         

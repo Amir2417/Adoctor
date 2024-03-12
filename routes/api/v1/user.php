@@ -10,8 +10,8 @@ Route::prefix("user")->name("api.user.")->group(function(){
 
     Route::controller(ProfileController::class)->prefix('profile')->group(function(){
         Route::get('info','profileInfo');
-        Route::post('info/update','profileInfoUpdate');
-        Route::post('password/update','profilePasswordUpdate');
+        Route::post('info/update','profileInfoUpdate')->middleware(['app.mode']);
+        Route::post('password/update','profilePasswordUpdate')->middleware(['app.mode']);
     });
 
     // Logout Route

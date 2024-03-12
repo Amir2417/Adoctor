@@ -4,9 +4,10 @@ namespace App\Traits\PaymentGateway;
 use Exception;
 use Illuminate\Support\Str;
 use App\Models\TemporaryData;
+use App\Models\DoctorAppointment;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use App\Constants\PaymentGatewayConst;
-use Illuminate\Support\Facades\DB;
 
 trait CoinGate {
     
@@ -130,8 +131,13 @@ trait CoinGate {
             $response_array = json_decode($response->body(),true);
             if(isset($response_array['payment_url'])) {
                 // create junk transaction
-                $this->coinGateJunkInsert($this->output,$response_array,$temp_record_token);
-
+                $output         = $this->output;
+                $booking_data   = DoctorAppointment::where('slug',$output['form_data']['identifier'])->first();
+                if($booking_data->authenticated == true){
+                    $this->coinGateJunkInsert($this->output,$response_array,$temp_record_token);
+                }else{
+                    $this->coinGateJunkInsertForUnAuth($this->output,$response_array,$temp_record_token);
+                }
                 if(request()->expectsJson()) {
                     $this->output['redirection_response']   = $response_array;
                     $this->output['redirect_links']         = [];
@@ -157,8 +163,28 @@ trait CoinGate {
             ],
             'amount'        => json_decode(json_encode($output['amount']),true),
             'response'      => $response,
+            'creator_table' => auth()->guard(get_auth_guard())->user()->getTable() ?? '',
             'creator_id'    => auth()->guard(get_auth_guard())->user()->id ?? '',
-            'creator_guard' => get_auth_guard(),
+            'creator_guard' => get_auth_guard() ?? '',
+            'user_record'   => $output['form_data']['identifier'],
+        ];
+        
+        return TemporaryData::create([
+            'type'          => PaymentGatewayConst::COIN_GATE,
+            'identifier'    => $temp_identifier,
+            'data'          => $data,
+        ]);
+    }
+    public function coinGaTeJunkInsertForUnAuth($output,$response, $temp_identifier) {
+
+        $data = [
+            'gateway'       => $output['gateway']->id,
+            'currency'      => [
+                'id'        => $output['currency']->id,
+                'alias'     => $output['currency']->alias
+            ],
+            'amount'        => json_decode(json_encode($output['amount']),true),
+            'response'      => $response,
             'user_record'   => $output['form_data']['identifier'],
         ];
         

@@ -68,7 +68,7 @@
             var oldData = JSON.parse($(this).parents("tr").attr("data-item"));
             var actionRoute =  "{{ setRoute('admin.admins.admin.delete') }}";
             var target      = oldData.username;
-            var message     = `Are you sure to remove @<strong>${oldData.username}</strong>?`;
+            var message     = `{{ __("Are you sure to remove") }} @<strong>${oldData.username}</strong>?`;
             openDeleteModal(actionRoute,target,message);
         });
 

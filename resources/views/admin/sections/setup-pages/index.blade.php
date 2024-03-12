@@ -33,16 +33,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($setup_pages as $item)
+                        @forelse ($setup_pages as $data)
                             <tr>
-                                <td>{{ $item->title }}</td>
+                                <td>{{ $data->title }}</td>
                                 <td>
                                     @include('admin.components.form.switcher',[
                                         'name'          => 'status',
-                                        'value'         => $item->status,
+                                        'value'         => $data->status,
                                         'options'       => [__('Enable') => 1,__('Disable') => 0],
                                         'onload'        => true,
-                                        'data_target'   => $item->slug,
+                                        'data_target'   => $data->slug,
                                         'permission'    => "admin.setup.pages.status.update",
                                     ])
                                 </td>
@@ -63,3 +63,8 @@
         switcherAjax("{{ setRoute('admin.setup.pages.status.update') }}");
     </script>
 @endpush
+
+
+
+
+

@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Models\Admin\Doctor;
 use Illuminate\Http\Request;
 use App\Models\TemporaryData;
+use App\Http\Helpers\Response;
 use App\Models\Admin\UsefulLink;
 use App\Models\UserNotification;
 use App\Models\Admin\AppSettings;
@@ -93,6 +94,9 @@ class AppointmentBookingController extends Controller
         if(!$find_doctor) return back()->with(['error' =>  ['Doctor not found!']]);
 
         $transaction_fees   = TransactionSetting::where('slug','appointment')->first();
+        if(!$transaction_fees){
+            return back()->with(['error' => [__('Transaction data not found!')]]);
+        }
         $amount             = floatval($find_doctor->fees);
         $fixed_charge       = $transaction_fees->fixed_charge;
         $percent_charge     = ($amount / 100) * $transaction_fees->percent_charge;
@@ -109,9 +113,13 @@ class AppointmentBookingController extends Controller
 
         if(auth()->check()){
             $validated['user_id']   = auth()->user()->id;
+            $validated['site_type'] = global_const()::WEB;
+            $validated['authenticated'] = true;
         }
         else{
-            $validated['user_id']   = null;
+            $validated['user_id']       = null;
+            $validated['site_type']     = global_const()::WEB;
+            $validated['authenticated'] = false;
         }
 
         $validated['doctor_id']   = $find_doctor->id;
@@ -199,6 +207,9 @@ class AppointmentBookingController extends Controller
             $validator           = Validator::make($request->all(),[
                 'selected_payment_method' => 'required'
             ]);
+            if($validator->fails()){
+                return back()->withErrors($validator)->withInput($request->all());
+            }
             $validated          = $validator->validate();
             $data                   = [
                 'doctor_fees'       => $confirm_appointment->details->doctor_fees,
@@ -268,33 +279,45 @@ class AppointmentBookingController extends Controller
      * @param \Illuminate\Http\Request $request
      */
     public function success(Request $request, $gateway){
-      
         try{
             
             $token = PaymentGatewayHelper::getToken($request->all(),$gateway);
-           
-            $temp_data = TemporaryData::where("identifier",$token)->first();
             
+            $temp_data = TemporaryData::where("identifier",$token)->first();
+            $booking_data = DoctorAppointment::where('slug',$temp_data->data->user_record)->where('status',false)->first();
+            $booking_data_confirm = DoctorAppointment::where('slug',$temp_data->data->user_record)->where('status',true)->first();
+            
+            if($booking_data_confirm) return back()->with(['error' => ['Already confirm the booking.']]);
+           
+
             if(DoctorAppointment::where('callback_ref', $token)->exists()) {
                 if(!$temp_data) return redirect()->route('frontend.find.doctor')->with(['success' => ['Congratulations! Appointment Booking Confirmed Successfully.']]);;
             }else {
                 if(!$temp_data) return redirect()->route('frontend.find.doctor')->with(['error' => ['Booking failed. Record didn\'t saved properly. Please try again.']]);
             }
-
+            
             $update_temp_data = json_decode(json_encode($temp_data->data),true);
             $update_temp_data['callback_data']  = $request->all();
             $temp_data->update([
                 'data'  => $update_temp_data,
             ]);
             $temp_data = $temp_data->toArray();
-           
+            
             $instance = PaymentGatewayHelper::init($temp_data)->responseReceive();
+            
             
             if($instance instanceof RedirectResponse) return $instance;
         }catch(Exception $e) {
             return redirect()->route("frontend.find.doctor")->with(['error' => [$e->getMessage()]]);
         }
-        return redirect()->route("frontend.find.doctor")->with(['success' => ['Congratulations! Appointment Booking Confirmed Successfully.']]);
+       
+        if($booking_data->site_type == global_const()::WEB){
+            return redirect()->route("frontend.find.doctor")->with(['success' => ['Congratulations! Appointment Booking Confirmed Successfully.']]);
+        }else{
+            return Response::success(["Payment successful, please go back your app"],[
+                'authenticated'     => floatval($booking_data->authenticated),
+            ],200);
+        }
     }
     public function cancel(Request $request, $gateway) {
         if($request->has('token')) {

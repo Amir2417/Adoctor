@@ -43,9 +43,9 @@
                 <table class="custom-table">
                     <thead>
                         <tr>
-                            <th>SL NO</th>
-                            <th>Role Name</th>
-                            <th>Asign Admin</th>
+                            <th>{{ __("SL") }}</th>
+                            <th>{{ __("Role Name") }}</th>
+                            <th>{{ __("Asign Admin") }}</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -93,7 +93,7 @@
 
             var actionRoute =  "{{ setRoute('admin.admins.role.delete') }}";
             var target      = oldData.id;
-            var message     = "Are you sure to delete this role?";
+            var message     = `{{ __("Are you sure to delete this role?") }}`;
 
             openDeleteModal(actionRoute,target,message);
         });

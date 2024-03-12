@@ -26,14 +26,6 @@
                             </div>
                         </div>
                         <div class="col-xl-12 col-lg-12 form-group">
-                            @include('admin.components.form.switcher',[
-                                'label'         => __("Type").'*',
-                                'name'          => 'currency_type',
-                                'value'         => old('currency_type'),
-                                'options'       => [__('FIAT') => 'FIAT',__('CRYPTO') => 'CRYPTO'],
-                            ])
-                        </div>
-                        <div class="col-xl-12 col-lg-12 form-group">
                             <label>{{ __("Country") }}*</label>
                             <select name="currency_country" class="form--control select2-auto-tokenize country-select" data-old="{{ old('currency_country') }}">
                                 <option selected disabled>{{ __("Select Country") }}</option>
@@ -91,7 +83,7 @@
                     editModal.find("input[name=currency_code]").val(oldData.code).prop("readonly",readOnly);
                     editModal.find("input[name=currency_name]").val(oldData.name).prop("readonly",readOnly);
                     editModal.find("input[name=currency_symbol]").val(oldData.symbol).prop("readonly",readOnly);
-                    editModal.find("input[name=currency_rate]").val(oldData.rate.replace(",",""));
+                    editModal.find("input[name=currency_rate]").val(oldData.rate);
                     editModal.find("input[name=currency_type]").val(oldData.type);
                     editModal.find("input[name=currency_flag]").attr("data-preview-name",oldData.flag);
                     editModal.find("input[name=currency_option]").val(oldData.option);

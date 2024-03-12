@@ -3,6 +3,7 @@
 namespace App\Traits\PaymentGateway;
 
 use App\Constants\PaymentGatewayConst;
+use App\Models\DoctorAppointment;
 use App\Models\TemporaryData;
 use Exception;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
@@ -20,9 +21,8 @@ trait Paypal
         $paypalProvider->setApiCredentials($config);
         $paypalProvider->getAccessToken();
         $redirection = $this->getRedirection();
-        
+      
         $url_parameter = $this->getUrlParams();
-        
         $response = $paypalProvider->createOrder([
             "intent" => "CAPTURE",
             "application_context" => [
@@ -39,12 +39,19 @@ trait Paypal
                 ]
             ]
         ]);
-        
+      
         
         if(isset($response['id']) && $response['id'] != "" && isset($response['status']) && $response['status'] == "CREATED" && isset($response['links']) && is_array($response['links'])) {
             foreach($response['links'] as $item) {
                 if($item['rel'] == "approve") {
-                    $this->paypalJunkInsert($response);
+                    $output         = $this->output;
+                    $booking_data   = DoctorAppointment::where('slug',$output['form_data']['identifier'])->first();
+                    if($booking_data->authenticated == true){
+                        $this->paypalJunkInsert($response);
+                    }else{
+                        $this->paypalJunkInsertForUnAuth($response);
+                    }
+                    
                     
                     if(request()->expectsJson()) {
                         
@@ -173,8 +180,33 @@ trait Paypal
             ],
             'amount'        => json_decode(json_encode($output['amount']),true),
             'response'      => $response,
+            'creator_table' => auth()->guard(get_auth_guard())->user()->getTable() ?? '',
+            'creator_id'    => auth()->guard(get_auth_guard())->user()->id ?? '',
+            'creator_guard' => get_auth_guard() ?? '',
             'user_record'   => $output['form_data']['identifier'],
         ];
+        
+        return TemporaryData::create([
+            'type'          => PaymentGatewayConst::PAYPAL,
+            'identifier'    => $response['id'],
+            'data'          => $data,
+        ]);
+    }
+    public function paypalJunkInsertForUnAuth($response) {
+
+        $output = $this->output;
+        
+        $data = [
+            'gateway'       => $output['gateway']->id,
+            'currency'      => [
+                'id'        => $output['currency']->id,
+                'alias'     => $output['currency']->alias
+            ],
+            'amount'        => json_decode(json_encode($output['amount']),true),
+            'response'      => $response,
+            'user_record'   => $output['form_data']['identifier'],
+        ];
+        
         return TemporaryData::create([
             'type'          => PaymentGatewayConst::PAYPAL,
             'identifier'    => $response['id'],

@@ -226,7 +226,6 @@ class UserCareController extends Controller
         try {
             $user->update($validated);
         } catch (Exception $e) {
-            dd($e->getMessage());
             return back()->with(['error' => ['Something went wrong! Please try again']]);
         }
 

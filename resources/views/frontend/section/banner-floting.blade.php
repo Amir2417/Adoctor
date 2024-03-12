@@ -44,14 +44,11 @@
                 }
 
                 $.post(getDepartmentURL,{branch:branch,_token:"{{ csrf_token() }}"},function(response){
-                    // console.log(response.data.branch.departments);
                     var option = '';
                     if(response.data.branch.departments.length > 0) {
                         $.each(response.data.branch.departments,function(index,item) {
                             option += `<option value="${item.hospital_department_id}">${item.department.name}</option>`
                         });
-
-                        // console.log(option);
                         $("select[name=department]").html(option);
                         $("select[name=department]").select2();
 

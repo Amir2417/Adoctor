@@ -54,6 +54,7 @@ class PaymentGateway {
     }
 
     public static function init(array $data) {
+        
         return new PaymentGateway($data);
     }
 
@@ -224,24 +225,27 @@ class PaymentGateway {
      */
     public function authenticateTempData(){
         $tempData = $this->request_data;
-        
         if(empty($tempData) || empty($tempData['type'])) throw new Exception('Transaction failed. Record didn\'t saved properly. Please try again.');
-
-        if($this->requestIsApiUser()) {
-            $creator_table = $tempData['data']->creator_table ?? null;
-            $creator_id = $tempData['data']->creator_id ?? null;
-            $creator_guard = $tempData['data']->creator_guard ?? null;
-
-            $api_authenticated_guards = PaymentGatewayConst::apiAuthenticateGuard();
-            if(!array_key_exists($creator_guard,$api_authenticated_guards)) throw new Exception('Request user doesn\'t save properly. Please try again');
-
-            if($creator_table == null || $creator_id == null || $creator_guard == null) throw new Exception('Request user doesn\'t save properly. Please try again');
-            $creator = DB::table($creator_table)->where("id",$creator_id)->first();
-            if(!$creator) throw new Exception("Request user doesn\'t save properly. Please try again");
-
-            $api_user_login_guard = $api_authenticated_guards[$creator_guard];
-            $this->output['api_login_guard'] = $api_user_login_guard;
-            Auth::guard($api_user_login_guard)->loginUsingId($creator->id);
+        $booking_data  = DoctorAppointment::where('slug',$tempData['data']->user_record)->first();
+        if($booking_data->site_type == global_const()::API && $booking_data->authenticated == true){
+            if($this->requestIsApiUser()) {
+           
+                $creator_table = $tempData['data']->creator_table ?? null;
+                $creator_id = $tempData['data']->creator_id ?? null;
+                $creator_guard = $tempData['data']->creator_guard ?? null;
+                
+                $api_authenticated_guards = PaymentGatewayConst::apiAuthenticateGuard();
+                
+                if(!array_key_exists($creator_guard,$api_authenticated_guards)) throw new Exception('Request user doesn\'t save properly. Please try again');
+    
+                if($creator_table == null || $creator_id == null || $creator_guard == null) throw new Exception('Request user doesn\'t save properly. Please try again');
+                $creator = DB::table($creator_table)->where("id",$creator_id)->first();
+                if(!$creator) throw new Exception("Request user doesn\'t save properly. Please try again");
+    
+                $api_user_login_guard = $api_authenticated_guards[$creator_guard];
+                $this->output['api_login_guard'] = $api_user_login_guard;
+                Auth::guard($api_user_login_guard)->loginUsingId($creator->id);
+            }
         }
         
         $currency_id = $tempData['data']->currency ?? "";
@@ -265,8 +269,9 @@ class PaymentGateway {
 
     public function responseReceive() {
         $this->authenticateTempData();
-        $method_name = $this->getResponseMethod($this->output['gateway']);
         
+        $method_name = $this->getResponseMethod($this->output['gateway']);
+      
         if(method_exists($this,$method_name)) {
             return $this->$method_name($this->output);
         }
@@ -280,18 +285,35 @@ class PaymentGateway {
 
     public function getRedirection() {
         $redirection = PaymentGatewayConst::registerRedirection();
-        
         $guard = get_auth_guard();
-        if($guard != ""){
-            if(!array_key_exists($guard,$redirection)) {
-                throw new Exception("Gateway Redirection URLs/Route Not Registered. Please Register in PaymentGatewayConst::class");
+        
+        if(request()->expectsJson()) {
+            if($guard != ""){
+               
+                if(!array_key_exists($guard,$redirection)) {
+                    throw new Exception("Gateway Redirection URLs/Route Not Registered. Please Register in PaymentGatewayConst::class");
+                }
+                
+                $gateway_redirect_route = $redirection[$guard];
+                return $gateway_redirect_route;
+            }else{
+                
+                return $redirection;
             }
-            $gateway_redirect_route = $redirection[$guard];
-            return $gateway_redirect_route;
         }else{
             
-            return $redirection;
+            if($guard != ""){
+                if(!array_key_exists($guard,$redirection)) {
+                    throw new Exception("Gateway Redirection URLs/Route Not Registered. Please Register in PaymentGatewayConst::class");
+                }
+                $gateway_redirect_route = $redirection[$guard];
+                return $gateway_redirect_route;
+            }else{
+                return $redirection;
+            }
         }
+        
+        
         
     }
 
@@ -387,11 +409,6 @@ class PaymentGateway {
         $basic_setting = BasicSettings::first();
         $record_handler = $output['record_handler'];
         
-        if($this->predefined_user) {
-            $user = $this->predefined_user;
-        }else {
-            $user = auth()->guard(get_auth_guard())->user();
-        }
         $inserted_id = $this->$record_handler($output,$status);
         $trx_id     = DoctorAppointment::where('id',$inserted_id)->first();
 
@@ -424,15 +441,13 @@ class PaymentGateway {
             'serial_number'      => $data->patient_number,
             
         ];
-        if( $basic_setting->email_notification == true){
+        if($basic_setting->email_notification == true){
             Notification::route("mail",$data->email)->notify(new patientAppointmentNotification($form_data));
         }
         if($temp_remove == true) {
             $this->removeTempData($output);
         }
         
-        
-
         if($this->requestIsApiUser()) {
             // logout user
             $api_user_login_guard = $this->output['api_login_guard'] ?? null;
@@ -449,11 +464,7 @@ class PaymentGateway {
     public function insertRecord($output, $status) {
         $data  = DoctorAppointment::where('slug',$output['form_data']['identifier'])->first();
        
-        if($this->predefined_user) {
-            $user = $this->predefined_user;
-        }else {
-            $user = auth()->guard('web')->user();
-        }
+        
         $gateway_payable  = $data->details->payable_amount * $output['currency']->rate;
         $details                   = [
             'doctor_fees'       => $data->details->doctor_fees,
@@ -463,6 +474,11 @@ class PaymentGateway {
             'payable_amount'    => $data->details->payable_amount,
             'gateway_payable'   => $gateway_payable,
             'payment_method'    => $output['gateway']->name,
+            'gateway_currency'  => [
+                'alias'         => $output['currency']->alias,
+                'code'          => $output['currency']->currency_code,
+                'rate'          => $output['currency']->rate,
+            ],
             'currency'          => get_default_currency_code(),
         ];
         
@@ -482,6 +498,7 @@ class PaymentGateway {
         }
         return $data->id;
     }
+    
     public function insertRecordWeb($output, $status) {
         $data  = DoctorAppointment::where('slug',$output['form_data']['identifier'])->first();
        
@@ -497,15 +514,20 @@ class PaymentGateway {
             'total_charge'      => $data->details->total_charge,
             'payable_amount'    => $data->details->payable_amount,
             'payment_method'    => $output['gateway']->name,
+            'gateway_currency'  => [
+                'alias'         => $output['currency']->alias,
+                'code'          => $output['currency']->currency_code,
+                'rate'          => $output['currency']->rate,
+            ],
             'currency'          => get_default_currency_code(),
         ];
         
-       
         DB::beginTransaction();
         try{
             $data->update([
-                'status'    => $status,
-                'details'   => $details
+                'status'            => $status,
+                'details'           => $details,
+                'callback_ref'      => $output['callback_ref'] ?? null,
             ]);
 
             DB::commit();
@@ -584,6 +606,7 @@ class PaymentGateway {
 
     public function requestIsApiUser() {
         $request_source = request()->get('r-source');
+        
         if($request_source != null && $request_source == PaymentGatewayConst::APP) return true;
         return false;
     }

@@ -76,41 +76,47 @@ class PaymentGatewayConst {
     }
     public static function registerGatewayRecognization() {
         return [
-            'isGpay'        => self::G_PAY,
-            'isPaypal'      => self::PAYPAL,
-            'isCoinGate'    => self::COIN_GATE,
-            'isQrpay'       => self::QRPAY,
-            'isTatum'       => self::TATUM,
-            'isStripe'      => self::STRIPE,
-            'isFlutterwave' => self::FLUTTERWAVE,
-            'isSslCommerz'  => self::SSLCOMMERZ,
-            'isRazorpay'    => self::RAZORPAY,
+            'isGpay'            => self::G_PAY,
+            'isPaypal'          => self::PAYPAL,
+            'isCoinGate'        => self::COIN_GATE,
+            'isQrpay'           => self::QRPAY,
+            'isTatum'           => self::TATUM,
+            'isStripe'          => self::STRIPE,
+            'isFlutterwave'     => self::FLUTTERWAVE,
+            'isSslCommerz'      => self::SSLCOMMERZ,
+            'isRazorpay'        => self::RAZORPAY,
             'isPerfectMoney'    => self::PERFECT_MONEY,
             'isPagadito'        => self::PAGADITO
         ];
     }
     public static function apiAuthenticateGuard() {
-        return [
-            'api'   => 'web',
-        ];
+        if(request()->expectsJson()) {
+            return [
+                'unauth'    => 'web',
+            ];
+        }else{
+            return [
+                'api'   => 'web',
+            ];
+        }   
     }
 
     public static function registerRedirection() {
         return [
+                'return_url'    => 'frontend.appointment.booking.payment.success',
+                'cancel_url'    => 'frontend.appointment.booking.payment.cancel',
+                'callback_url'  => 'frontend.appointment.booking.payment.callback',
+                'btn_pay'       => 'frontend.appointment.booking.payment.btn.pay',
+                'redirect_form' => 'frontend.appointment.booking.payment.redirect.form',
             
-            'return_url'    => 'frontend.appointment.booking.payment.success',
-            'cancel_url'    => 'frontend.appointment.booking.payment.cancel',
-            'callback_url'  => 'frontend.appointment.booking.payment.callback',
-            'btn_pay'       => 'frontend.appointment.booking.payment.btn.pay',
-            'redirect_form' => 'frontend.appointment.booking.payment.redirect.form',
-            'web'           => [
+            'web'               => [
                 'return_url'    => 'frontend.appointment.booking.payment.success',
                 'cancel_url'    => 'frontend.appointment.booking.payment.cancel',
                 'callback_url'  => 'frontend.appointment.booking.payment.callback',
                 'btn_pay'       => 'frontend.appointment.booking.payment.btn.pay',
                 'redirect_form' => 'frontend.appointment.booking.payment.redirect.form',
             ],
-            'api'       => [
+            'api'               => [
                 'return_url'    => 'api.frontend.appointment.booking.payment.success',
                 'cancel_url'    => 'api.frontend.appointment.booking.payment.cancel',
                 'callback_url'  => 'frontend.appointment.booking.payment.callback',

@@ -119,7 +119,7 @@ class HospitalDepartmentController extends Controller
             return Response::error($errors,null,500);
         }
 
-        $success = ['success' => ['Hospital Department status updated successfully!']];
+        $success = ['success' => [__('Hospital Department status updated successfully!')]];
         return Response::success($success);
     }
 }

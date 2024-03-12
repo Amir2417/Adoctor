@@ -306,7 +306,7 @@ class AdminCareController extends Controller
             return Response::error($error,null,500);
         }
 
-        $success = ['success' => ['Admin status updated successfully!']];
+        $success = ['success' => [__('Admin status updated successfully!')]];
         return Response::success($success,null,200);
     }
 
@@ -411,7 +411,6 @@ class AdminCareController extends Controller
      */
     public function rolePermissionIndex()
     {
-        // dd('working');
         $page_title = "Permission Group";
         $roles = AdminRole::get();
         $permissions = AdminRolePermission::get();
