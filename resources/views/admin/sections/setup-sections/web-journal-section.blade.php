@@ -171,7 +171,6 @@
                             <th>{{ __("Title") }}</th>
                             <th>{{ __("Description") }}</th>
                             <th>{{ __("Status") }}</th>
-                            <th>{{ __("Created At") }}</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -195,7 +194,6 @@
                                         'permission'    => "admin.setup.sections.journal.status.update",
                                     ])
                                 </td>
-                                <td> {{ $item->created_at ?? "" }} </td>
                                 <td>
                                     @include('admin.components.link.edit-default',[
                                         'href'          => setRoute('admin.setup.sections.journal.edit',$item->id),

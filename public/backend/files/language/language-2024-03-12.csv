@@ -1,0 +1,1048 @@
+Key,en,es,ar
+Dashboard,Dashboard,Panel,لوحة القيادة
+Language,Language,Idioma,لغة
+Information,Information,Información,معلومة
+Language Information,Language Information,Información del idioma,معلومات اللغة
+Language Manager,Language Manager,Administrador de idiomas,مدير اللغة
+Home,Home,Hogar,بيت
+Basic settings fetch successfully!,Basic settings fetch successfully!,¡Configuración básica obtiene con éxito!,جلب الإعدادات الأساسية بنجاح!
+Access denied! Unauthenticated,Access denied! Unauthenticated,¡Acceso denegado! No autenticado,تم الرفض! غير مصدق
+Verification code sent successfully to your mail. Please check your mail inbox/spam to verify,Verification code sent successfully to your mail. Please check your mail inbox/spam to verify,Código de verificación enviado correctamente a su correo. Consulte su bandeja de entrada/spam de correo para verificar,تم إرسال رمز التحقق بنجاح إلى بريدك. يرجى التحقق من البريد الوارد/البريد العشوائي للتحقق
+Successfully resend verification code!,Successfully resend verification code!,¡Reenviar al código de verificación con éxito!,إعادة تقديم رمز التحقق بنجاح!
+Invalid OTP. Please try again,Invalid OTP. Please try again,OTP inválido. Inténtalo de nuevo,OTP غير صالح. حاول مرة اخرى
+Session expired. Please try again,Session expired. Please try again,Sesión expirada. Inténtalo de nuevo,انتهت الجلسة. حاول مرة اخرى
+Account successfully verified,Account successfully verified,Cuenta verificada con éxito,تم التحقق من الحساب بنجاح
+You are already KYC Verified User,You are already KYC Verified User,Ya eres usuario verificado de KYC,أنت بالفعل مستخدم تم التحقق منه KYC
+Your KYC information is submitted. Please wait for admin confirmation,Your KYC information is submitted. Please wait for admin confirmation,Se envía su información de KYC. Espere la confirmación del administrador,يتم تقديم معلومات KYC الخاصة بك. يرجى انتظار تأكيد المسؤول
+User KYC section is under maintenance,User KYC section is under maintenance,La sección de usuarios de KYC está en mantenimiento,قسم المستخدم KYC قيد الصيانة
+User KYC input fields fetch successfully!,User KYC input fields fetch successfully!,¡Los campos de entrada de KYC de usuario obtienen con éxito!,حقول إدخال المستخدم KYC يجلبون بنجاح!
+KYC information successfully submitted,KYC information successfully submitted,La información de KYC presentó con éxito,تم تقديم معلومات KYC بنجاح
+Your account secure with Google 2FA,Your account secure with Google 2FA,Su cuenta segura con Google 2FA,حسابك آمن مع Google 2FA
+To enable two-factor authentication (powered by Google) please visit your web dashboard. Click here:,To enable two-factor authentication (powered by Google) please visit your web dashboard. Click here:,"Para habilitar la autenticación de dos factores (alimentado por Google), visite su tablero web. Haga clic aquí:",لتمكين المصادقة ثنائية العوامل (مدعوم من Google) ، يرجى زيارة لوحة معلومات الويب الخاصة بك. انقر هنا:
+Request response fetch successfully!,Request response fetch successfully!,¡Solicite la respuesta de respuesta con éxito!,طلب استجابة جلب بنجاح!
+Your secret key not stored properly. Please contact the system administrator,Your secret key not stored properly. Please contact the system administrator,"Su llave secreta no se almacena correctamente. Por favor, póngase en contacto con el administrador del sistema",مفتاحك السري لم يتم تخزينه بشكل صحيح. يرجى الاتصال بمسؤول النظام
+Google 2FA successfully verified!,Google 2FA successfully verified!,Google 2FA Verificado con éxito!,تم التحقق من Google 2FA بنجاح!
+Invalid authentication code,Invalid authentication code,Código de autenticación no válido,رمز المصادقة غير صالح
+Failed to log in. Please try again,Failed to log in. Please try again,No se pudo iniciar sesión. Vuelva a intentarlo,فشل في تسجيل الدخول. يرجى المحاولة مرة أخرى
+User doesn't exist,User doesn't exist,El usuario no existe,المستخدم غير موجود
+Your account is temporarily banned. Please contact the system admin,Your account is temporarily banned. Please contact the system admin,Su cuenta está prohibida temporalmente. Póngase en contacto con el administrador del sistema,حسابك محظور مؤقتًا. يرجى الاتصال بمسؤول النظام
+Code sent to your email address!,Code sent to your email address!,¡Código enviado a su dirección de correo electrónico!,تم إرسال الرمز إلى عنوان بريدك الإلكتروني!
+Verification OTP is invalid,Verification OTP is invalid,La verificación OTP no es válida,التحقق من OTP غير صالح
+OTP successfully verified!,OTP successfully verified!,OTP verificado con éxito!,تم التحقق من OTP بنجاح!
+Request token is invalid,Request token is invalid,El token de solicitud no es válido,الرمز المميز غير صالح
+OTP resend success,OTP resend success,OTP Resen éxito,OTP إعادة تقديم النجاح
+Password reset success,Password reset success,El éxito de restablecimiento de contraseña,إعادة تعيين كلمة المرور النجاح
+Credentials didn't match,Credentials didn't match,Las credenciales no coincidían,لا تتطابق بيانات الاعتماد
+Login failed! Failed to refresh wallet! Please try again,Login failed! Failed to refresh wallet! Please try again,¡Error de inicio de sesion! ¡No se pudo actualizar la billetera! Inténtalo de nuevo,فشل تسجيل الدخول! فشل في تحديث المحفظة! حاول مرة اخرى
+Logged in,Logged in,Conectado,تسجيل الدخول
+Registration failed! Please try again,Registration failed! Please try again,¡Registro fallido! Inténtalo de nuevo,فشل في التسجيل! حاول مرة اخرى
+Failed to fetch user information. Please try again,Failed to fetch user information. Please try again,No se pudo obtener información del usuario. Inténtalo de nuevo,فشل في جلب معلومات المستخدم. حاول مرة اخرى
+Failed to generate user token! Please try again,Failed to generate user token! Please try again,¡No se pudo generar token de usuario! Inténtalo de nuevo,فشل في إنشاء رمز المستخدم! حاول مرة اخرى
+Failed to create wallet! Please try again,Failed to create wallet! Please try again,¡No se pudo crear billetera! Inténtalo de nuevo,فشل في إنشاء محفظة! حاول مرة اخرى
+User successfully registered,User successfully registered,Usuario registrado correctamente,يسجل المستخدم بنجاح
+Failed to fetch data. Please try again,Failed to fetch data. Please try again,No logró obtener datos. Inténtalo de nuevo,فشل في جلب البيانات. حاول مرة اخرى
+Payment gateway fetch successfully!,Payment gateway fetch successfully!,¡Page Gateway para obtener con éxito!,بوابة الدفع جلب بنجاح!
+Can't submit manual gateway in automatic link,Can't submit manual gateway in automatic link,No se puede enviar una puerta de enlace manual en enlace automático,لا يمكن تقديم بوابة يدوية في رابط تلقائي
+Record didn't save properly. Please try again,Record didn't save properly. Please try again,El registro no salvo correctamente. Inténtalo de nuevo,سجل لم يحفظ بشكل صحيح. حاول مرة اخرى
+Payment process cancel successfully!,Payment process cancel successfully!,¡Proceso de pago Cancele correctamente!,عملية الدفع إلغاء بنجاح!
+Can't get fields. Requested gateway is automatic,Can't get fields. Requested gateway is automatic,No puedo obtener campos. La puerta de enlace solicitada es automática,لا يمكن الحصول على الحقول. البوابة المطلوبة تلقائيًا
+This payment gateway is under construction. Please try with another payment gateway,This payment gateway is under construction. Please try with another payment gateway,Esta pasarela de pago está en construcción. Intente con otra pasarela de pago,بوابة الدفع هذه قيد الإنشاء. يرجى المحاولة مع بوابة دفع أخرى
+Payment gateway input fields fetch successfully!,Payment gateway input fields fetch successfully!,¡Los campos de entrada de la pasarela de pago obtienen éxito!,حقول مدخلات بوابة الدفع بنجاح!
+Can't submit automatic gateway in manual link,Can't submit automatic gateway in manual link,No se puede enviar una puerta de enlace automática en un enlace manual,لا يمكن تقديم بوابة تلقائية في الرابط اليدوي
+Selected gateway is invalid,Selected gateway is invalid,La puerta de enlace seleccionada no es válida,بوابة مختارة غير صالحة
+Failed to save information. Please try again,Failed to save information. Please try again,No se pudo guardar información. Inténtalo de nuevo,فشل في حفظ المعلومات. حاول مرة اخرى
+Your wallet is invalid!,Your wallet is invalid!,¡Tu billetera no es válida!,محفظتك غير صالحة!
+Transaction Success. Please wait for admin confirmation,Transaction Success. Please wait for admin confirmation,Éxito de la transacción. Espere la confirmación del administrador,نجاح المعاملة. يرجى انتظار تأكيد المسؤول
+Payment gateway response successful,Payment gateway response successful,Respuesta de la pasarela de pago exitosa,استجابة بوابة الدفع ناجحة
+User dashboard data fetch successfully!,User dashboard data fetch successfully!,¡Los datos del tablero de usuarios obtienen éxito!,جلب بيانات لوحة معلومات المستخدم بنجاح!
+Investment plan list fetch successfully!,Investment plan list fetch successfully!,¡Lista de planes de inversión con éxito!,قائمة خطة الاستثمار جلب بنجاح!
+Oops! This plan is no longer available,Oops! This plan is no longer available,¡Ups! Este plan ya no está disponible,أُووبس! هذه الخطة لم تعد متوفرة
+Oops! Wallet not found!,Oops! Wallet not found!,¡Ups! Billetera no encontrada!,أُووبس! لم يتم العثور على محفظة!
+Your wallet balance is insufficient,Your wallet balance is insufficient,El equilibrio de su billetera es insuficiente,توازن محفظتك غير كافٍ
+Oops! Something went wrong! Please try again,Oops! Something went wrong! Please try again,¡Ups! ¡Algo salió mal! Inténtalo de nuevo,أُووبس! هناك خطأ ما! حاول مرة اخرى
+New Investment Plan Purchase Successfully!,New Investment Plan Purchase Successfully!,"¡Nuevo plan de inversión, compra con éxito!",شراء خطة الاستثمار الجديدة بنجاح!
+Investment data fetch successfully!,Investment data fetch successfully!,¡Los datos de inversión obtienen con éxito!,جلب بيانات الاستثمار بنجاح!
+Investment profit data fetch successfully!,Investment profit data fetch successfully!,¡Los datos de ganancias de inversión obtienen con éxito!,جلب بيانات ربح الاستثمار بنجاح!
+User wallets fetch successfully!,User wallets fetch successfully!,¡Las billeteras de usuario obtienen con éxito!,جلب محافظ المستخدم بنجاح!
+Receiver doesn't exist or Receiver is temporarily banned,Receiver doesn't exist or Receiver is temporarily banned,El receptor no existe o el receptor está prohibido temporalmente,جهاز الاستقبال غير موجود أو يتم حظر جهاز الاستقبال مؤقتًا
+Receiver wallet not available,Receiver wallet not available,Billetera receptor no disponible,محفظة المتلقي غير متوفرة
+Transaction failed! Something went wrong! Please try again,Transaction failed! Something went wrong! Please try again,¡Transacción fallida! ¡Algo salió mal! Inténtalo de nuevo,فشل الاجراء! هناك خطأ ما! حاول مرة اخرى
+Profile info fetch successfully!,Profile info fetch successfully!,Información de perfil para obtener con éxito!,معلومات الملف الشخصي بنجاح!
+Phone number already exists,Phone number already exists,El número de teléfono ya existe,رقم الهاتف موجود بالفعل
+Profile successfully updated!,Profile successfully updated!,Perfil actualizado con éxito!,تم تحديث الملف الشخصي بنجاح!
+Current password didn't match,Current password didn't match,La contraseña actual no coincidió,كلمة المرور الحالية لا تتطابق
+Password successfully updated!,Password successfully updated!,Contraseña actualizada correctamente!,تم تحديث كلمة المرور بنجاح!
+Logout success!,Logout success!,¡Suciedad de cierre de sesión!,نجاح تسجيل الدخول!
+Splash screen data fetch successfully!,Splash screen data fetch successfully!,¡Los datos de la pantalla de salpicaduras obtienen éxito!,جلب بيانات شاشة البداية بنجاح!
+Onboard screen data fetch successfully!,Onboard screen data fetch successfully!,¡Los datos de la pantalla a bordo obtienen éxito!,جلب بيانات الشاشة على متن الطائرة بنجاح!
+Transactions fetch successfully!,Transactions fetch successfully!,¡Las transacciones obtienen con éxito!,المعاملات جلب بنجاح!
+Request data fetch successfully!,Request data fetch successfully!,¡Solicite datos de datos con éxito!,طلب البيانات جلب بنجاح!
+Payment gateway not found!,Payment gateway not found!,¡No se encuentra la pasarela de pago!,بوابة الدفع غير موجودة!
+Gateway is under maintenance. Please try with another gateway,Gateway is under maintenance. Please try with another gateway,La puerta de enlace está bajo mantenimiento. Por favor intente con otra puerta de enlace,بوابة تحت الصيانة. يرجى المحاولة مع بوابة أخرى
+Gateway input field fetch successfully!,Gateway input field fetch successfully!,¡Campo de entrada de la puerta de enlace para obtener con éxito!,حقل الإدخال بوابة جلب بنجاح!
+Service not available!,Service not available!,¡Servicio no disponible!,الخدمة غير متوفرة!
+Gateway isn't available for this transaction,Gateway isn't available for this transaction,Gateway no está disponible para esta transacción,البوابة غير متوفرة لهذه المعاملة
+Oops! Wallet type not defined,Oops! Wallet type not defined,¡Ups! Tipo de billetera no definido,أُووبس! نوع المحفظة غير محددة
+Language data fetch successfully!,Language data fetch successfully!,¡Los datos del idioma obtienen con éxito!,جلب بيانات اللغة بنجاح!
+Hello Brother,Hello Brother,Hola hermano,مرحبا اخي
+App Name,App Name,Nombre de la aplicación,اسم التطبيق
+Please fill out the field,Please fill out the field,Por favor complete el campo,يرجى ملء الحقل
+Please connect Internet,Please connect Internet,Conecte Internet,الرجاء توصيل الإنترنت
+Sign In,Sign In,Iniciar sesión,تسجيل الدخول
+Sign Up,Sign Up,Inscribirse,اشتراك
+Password,Password,Contraseña,كلمة المرور
+Old Password,Old Password,Contraseña anterior,كلمة المرور القديمة
+Enter Password,Enter Password,Introducir la contraseña,أدخل كلمة المرور
+Forget Password,Forget Password,Contraseña olvidada,ننسى كلمة المرور
+Get Started,Get Started,Empezar,البدء
+Email Address,Email Address,Dirección de correo electrónico,عنوان البريد الإلكتروني
+Enter Email Address,Enter Email Address,Introducir la dirección de correo electrónico,أدخل عنوان البريد الالكتروني
+Enter the OTP code sent to,Enter the OTP code sent to,Ingrese el código OTP enviado a,أدخل رمز OTP المرسلة إلى
+Verified Code,Verified Code,Código verificado,رمز التحقق
+Submit,Submit,Entregar,يُقدِّم
+OTP Verification,OTP Verification,Verificación OTP,التحقق من OTP
+Two FA Verification,Two FA Verification,Dos verificación FA,اثنين من التحقق من FA
+Email Verification,Email Verification,verificacion de email,تأكيد بواسطة البريد الالكتروني
+Resend,Resend,Reenviar,إعادة إرسال
+New Password,New Password,Nueva contraseña,كلمة المرور الجديدة
+Confirm Password,Confirm Password,confirmar Contraseña,تأكيد كلمة المرور
+Enter,Enter,Ingresar,يدخل
+Reset Password,Reset Password,Restablecer la contraseña,إعادة تعيين كلمة المرور
+Congratulation,Congratulation,Felicitación,تهنئة
+Create Account,Create Account,Crear una cuenta,إنشاء حساب
+First Name,First Name,Nombre de pila,الاسم الأول
+Last Name,Last Name,Apellido,اسم العائلة
+Okay,Okay,Bueno,تمام
+Transfer,Transfer,Transferir,تحويل
+Home Upper,Home Upper,Casa superior,المنزل العلوي
+Profile,Profile,Perfil,حساب تعريفي
+Exchange,Exchange,Intercambio,تبادل
+Request,Request,Pedido,طلب
+Recent Transaction,Recent Transaction,Transacción reciente,المعاملة الأخيرة
+My Invoice,My Invoice,Mi factura,فاتورتي
+My Voucher,My Voucher,Mi cupón,قسيمي
+Transaction Log,Transaction Log,Registro de transacciones,سجل المعاملات
+Two FA Security,Two FA Security,Dos seguridad FA,اثنان من الأمن FA
+Change Password,Change Password,Cambiar la contraseña,تغيير كلمة المرور
+Help Center,Help Center,Centro de ayuda,مركز المساعدة
+Privacy and Policy,Privacy and Policy,Privacidad y política,الخصوصية والسياسة
+About Us,About Us,Sobre nosotros,معلومات عنا
+Sign Out,Sign Out,Desconectar,خروج
+Amount,Amount,Cantidad,كمية
+Preview Screen,Preview Screen,Pantalla previa,شاشة المعاينة
+Preview,Preview,Avance,معاينة
+Exchange Rate,Exchange Rate,Tipo de cambio,سعر الصرف
+Total Fees and Charges,Total Fees and Charges,Tarifas y cargos totales,إجمالي الرسوم والرسوم
+Will Get,Will Get,Obtendrá,سوف تحصل
+Total Payable Amount,Total Payable Amount,Monto total por pagar,إجمالي المبلغ المستحق
+Confirm,Confirm,Confirmar,يتأكد
+Money Exchange,Money Exchange,Cambio de dinero,حوالة نقدية
+From,From,De,من
+From Slash,From Slash,De Slash,من ميناء
+To,To,A,ل
+Request Money,Request Money,Pedir dinero,طلب المال
+Remarks,Remarks,Observaciones,ملاحظات
+Optional,Optional,Opcional,خياري
+Share Request Money,Share Request Money,Solicitar dinero para compartir dinero,مشاركة طلب المال
+Share,Share,Compartir,يشارك
+Available Balance,Available Balance,Saldo disponible,الرصيد المتوفر
+Receiver,Receiver,Receptor,المتلقي
+Profile Label,Profile Label,Etiqueta de perfil,تسمية الملف الشخصي
+Full Name,Full Name,Nombre completo,الاسم الكامل
+Country,Country,País,دولة
+Mobile Number,Mobile Number,Número de teléfono móvil,رقم الهاتف المحمول
+State,State,Estado,ولاية
+City,City,Ciudad,مدينة
+Zip Code,Zip Code,Código postal,الرمز البريدي
+Update,Update,Actualizar,تحديث
+Paid,Paid,Pagado,مدفوع
+Sent,Sent,Enviado,مرسل
+UnPaid,UnPaid,No pagado,غير مدفوع الأجر
+Invoice Number,Invoice Number,Número de factura,رقم الفاتورة
+Invoice Date,Invoice Date,Fecha de la factura,تاريخ الفاتورة
+Currency,Currency,Divisa,عملة
+Pick Goods,Pick Goods,Seleccionar artículos,اختر البضائع
+Trick Goods,Trick Goods,Artículos de truco,خدعة البضائع
+Form,Form,Forma,استمارة
+Total Bill,Total Bill,Cuenta total,إجمالي الفاتورة
+Create Invoice,Create Invoice,Crear factura,إنشاء فاتورة
+Invoice To,Invoice To,Factura,فاتورة إلى
+Billing Address,Billing Address,Dirección de Envio,عنوان وصول الفواتير
+Notes,Notes,Notas,ملحوظات
+Item Details,Item Details,detalles del artículo,تفاصيل العنصر
+Client Name,Client Name,nombre del cliente,اسم العميل
+Add New,Add New,Agregar nuevo,اضف جديد
+Item Name,Item Name,Nombre del árticulo,اسم العنصر
+Voucher,Voucher,Vale,فاتورة
+Redeem,Redeem,Canjear,يسترد
+Used,Used,Usado,مستخدم
+Not Used,Not Used,No utilizado,غير مستعمل
+Name,Name,Nombre,اسم
+Email,Email,Correo electrónico,بريد إلكتروني
+Phone,Phone,Teléfono,هاتف
+Fees and Charge,Fees and Charge,Tarifas y cargo,الرسوم والتهمة
+Status,Status,Estado,حالة
+Code,Code,Código,شفرة
+Create Voucher,Create Voucher,Crear cupón,إنشاء قسيمة
+Confirm Redeem,Confirm Redeem,Confirmar redimir,تأكيد الاسترداد
+Redeem Code,Redeem Code,Canjear código,استرداد رمز
+AddMoney Log,AddMoney Log,Addmoney Log,سجل addmoney
+Money Out Log,Money Out Log,Money Out Log,سجل الأموال
+Exchange Log,Exchange Log,Registro de intercambio,سجل التبادل
+Request Log,Request Log,Registro de solicitud,طلب سجل
+Back To Home,Back To Home,De vuelta a casa,العودة إلى المنزل
+Enable 2FA Security,Enable 2FA Security,Habilitar la seguridad de 2FA,تمكين 2FA الأمن
+Send Verification Code,Send Verification Code,Envíe el código de verificación,إرسال رمز التحقق
+Individual,Individual,Individual,فردي
+Business,Business,Negocio,عمل
+Middle Name,Middle Name,Segundo nombre,الاسم الأوسط
+Username,Username,Nombre de usuario,اسم المستخدم
+Postal Code,Postal Code,Código Postal,رمز بريدي
+Company Name,Company Name,nombre de empresa,اسم الشركة
+Gender,Gender,Género,جنس
+Date Of Birth,Date Of Birth,Fecha de nacimiento,تاريخ الميلاد
+Nationality,Nationality,Nacionalidad,جنسية
+My Receipt,My Receipt,Mi recibo,إيصالي
+Total Exchanged Amount,Total Exchanged Amount,Cantidad total intercambiada,إجمالي المبلغ المتبادل
+Converted Amount,Converted Amount,Cantidad convertida,المبلغ المحول
+Requested Amount,Requested Amount,Monto requerido,الكمية المطلوبة
+On Board Title,On Board Title,Título a bordo,على اللقب
+On Board Description,On Board Description,Descripción a bordo,على الوصف
+Welcome Text,Welcome Text,Texto de bienvenida,ترحيب النص
+Welcome Subtitle Text,Welcome Subtitle Text,Bienvenido texto subtítulo,مرحبًا بك
+Sign In Subtitle,Sign In Subtitle,Iniciar sesión en subtítulo,تسجيل الدخول في الترجمة
+Forgot Password,Forgot Password,Has olvidado tu contraseña,هل نسيت كلمة السر
+Do Not Have An Account,Do Not Have An Account,No tiene una cuenta,لا تملك حساب
+Enter Your Email To Reset Password,Enter Your Email To Reset Password,Ingresa tu correo electronico para reestablecer su contraseña,أدخل بريدك الإلكتروني لإعادة تعيين كلمة المرور
+Verification Code,Verification Code,Código de verificación,رمز التحقق
+Enter Verification Code Text One,Enter Verification Code Text One,Ingrese el texto del código de verificación uno,أدخل نصوص التحقق من نص واحد
+Google Code Here,Google Code Here,Código de Google aquí,رمز Google هنا
+Resend Code,Resend Code,Reenviar codigo,أعد إرسال الرمز
+Did Not Get Code,Did Not Get Code,No obtuvo código,لم يحصل على رمز
+Reset Password Success Text,Reset Password Success Text,Reiniciar el texto del éxito de la contraseña,إعادة تعيين نص نجاح كلمة المرور
+Enter New Password,Enter New Password,Ingrese nueva clave,أدخل كلمة مرور جديدة
+Enter Confirm Password,Enter Confirm Password,Ingrese Confirmar contraseña,أدخل تأكيد كلمة المرور
+Go To Sign In,Go To Sign In,Ir a iniciar sesión,اذهب لتسجيل الدخول
+Go To Dashboard,Go To Dashboard,Ir al panel de control,الذهاب إلى لوحة القيادة
+Sign Up Subtitle,Sign Up Subtitle,Subtítulo de registro,التسجيل الترجمة
+Enter Name,Enter Name,Ingrese su nombre,أدخل الاسم
+Agreed With Terms,Agreed With Terms,De acuerdo con los términos,متفق عليه مع الشروط
+Terms,Terms,Términos,شروط
+Agree With,Agree With,De acuerdo con,اتفق مع
+Sign Up Success Text,Sign Up Success Text,Registrarse Texto de éxito,اشترك في نص النجاح
+My Invest,My Invest,Mi inversión,استثماري
+Profit Log,Profit Log,Registro de ganancias,سجل الربح
+Settings,Settings,Ajustes,إعدادات
+Users Name,Users Name,Nombre de los usuarios,اسم المستخدمين
+KYC Verification,KYC Verification,Verificación de KYC,التحقق من KYC
+Change Language,Change Language,Cambiar idioma,تغيير اللغة
+Delete Account,Delete Account,Borrar cuenta,حذف الحساب
+ID Type,ID Type,tipo de identificación,نوع الهوية
+Select ID Type,Select ID Type,Seleccionar tipo de identificación,حدد نوع المعرف
+enable Two FA Security,enable Two FA Security,habilitar dos seguridad FA,تمكين اثنين من أمن FA
+enable Two FA Security Subtitle,enable Two FA Security Subtitle,Habilitar dos subtítulos de seguridad FA,تمكين ترجمة أمان FA
+invest Plan,invest Plan,plan de inversión,خطة الاستثمار
+Add Money,Add Money,Agregar dinero,إضافة المال
+money Transfer,money Transfer,transferencia de dinero,تحويل المال
+uSD,uSD,Dólar estadounidense,دولار أمريكي
+limit,limit,límite,حد
+Rate,Rate,Tasa,معدل
+add Money Congratulation Subtitle,add Money Congratulation Subtitle,Agregue el subtítulo de felicitación,أضف التبرعات الفرعية
+entered Amount,entered Amount,cantidad ingresada,تم إدخال المبلغ
+amount Information,amount Information,cantidad de información,معلومات المبلغ
+enter Amount,enter Amount,Ingresar la cantidad,أدخل المبلغ
+youWill Get,youWill Get,conseguirás,ستحصل
+total Payable,total Payable,total a pagar,إجمالي الدفع
+Charges,Charges,Cargos,رسوم
+money Out Congratulation Subtitle,money Out Congratulation Subtitle,Subtítulo de felicitación de dinero fuera,التبرعات التهاني
+sending Amount,sending Amount,Cantidad de envío,إرسال المبلغ
+enter Sending Amount,enter Sending Amount,Ingrese el monto de envío,أدخل مبلغ إرسال
+receiver Email Address,receiver Email Address,dirección de correo electrónico del receptor,عنوان البريد الإلكتروني للمستقبل
+receiver Information,receiver Information,información del receptor,معلومات استقبال
+enter Receiver Email Address,enter Receiver Email Address,Ingrese la dirección de correo electrónico del receptor,أدخل عنوان البريد الإلكتروني للمستقبل
+profile update,profile update,Actualización de perfil,تحديث الملف الشخصي
+cornel,cornel,cornejo,كورنيل
+ari chart,ari chart,gráfico ari,آري الرسم البياني
+Enter City,Enter City,Entrar en la ciudad,أدخل المدينة
+Enter State,Enter State,Ingrese el estado,إدخال الدولة
+Enter Address,Enter Address,Ingresa la direccion,أدخل العنوان
+Enter ZipCode,Enter ZipCode,Ingresa tu código postal,أدخل الرمز البريدي
+Update Profile,Update Profile,Actualización del perfil,تحديث الملف
+choose Plan,choose Plan,Elija el plan,اختر الخطة
+investment,investment,inversión,استثمار
+Proceed,Proceed,proceder,يتابع
+no,no,No,لا
+yes,yes,Sí,نعم
+investment Amount,investment Amount,monto de la inversión,مبلغ الاستثمار
+enter Investment Amount,enter Investment Amount,Ingrese el monto de la inversión,أدخل مبلغ الاستثمار
+term And Condition,term And Condition,término y condición,الأحكام والشروط
+goto My Invest,goto My Invest,GOTO MY INVEST,goto استثماري
+my Invest Congratulation,my Invest Congratulation,Mi felicidad de invertir,تهنئتي الاستثمارية
+accept Terms,accept Terms,aceptar los terminos,قبول الشروط
+do YouSign Out,do YouSign Out,¿Teñirte?,هل تخرج
+sign Out Alert,sign Out Alert,Alerta de cierre de registro,سجل في حالة تأهب
+Select Country,Select Country,Seleccionar país,حدد الدولة
+maximum Invest,maximum Invest,Invertir máximo,أقصى استثمار
+fixed Profit,fixed Profit,beneficio fijo,ربح ثابت
+percentage Profit,percentage Profit,porcentaje de beneficio,النسبة المئوية الربح
+minimum Profit,minimum Profit,beneficio mínimo,الحد الأدنى من الربح
+profit Return Type,profit Return Type,Tipo de devolución de ganancias,نوع إرجاع الربح
+just Click To Try This,just Click To Try This,Simplemente haga clic para probar esto,فقط انقر لتجربة هذا
+duration,duration,duración,مدة
+profit Return,profit Return,rendimiento de ganancias,عائد الربح
+days,days,días,أيام
+profit,profit,ganancia,ربح
+Pending,Pending,Pendiente,قيد الانتظار
+rejected,rejected,rechazado,مرفوض
+success,success,éxito,نجاح
+updateKYC,updateKYC,Updatekyc,updimkyc
+empty Status,empty Status,estado vacío,حالة فارغة
+manual Input,manual Input,entrada manual,إدخال يدوي
+please Follow The Limit,please Follow The Limit,Siga el límite,يرجى اتباع الحد الأقصى
+evidence Note,evidence Note,nota de evidencia,ملاحظة الأدلة
+image Path Required,image Path Required,Ruta de imagen requerida,مسار الصورة المطلوب
+no Wallet,no Wallet,Sin billetera,لا محفظة
+alert,alert,alerta,يُحذًِر
+success Snack,success Snack,merienda,وجبة خفيفة النجاح
+dismiss,dismiss,despedir,رفض
+Welcome To,Welcome To,Bienvenido a,مرحبا بك في
+Admin Panel,Admin Panel,Panel de administrador,لوحة الادارة
+Setup Currency,Setup Currency,Moneda de configuración,الإعداد العملة
+Fees & Charges,Fees & Charges,Tarifas y cargos,الرسوم والرسوم
+Subscribers,Subscribers,Suscriptores,مشتركين
+Contact Messages,Contact Messages,Mensajes de contacto,اتصل بالرسائل
+Investment Plan,Investment Plan,Plan de inversión,الخطة الاستثمارية
+Add Money Logs,Add Money Logs,Agregar registros de dinero,أضف سجلات الأموال
+Pending Logs,Pending Logs,Registros pendientes,سجلات معلقة
+Completed Logs,Completed Logs,Registros completados,سجلات مكتملة
+Canceled Logs,Canceled Logs,Registros cancelados,سجلات ملغاة
+All Logs,All Logs,Todos los registros,جميع السجلات
+Money Out Logs,Money Out Logs,Money Out Registros,سجلات الأموال
+Money Transfer Logs,Money Transfer Logs,Registros de transferencia de dinero,سجلات تحويل الأموال
+Invest Profit Logs,Invest Profit Logs,Invierte los registros de ganancias,استثمار سجلات الربح
+User Care,User Care,Cuidado de los usuarios,رعاية المستخدم
+Active Users,Active Users,Usuarios activos,المستخدمين النشطين
+Email Unverified,Email Unverified,Correo electrónico no verificado,البريد الإلكتروني غير التحقق
+KYC Unverified,KYC Unverified,KYC no verificado,KYC غير التحقق
+All Users,All Users,Todos los usuarios,جميع المستخدمين
+Email To Users,Email To Users,Correo electrónico a los usuarios,البريد الإلكتروني للمستخدمين
+Banned Users,Banned Users,Usuarios prohibidos,المستخدمين المحظورون
+Admin Care,Admin Care,Atención administrativa,رعاية المسؤول
+All Admin,All Admin,Todos los administradores,كل المشرف
+Admin Role,Admin Role,Rol de administrador,دور المسؤول
+Role Permission,Role Permission,Permiso de rol,إذن الدور
+Web Settings,Web Settings,Configuración web,إعدادات الويب
+Basic Settings,Basic Settings,Ajustes básicos,الإعدادات الأساسية
+Setup SEO,Setup SEO,Configuración de SEO,إعداد SEO
+App Settings,App Settings,Ajustes de Aplicacion,إعدادات التطبيقات
+Splash Screen,Splash Screen,Pantalla de bienvenida,شاشة البداية
+Default,Default,Por defecto,تقصير
+Interface Panel,Interface Panel,Panel de interfaz,لوحة واجهة
+Onboard Screen,Onboard Screen,Pantalla a bordo,على متن الشاشة
+App URLs,App URLs,URL de aplicaciones,عناوين URL للتطبيقات
+Languages,Languages,Lenguas,اللغات
+Money Out Settings,Money Out Settings,Configuración de dinero fuera,المال خارج الإعدادات
+Verification Center,Verification Center,Centro de verificación,مركز التحقق
+Setup Email,Setup Email,Correo electrónico de configuración,إعداد البريد الإلكتروني
+Email Method,Email Method,Método de correo electrónico,طريقة البريد الإلكتروني
+Setup KYC,Setup KYC,Configurar KYC,إعداد KYC
+Setup Web Content,Setup Web Content,Configurar contenido web,إعداد محتوى الويب
+Setup Section,Setup Section,Sección de configuración,قسم الإعداد
+Banner Section,Banner Section,Banner,قسم لافتة
+Brand Section,Brand Section,Sección de la marca,قسم العلامة التجارية
+About Us Section,About Us Section,Sobre la sección de nosotros,عن القسم
+Services Section,Services Section,Sección de servicios,قسم الخدمات
+Feature Section,Feature Section,Sección de características,ميزة قسم
+Clients Feedback,Clients Feedback,Comentarios de los clientes,ملاحظات العملاء
+Announcements,Announcements,Anuncios,الإعلانات
+How It Work Section,How It Work Section,Cómo funciona la sección,كيف يعمل قسمه
+About Page Section,About Page Section,Acerca de la sección de la página,حول قسم الصفحة
+Contact US Section,Contact US Section,Contáctanos la sección,اتصل بنا
+Footer Section,Footer Section,Sección de pies,قسم تذييل
+Setup Pages,Setup Pages,Configuración de páginas,صفحات الإعداد
+Extensions,Extensions,Extensiones,الامتدادات
+Usefull Links,Usefull Links,Enlaces útiles,روابط مفيدة
+Payment Methods,Payment Methods,Métodos de pago,طرق الدفع
+Automatic,Automatic,Automático,تلقائي
+Manual,Manual,Manual,يدوي
+Money Out,Money Out,Apagarse,لم يبقى اي من المال
+Notification,Notification,Notificación,إشعار
+Push Notification,Push Notification,Notificación de inserción,إشعار دفع
+Setup Notification,Setup Notification,Notificación de configuración,إشعار الإعداد
+Send Notification,Send Notification,Enviar notificación,إرسال إشعار
+Bonus,Bonus,Prima,علاوة
+GDPR Cookie,GDPR Cookie,Galleta GDPR,ملف تعريف الارتباط الناتج المحلي الإجمالي
+Server Info,Server Info,Información del servidor,معلومات الخادم
+Clear Cache,Clear Cache,Limpiar cache,مسح ذاكرة التخزين المؤقت
+Total Add Money Request,Total Add Money Request,Solicitud total de dinero Agregar,إجمالي إضافة طلب المال
+Add Money Balance,Add Money Balance,Agregar saldo de dinero,أضف رصيد الأموال
+Money Out Request,Money Out Request,Solicitud de dinero fuera,طلب المال
+Money Out Balance,Money Out Balance,Balance de dinero fuera,المال الرصيد
+User Active Tickets,User Active Tickets,Tickets activos del usuario,التذاكر النشطة للمستخدم
+Total Users,Total Users,Usuarios totales,إجمالي المستخدمين
+Total User Invest,Total User Invest,Investigación de usuario total,إجمالي مستخدم المستخدم
+Users Total Profit,Users Total Profit,Los usuarios de ganancias totales,إجمالي الربح للمستخدمين
+Monthly Add Money Chart,Monthly Add Money Chart,Gráfico mensual de dinero Agregar,شهري إضافة الرسم البياني المال
+Revenue Chart,Revenue Chart,Tabla de ingresos,مخطط الإيرادات
+Yearly Investment Analytics,Yearly Investment Analytics,Análisis anual de inversiones,تحليلات الاستثمار السنوية
+User Analytics,User Analytics,Análisis de usuarios,تحليلات المستخدم
+Growth,Growth,Crecimiento,نمو
+Latest Add Money,Latest Add Money,Último agregar dinero,أحدث إضافة المال
+Download App,Download App,Descargar aplicación,تحميل التطبيق
+Login,Login,Acceso,تسجيل الدخول
+Contact,Contact,Contacto,اتصال
+Announcement,Announcement,Anuncio,إعلان
+Plan,Plan,Plan,يخطط
+About,About,Acerca de,عن
+Stay connected with us for regular updates,Stay connected with us for regular updates,Mantente conectado con nosotros para actualizaciones regulares,ابق على اتصال معنا للحصول على تحديثات منتظمة
+Contact Us,Contact Us,Contáctenos,اتصل بنا
+Layout Mode,Layout Mode,Modo de diseño,وضع التصميم
+Topbar Color,Topbar Color,Color topbar,لون الشفر
+Dark Mode,Dark Mode,Modo oscuro,الوضع المظلم
+Light Mode,Light Mode,Modo de luz,وضع الضوء
+Sidebar Color,Sidebar Color,Color de la barra lateral,لون الشريط الجانبي
+Min Sidebar Color,Min Sidebar Color,Min Color de la barra lateral,لون الشريط الجانبي
+Direction,Direction,Dirección,اتجاه
+RTL Support,RTL Support,Soporte RTL,دعم RTL
+Find,Find,Encontrar,يجد
+Faq,Faq,Preguntas más frecuentes,التعليمات
+Web Journal,Web Journal,Diario web,مجلة الويب
+Select Branch,Select Branch,Rama seleccionada,حدد فرع
+Select Department,Select Department,Departamento seleccionado,حدد قسم
+Doctor Name,Doctor Name,Nombre de doctor,اسم الطبيب
+Search,Search,Buscar,يبحث
+Find a Doctor,Find a Doctor,Encuentra un médico,اعثر على طبيب
+Doctor List,Doctor List,Lista de doctor,قائمة الأطباء
+Investigation,Investigation,Investigación,تحقيق
+Home Service,Home Service,Servicio a domicilio,الخدمة المنزلية
+Health Package,Health Package,Paquete de salud,حزمة الصحة
+Branches,Branches,Sucursales,الفروع
+Step,Step,Paso,خطوة
+top,top,arriba,قمة
+Appointment Preview,Appointment Preview,Vista previa de la cita,معاينة الموعد
+Subscribe,Subscribe,Suscribir,يشترك
+Created by,Created by,Creado por,انشأ من قبل
+View More,View More,Ver más,عرض المزيد
+Congratulations! Appointment Booking Confirmed Successfully.,Congratulations! Appointment Booking Confirmed Successfully.,¡Felicidades! La reserva de citas confirmada con éxito.,تهانينا! أكد حجز المواعيد بنجاح.
+Booking Confirm.,Booking Confirm.,Reserva confirmar.,تأكيد الحجز.
+Mobile,Mobile,Móvil,متحرك
+Already Confirmed,Already Confirmed,Ya confirmado,أكد بالفعل
+Confirm Appointment,Confirm Appointment,Confirmar la cita,تأكيد الموعد
+Log in and Stay Connected,Log in and Stay Connected,Inicie sesión y manténgase conectado,تسجيل الدخول والبقاء على اتصال
+"Log in and Stay Connected Our secure login process ensures the confidentiality of your information. Log in today and stay connected to your finances, anytime and anywhere.","Log in and Stay Connected Our secure login process ensures the confidentiality of your information. Log in today and stay connected to your finances, anytime and anywhere.","Inicie sesión y manténgase conectado nuestro proceso de inicio de sesión seguro garantiza la confidencialidad de su información. Inicie sesión hoy y manténgase conectado con sus finanzas, en cualquier momento y en cualquier lugar.",قم بتسجيل الدخول والبقاء متصلاً بعملية تسجيل الدخول الآمنة لدينا يضمن سرية معلوماتك. قم بتسجيل الدخول اليوم والبقاء على اتصال بأموالك ، في أي وقت وفي أي مكان.
+Login Now,Login Now,Inicia sesión ahora,تسجيل الدخول الآن
+Don't Have An Account,Don't Have An Account,No tengo una cuenta,ليس لديك حساب
+Register Now,Register Now,Regístrate ahora,سجل الان
+Register for an Account Today,Register for an Account Today,Regístrese para una cuenta hoy,سجل للحصول على حساب اليوم
+"Become a part of our community by registering for an account today. Enjoy a range of benefits and features tailored to meet your needs. Our registration page makes it easy to create your account, providing a seamless and user-friendly experience.","Become a part of our community by registering for an account today. Enjoy a range of benefits and features tailored to meet your needs. Our registration page makes it easy to create your account, providing a seamless and user-friendly experience.","Convierta en parte de nuestra comunidad registrándose para una cuenta hoy. Disfrute de una variedad de beneficios y características diseñadas para satisfacer sus necesidades. Nuestra página de registro facilita la creación de su cuenta, proporcionando una experiencia perfecta y fácil de usar.",كن جزءًا من مجتمعنا من خلال التسجيل لحساب اليوم. استمتع بمجموعة من الفوائد والميزات المصممة لتلبية احتياجاتك. تجعل صفحة التسجيل الخاصة بنا من السهل إنشاء حسابك ، مما يوفر تجربة سلسة وسهلة الاستخدام.
+I have agreed with,I have agreed with,He estado de acuerdo con,لقد وافقت مع
+Terms Of Use,Terms Of Use,Condiciones de uso,شروط الاستخدام
+Privacy Policy,Privacy Policy,política de privacidad,سياسة الخصوصية
+Already Have An Account?,Already Have An Account?,¿Ya tienes una cuenta?,هل لديك حساب؟
+Send OTP,Send OTP,Enviar OTP,إرسال OTP
+Reset Your Forgotten Password,Reset Your Forgotten Password,Restablece tu contraseña olvidada,أعد تعيين كلمة المرور المنسية
+Take control of your account by resetting your password. Our password recovery page guides you through the necessary steps to securely reset your password.,Take control of your account by resetting your password. Our password recovery page guides you through the necessary steps to securely reset your password.,Tome el control de su cuenta restableciendo su contraseña. Nuestra página de recuperación de contraseña lo guía a través de los pasos necesarios para restablecer de forma segura su contraseña.,تحكم في حسابك عن طريق إعادة تعيين كلمة المرور الخاصة بك. توجهك صفحة استرداد كلمة المرور الخاصة بنا من خلال الخطوات اللازمة لإعادة تعيين كلمة المرور الخاصة بك بشكل آمن.
+Please enter the code,Please enter the code,Ingrese el código,الرجاء إدخال الرمز
+We sent a 6-digit code to your email,We sent a 6-digit code to your email,Enviamos un código de 6 dígitos a su correo electrónico,أرسلنا رمز مكون من 6 أرقام إلى بريدك الإلكتروني
+Didn't get the code,Didn't get the code,No obtuve el código,لم تحصل على الرمز
+Set New Password,Set New Password,Establecer una nueva contraseña,اضبط كلمة مرور جديدة
+Book Now,Book Now,Reservar ahora,احجز الآن
+Doctor not found!,Doctor not found!,Doctor no encontrado!,لم يتم العثور على الطبيب!
+Qualifications,Qualifications,Calificaciones,مؤهلات
+Speciality,Speciality,Especialidad,تخصص
+Language Spoken,Language Spoken,Lenguaje hablado,اللغة المنطوقة
+Designation,Designation,Designación,تعيين
+Department Name,Department Name,Nombre de Departamento,اسم القسم
+Chamber,Chamber,Cámara,غرفة
+Off Day,Off Day,Día libre,خارج اليوم
+Floor Number,Floor Number,Numero de piso,رقم الدور
+Room Number,Room Number,Número de habitación,رقم الغرفة
+Branch Name,Branch Name,Nombre de rama,اسم الفرع
+Fees,Fees,Honorarios,مصاريف
+Schedule,Schedule,Cronograma,جدول
+Appointment Form,Appointment Form,Formulario de cita,نموذج الموعد
+Patient Name,Patient Name,Nombre del paciente,اسم المريض
+Age,Age,Edad,عمر
+Years,Years,Años,سنين
+Months,Months,Meses,شهور
+Type,Type,Tipo,يكتب
+Select Type,Select Type,Seleccione tipo,اختر صنف
+NEW,NEW,NUEVO,جديد
+REPORT,REPORT,INFORME,تقرير
+FOLLOWUP,FOLLOWUP,HACER UN SEGUIMIENTO,متابعة
+Select Gender,Select Gender,Seleccione género,حدد نوع الجنس
+MALE,MALE,MASCULINO,ذكر
+FEMALE,FEMALE,FEMENINO,أنثى
+OTHER,OTHER,OTRO,آخر
+Your Message,Your Message,Tu mensaje,رسالتك
+Write Here,Write Here,Escribe aquí,اكتب هنا
+Enter your age,Enter your age,Introduzca su edad,أدخل عمرك
+Address,Address,DIRECCIÓN,عنوان
+Recent Posts,Recent Posts,Mensajes recientes,المشاركات الاخيرة
+Showing,Showing,Demostración,تظهر
+results,results,resultados,نتائج
+Tags,Tags,Etiquetas,العلامات
+Share This Post,Share This Post,Compartir esta publicacion,شارك هذا المنشور
+Enter Email,Enter Email,Ingrese correo electrónico,أدخل البريد الإلكتروني
+Message,Message,Mensaje,رسالة
+Send Message,Send Message,Enviar mensaje,إرسال الرسالة
+Investigation not found,Investigation not found,Investigación no encontrada,التحقيق لم يتم العثور عليه
+SERVICE,SERVICE,SERVICIO,خدمة
+AT YOUR DOORSTEP,AT YOUR DOORSTEP,A tu puerta,على عتبة داركم
+"No more waiting rooms, no more long commutes, and no more hassle. With our service, you can now book a doctor appointment and have a qualified healthcare professional visit you at your preferred location and time","No more waiting rooms, no more long commutes, and no more hassle. With our service, you can now book a doctor appointment and have a qualified healthcare professional visit you at your preferred location and time","No más salas de espera, no más viajes largos, y no más problemas. Con nuestro servicio, ahora puede reservar una cita con el médico y hacer que un profesional de la salud calificado lo visite en su ubicación y hora preferentes.",لا مزيد من غرف الانتظار ، لا مزيد من التنقل الطويل ، ولا مزيد من المتاعب. مع خدمتنا ، يمكنك الآن حجز موعد الطبيب والحصول على محترف في الرعاية الصحية المؤهلة في موقعك ووقتك المفضل
+Health Package not found,Health Package not found,Paquete de salud no encontrado,لم يتم العثور على الحزمة الصحية
+Price,Price,Precio,سعر
+Branch not found,Branch not found,Rama no encontrada,الفرع لم يتم العثور عليه
+Profile Settings,Profile Settings,Configuración de perfil,إعدادات الملف الشخصي
+History,History,Historia,تاريخ
+Logout,Logout,Cerrar sesión,تسجيل خروج
+Current Password,Current Password,Contraseña actual,كلمة السر الحالية
+Change,Change,Cambiar,يتغير
+History List,History List,Lista de historia,قائمة التاريخ
+Dr. Name,Dr. Name,Dr. Nombre,دكتور اسم
+No data found!,No data found!,¡Datos no encontrados!,لاتوجد بيانات!
+Home Service History Details,Home Service History Details,Detalles del historial del servicio doméstico,تفاصيل تاريخ الخدمة المنزلية
+How can we help you?,How can we help you?,como podemos ayudarte?,كيف يمكننا مساعدتك؟
+Get Support,Get Support,Obtener apoyo,احصل على الدعم
+Doctor Information,Doctor Information,Información para el médico,معلومات الطبيب
+Booking Details,Booking Details,Detalles de la reserva,تفاصيل الحجز
+Schedule Information,Schedule Information,Programar información,الجدول الزمني للمعلومات
+Day,Day,Día,يوم
+From Time,From Time,De vez,من وقت
+To Time,To Time,Al tiempo,الى وقت
+Serial Number,Serial Number,Número de serie,رقم سري
+Serial,Serial,De serie,مسلسل
+Support Tickets,Support Tickets,Boletos de apoyo,تذاكر الدعم الفني
+Ticket ID,Ticket ID,Identificación de entradas,معرف التذاكر
+User,User,Usuario,مستخدم
+Subject,Subject,Sujeto,موضوع
+Last Reply,Last Reply,Última respuesta,الرد الأخير
+Add New Ticket,Add New Ticket,Agregar nuevo boleto,أضف تذكرة جديدة
+Something went wrong! Please try again.,Something went wrong! Please try again.,¡Algo salió mal! Inténtalo de nuevo.,هناك خطأ ما! حاول مرة اخرى.
+Oops!! Failed to upload attactment. Please try again.,Oops!! Failed to upload attactment. Please try again.,¡¡Ups!! No se pudo cargar la atención. Inténtalo de nuevo.,أُووبس!! فشلت في تحميل التوقيت. حاول مرة اخرى.
+Support ticket created successfully!,Support ticket created successfully!,¡Ticket de apoyo creado con éxito!,تذكرة دعم تم إنشاؤها بنجاح!
+Conversation,Conversation,Conversación,محادثة
+Support Details,Support Details,Detalles de soporte,تفاصيل الدعم
+Description,Description,Descripción,وصف
+Attachments,Attachments,Archivos adjuntos,المرفقات
+Write something,Write something,Escribe algo,أكتب شيئا
+Notification Not Found!,Notification Not Found!,¡Notificación no encontrada!,الإخطار لم يتم العثور عليه!
+Delete,Delete,Borrar,يمسح
+Enter First Name,Enter First Name,Ingrese el nombre,أدخل الاسم الأول
+Enter Last Name,Enter Last Name,Introduzca el apellido,إدخال اسم آخر
+Enter Number,Enter Number,Ingresar número,أدخل رقم
+Enter Subject,Enter Subject,Entrar en el sujeto,أدخل الموضوع
+You can resend the code after,You can resend the code after,Puede reenviar el código después,يمكنك إعادة تقديم الرمز بعد
+Please Enter your new password and get login access on your Dashboard.,Please Enter your new password and get login access on your Dashboard.,Ingrese su nueva contraseña y obtenga acceso de inicio de sesión en su tablero.,الرجاء إدخال كلمة المرور الجديدة والوصول إلى تسجيل الدخول على لوحة القيادة الخاصة بك.
+Password reset success. Please login with new password.,Password reset success. Please login with new password.,El éxito de restablecimiento de contraseña. Inicie sesión con una nueva contraseña.,إعادة تعيين كلمة المرور النجاح. يرجى تسجيل الدخول بكلمة مرور جديدة.
+These credentials do not match our records.,These credentials do not match our records.,Estas credenciales no coinciden con nuestros registros.,بيانات الاعتماد هذه لا تتطابق مع سجلاتنا.
+Are you sure to,Are you sure to,¿Estás seguro de,هل أنت متأكد من ذلك
+Are you sure to delete your account?,Are you sure to delete your account?,¿Seguro que eliminará su cuenta?,هل أنت متأكد من حذف حسابك؟
+If you do not think you will use,If you do not think you will use,Si no crees que usarás,إذا كنت لا تعتقد أنك ستستخدم
+"again and like your account deleted. Keep in mind you will not be able to reactivate your account or retrieve any of the content or information you have added. If you would still like your account deleted, click “Delete Account”.?","again and like your account deleted. Keep in mind you will not be able to reactivate your account or retrieve any of the content or information you have added. If you would still like your account deleted, click “Delete Account”.?","De nuevo y me gusta su cuenta eliminada. Tenga en cuenta que no podrá reactivar su cuenta o recuperar ninguno de los contenidos o información que haya agregado. Si aún desea que su cuenta se elimine, haga clic en ""Eliminar cuenta"".","مرة أخرى ومثل حسابك المحذوفة. ضع في اعتبارك أنك لن تتمكن من إعادة تنشيط حسابك أو استرداد أي من المحتوى أو المعلومات التي أضفتها. إذا كنت لا تزال تحب حذف حسابك ، فانقر فوق ""حذف الحساب"".؟"
+Close,Close,Cerca,يغلق
+Your account deleted successfully!,Your account deleted successfully!,¡Su cuenta se eliminó con éxito!,تم حذف حسابك بنجاح!
+Something went worng! Please try again.,Something went worng! Please try again.,¡Algo se fue! Inténtalo de nuevo.,ذهب شيء يرتديه! حاول مرة اخرى.
+Language switch to,Language switch to,Idioma cambia a,تبديل اللغة إلى
+The schedule field is required.,The schedule field is required.,Se requiere el campo de programación.,حقل الجدول مطلوب.
+The gender field is required.,The gender field is required.,Se requiere el campo de género.,حقل النوع الاجتماعي مطلوب.
+The email field is required.,The email field is required.,Se requiere el campo de correo electrónico.,حقل البريد الإلكتروني مطلوب.
+The type field is required.,The type field is required.,Se requiere el campo Tipo.,حقل النوع مطلوب.
+The age field is required.,The age field is required.,Se requiere el campo de edad.,حقل العمر مطلوب.
+Subscription successful!,Subscription successful!,Suscripción exitosa!,اشتراك ناجح!
+The name field is required.,The name field is required.,Se requiere el campo de nombre.,حقل الاسم مطلوب.
+The address field is required.,The address field is required.,Se requiere el campo de dirección.,حقل العنوان مطلوب.
+Contact Request successfully send!,Contact Request successfully send!,¡Contacto Solicitud de contactar con éxito!,طلب الاتصال بنجاح إرسال!
+The attachment field is required.,The attachment field is required.,Se requiere el campo de fijación.,حقل المرفق مطلوب.
+The subject field is required.,The subject field is required.,Se requiere el campo de sujeto.,حقل الموضوع مطلوب.
+The password field is required.,The password field is required.,Se requiere el campo de contraseña.,حقل كلمة المرور مطلوب.
+The current password field is required.,The current password field is required.,Se requiere el campo de contraseña actual.,حقل كلمة المرور الحالي مطلوب.
+The country field is required.,The country field is required.,Se requiere el campo del país.,حقل البلد مطلوب.
+The phone field is required.,The phone field is required.,Se requiere el campo del teléfono.,حقل الهاتف مطلوب.
+The password confirmation does not match.,The password confirmation does not match.,La confirmación de contraseña no coincide.,لا يتطابق تأكيد كلمة المرور.
+The firstname field is required.,The firstname field is required.,Se requiere el campo Nombre FirstName.,حقل الاسم الأول مطلوب.
+The lastname field is required.,The lastname field is required.,Se requiere el campo LastName.,حقل اسم LastName مطلوب.
+Please verify your mail address. Check your mail inbox to get verification code,Please verify your mail address. Check your mail inbox to get verification code,Verifique su dirección de correo. Verifique su bandeja de entrada de correo para obtener el código de verificación,يرجى التحقق من عنوان البريد الخاص بك. تحقق من صندوق البريد الخاص بك للحصول على رمز التحقق
+Mail Resend Success!,Mail Resend Success!,¡El correo de reenvío de correo!,إعادة إرسال البريد النجاح!
+Please fill out this field.,Please fill out this field.,Por favor rellene este campo.,الرجاء ملء هذه الخانة.
+Varification code sended to your email address.,Varification code sended to your email address.,Código de varificación enviado a su dirección de correo electrónico.,تم إرسال رمز التباين إلى عنوان بريدك الإلكتروني.
+Varification code resend success!,Varification code resend success!,¡El código de varificación reenvía el éxito!,رمز التباين إعادة تقديم النجاح!
+home Service History,Home Service History,Historial de servicios a domicilio,تاريخ الخدمة المنزلية
+remember Me,Remember Me,Acuérdate de mí,تذكرنى
+make Appointment,Make Appointment,Concertar cita,حدد موعدا
+filters,filters,filtros,المرشحات
+enter Patient Name,Enter Patient Name,Ingrese el nombre del paciente,أدخل اسم المريض
+enter Mobile Number,Enter Mobile Number,Ingrese el número de móvil,أدخل رقم الهاتف المحمول
+enter Age,Enter Age,Entrar en edad,دخول العمر
+appointment Success,"Your appointment has been set successfully, Thanks to use ADoctor.","Su cita se ha establecido con éxito, gracias a usar AdoCtor.",تم تعيين موعدك بنجاح ، وذلك بفضل استخدام Adoctor.
+testimonials,Testimonials,Testimonios,الشهادات - التوصيات
+schedule Available,Schedule Available,Programación disponible,الجدول الزمني المتاح
+appointment Type,Appointment Type,Tipo de cita,نوع الموعد
+Image Assets,Image Assets,Activos de imagen,أصول الصورة
+Hospital Departments,Hospital Departments,Departamentos de hospital,إدارات المستشفيات
+Hospital Branch,Hospital Branch,Rama del hospital,فرع المستشفى
+Doctors,Doctors,Doctores,الأطباء
+Symbol,Symbol,Símbolo,رمز
+Role,Role,Role,دور
+Edit Currency,Edit Currency,Editar moneda,تحرير العملة
+Country Flag,Country Flag,Bandera del país,علم الدولة
+Cancel,Cancel,Cancelar,يلغي
+FIAT,FIAT,FÍAT,فيات
+Successfully updated the information.,Successfully updated the information.,Actualizó con éxito la información.,تم تحديث المعلومات بنجاح.
+Add Department,Add Department,Agregar departamento,إضافة قسم
+Last Edit By,Last Edit By,Última edición por,التحرير الأخير بواسطة
+Add Hospital Department,Add Hospital Department,Agregar departamento de hospital,أضف قسم المستشفى
+Write Name,Write Name,Escribir nombre,اكتب الاسم
+Add,Add,Agregar,يضيف
+Edit Hospital Department,Edit Hospital Department,Editar departamento de hospital,تحرير قسم المستشفى
+The edit name field is required.,The edit name field is required.,Se requiere el campo Nombre de edición.,حقل اسم التحرير مطلوب.
+Hospital Department created successfully!,Hospital Department created successfully!,¡Departamento de hospital creado con éxito!,أنشأ قسم المستشفيات بنجاح!
+Hospital Department updated successfully!,Hospital Department updated successfully!,¡Departamento de hospital actualizado con éxito!,قسم المستشفى تم تحديثه بنجاح!
+Hospital Department Deleted Successfully!,Hospital Department Deleted Successfully!,Departamento de hospital eliminado con éxito!,تم حذف قسم المستشفيات بنجاح!
+Total Journals,Total Journals,Total de revistas,إجمالي المجلات
+Total Hospital Branch,Total Hospital Branch,Rama de Hospital Total,فرع المستشفى الكلي
+Total Hospital Departments,Total Hospital Departments,Departamentos de hospital totales,إجمالي إدارات المستشفيات
+Total Hospital Tests,Total Hospital Tests,Pruebas hospitalarias totales,اختبارات المستشفى الكلية
+Total Hospital Packages,Total Hospital Packages,Paquetes de hospital total,إجمالي حزم المستشفيات
+Total Doctors,Total Doctors,Total de los médicos,إجمالي الأطباء
+Doctor Appointments,Doctor Appointments,Citas con el médico,مواعيد الطبيب
+Total Home Service Bookings,Total Home Service Bookings,Reservas de servicio total en casa,حجوزات الخدمات المنزلية الكلية
+User Analytics Chart,User Analytics Chart,Gráfico de análisis de usuarios,مخطط تحليلات المستخدم
+Active,Active,Activo,نشيط
+Unverified,Unverified,Inconfirmado,لم يتم التحقق منه
+View User,View User,Ver usuario,عرض المستخدم
+Doctor Appointment Booking Chart,Doctor Appointment Booking Chart,Gráfico de reserva de citas para el médico,مخطط حجز مواعيد الطبيب
+View Doctor Appointment,View Doctor Appointment,Ver la cita con el médico,عرض موعد الطبيب
+Home Service Chart,Home Service Chart,Gráfico de servicio domiciliario,مخطط الخدمة المنزلية
+View Home Service,View Home Service,Ver servicio en casa,عرض الخدمة المنزلية
+Recent Appointments,Recent Appointments,Citas recientes,المواعيد الأخيرة
+Time,Time,Tiempo,وقت
+Add Branch,Add Branch,Agregar rama,أضف فرع
+Hospital Branch Create,Hospital Branch Create,Rama del hospital crea,فرع المستشفى خلق
+Branch Email,Branch Email,Ramificarse por correo electrónico,فرع البريد الإلكتروني
+Branch Web,Branch Web,Rama,فرع الويب
+Branch Description,Branch Description,Descripción de la rama,وصف الفرع
+Write Web,Write Web,Escribir web,اكتب الويب
+Write Description,Write Description,Escribir descripción,اكتب الوصف
+The departments field is required.,The departments field is required.,Se requiere el campo de los departamentos.,حقل الإدارات مطلوب.
+The description field is required.,The description field is required.,Se requiere el campo de descripción.,حقل الوصف مطلوب.
+The web field is required.,The web field is required.,Se requiere el campo web.,حقل الويب مطلوب.
+Hospital Branch created successfully!,Hospital Branch created successfully!,¡La sucursal del hospital creada con éxito!,خلق فرع المستشفى بنجاح!
+Hospital Branch Edit,Hospital Branch Edit,Edición de la sucursal del hospital,فرع المستشفى تحرير
+Hospital Branch updated successfully!,Hospital Branch updated successfully!,Branch del hospital actualizada con éxito!,تحديث فرع المستشفى بنجاح!
+Hospital Branch Deleted Successfully!,Hospital Branch Deleted Successfully!,Branch del hospital eliminada con éxito!,حذف فرع المستشفى بنجاح!
+Add Doctor,Add Doctor,Agregar doctor,أضف الطبيب
+Doctor Create,Doctor Create,Doctor Crear,خلق الطبيب
+Image,Image,Imagen,صورة
+Doctor Title,Doctor Title,Título de doctor,عنوان الطبيب
+Write Title,Write Title,Escribir título,اكتب العنوان
+Doctor Qualification,Doctor Qualification,Calificación del doctor,مؤهل الطبيب
+Write Qualification,Write Qualification,Calificación de escritura,اكتب المؤهل
+Doctor Speciality,Doctor Speciality,Especialidad de doctor,تخصص الطبيب
+Write Speciality,Write Speciality,Escribir especialidad,اكتب التخصص
+Add Language,Add Language,Agregar lenguaje,إضافة لغة
+Doctor Designation,Doctor Designation,Designación de doctor,تعيين الطبيب
+Write Designation,Write Designation,Designación de escritura,كتابة تعيين
+Doctor Contact,Doctor Contact,Contacto doctor,اتصال الطبيب
+Write Contact,Write Contact,Contacto de escritura,اكتب الاتصال
+Doctor Off Days,Doctor Off Days,Doctor Días,الطبيب بعيدا عن أيام
+Write Off Days,Write Off Days,Creditar días,شطب أيام
+Doctor Floor Number,Doctor Floor Number,Número de piso de doctor,رقم الطابق الطبيب
+Write Floor Number,Write Floor Number,Escribir el número de piso,اكتب رقم الطابق
+Doctor Room Number,Doctor Room Number,Número de sala de doctor,رقم غرفة الطبيب
+Write Room Number,Write Room Number,Número de sala de escritura,كتابة رقم الغرفة
+Doctor Address,Doctor Address,Dirección docente,عنوان الطبيب
+Write Address,Write Address,Escribir la dirección,كتابة العنوان
+Doctor Fees,Doctor Fees,Tarifas de doctor,رسوم الطبيب
+Write Fees,Write Fees,Escribir tarifas,كتابة الرسوم
+Patient,Patient,Paciente,مريض
+Max,Max,Máximo,الأعلى
+The max_patient.0 field is required.,The max_patient.0 field is required.,Se requiere el campo max_patient.0.,مطلوب حقل max_patient.0.
+The to_time.0 field is required.,The to_time.0 field is required.,Se requiere el campo To_Time.0.,حقل TO_TIME.0 مطلوب.
+The from_time.0 field is required.,The from_time.0 field is required.,Se requiere el campo From_time.0.,مطلوب حقل From_Time.0.
+The schedule day field is required.,The schedule day field is required.,Se requiere el campo del día del horario.,حقل يوم الجدول مطلوب.
+The off days field is required.,The off days field is required.,Se requiere el campo de días de salida.,مطلوب حقل أيام الإيقاف.
+The fees field is required.,The fees field is required.,Se requiere el campo de tarifas.,حقل الرسوم مطلوب.
+The branch field is required.,The branch field is required.,Se requiere el campo de la rama.,حقل الفرع مطلوب.
+The language field is required.,The language field is required.,Se requiere el campo del idioma.,حقل اللغة مطلوب.
+The designation field is required.,The designation field is required.,Se requiere el campo de designación.,حقل التعيين مطلوب.
+The contact field is required.,The contact field is required.,Se requiere el campo de contacto.,حقل الاتصال مطلوب.
+Select Day,Select Day,Día de selección,حدد اليوم
+Doctor Created Successfully!,Doctor Created Successfully!,Doctor creado con éxito!,خلق الطبيب بنجاح!
+Doctor Edit,Doctor Edit,Doctor Editar,دكتور تحرير
+Doctor Updated Successfully!,Doctor Updated Successfully!,Doctor actualizado con éxito!,تم تحديث الطبيب بنجاح!
+Doctor Deleted Successfully!,Doctor Deleted Successfully!,Doctor eliminado con éxito!,حذف الطبيب بنجاح!
+Investigations,Investigations,Investigaciones,التحقيقات
+Category,Category,Categoría,فئة
+Add Investigation,Add Investigation,Agregar investigación,إضافة التحقيق
+Test Name,Test Name,Nombre de la prueba,اسم الاختبار
+Regular Price,Regular Price,Precio regular,سعر عادي
+Write Price,Write Price,Escribir precio,كتابة السعر
+Offer Price,Offer Price,Precio de oferta,سعر العرض
+Write Offer Price,Write Offer Price,Escribir precio de oferta,اكتب سعر العرض
+Investigation created Successfully!,Investigation created Successfully!,¡Investigación creada con éxito!,تم إنشاء التحقيق بنجاح!
+Edit Investigation,Edit Investigation,Editar investigación,تحرير التحقيق
+Investigation status updated successfully!,Investigation status updated successfully!,Estado de investigación actualizado con éxito!,تم تحديث حالة التحقيق بنجاح!
+Investigation updated successfully!,Investigation updated successfully!,¡Investigación actualizada con éxito!,التحديث التحديث بنجاح!
+Investigation Deleted Successfully!,Investigation Deleted Successfully!,¡Investigación eliminada con éxito!,تم حذف التحقيق بنجاح!
+The price field is required.,The price field is required.,Se requiere el campo de precio.,حقل السعر مطلوب.
+Enable,Enable,Permitir,يُمكَِن
+Disable,Disable,Desactivar,إبطال
+Currency status updated successfully!,Currency status updated successfully!,Estado de divisas actualizado con éxito!,تم تحديث حالة العملة بنجاح!
+Hospital Department status updated successfully!,Hospital Department status updated successfully!,Estado del departamento del hospital actualizado con éxito!,حالة قسم المستشفى تم تحديثها بنجاح!
+Hospital Branch status updated successfully!,Hospital Branch status updated successfully!,Estado de la rama del hospital actualizado con éxito!,تم تحديث حالة فرع المستشفى بنجاح!
+Doctor status updated successfully!,Doctor status updated successfully!,Estado del médico actualizado con éxito!,تم تحديث حالة الطبيب بنجاح!
+Health Packages,Health Packages,Paquetes de salud,الحزم الصحية
+Add Health Package,Add Health Package,Agregar paquete de salud,إضافة حزمة الصحة
+Package Name,Package Name,Nombre del paquete,اسم الحزمة
+Package Title,Package Title,Título de paquete,عنوان الحزمة
+Hospital Package created successfully!,Hospital Package created successfully!,¡Paquete hospitalario creado con éxito!,حزمة المستشفى التي تم إنشاؤها بنجاح!
+Edit Health Package,Edit Health Package,Editar paquete de salud,تحرير حزمة الصحة
+Health Package updated successfully!,Health Package updated successfully!,Paquete de salud actualizado con éxito!,حزمة الصحة تحديث بنجاح!
+Hospital Package Deleted Successfully!,Hospital Package Deleted Successfully!,Paquete del hospital eliminado con éxito!,حزمة المستشفى تم حذفها بنجاح!
+The edit price field is required.,The edit price field is required.,Se requiere el campo de precio de edición.,حقل سعر التحرير مطلوب.
+Website Subscribers,Website Subscribers,Suscriptores del sitio web,مشتركي الموقع
+Send Mail to All,Send Mail to All,Enviar correo a todos,أرسل البريد إلى الجميع
+Send mail to all subscribers,Send mail to all subscribers,Enviar correo a todos los suscriptores,أرسل بريدًا إلى جميع المشتركين
+Details,Details,Detalles,تفاصيل
+Write Subject,Write Subject,Escribir sujeto,اكتب الموضوع
+The message field is required.,The message field is required.,Se requiere el campo de mensaje.,حقل الرسالة مطلوب.
+Send Email,Send Email,Enviar correo electrónico,ارسل بريد الكتروني
+Mail Send Failed! Please try again.,Mail Send Failed! Please try again.,Envíe el correo fallido! Inténtalo de nuevo.,فشل إرسال البريد! حاول مرة اخرى.
+Mail successfully sended,Mail successfully sended,Correo enviado con éxito,تم إرسال البريد بنجاح
+Reply,Reply,Responder,رد
+Created At,Created At,Creado en,أنشئت في
+Replyed,Replyed,Respondido,رد
+Not Replyed,Not Replyed,No respondido,لم ترد
+Send Reply,Send Reply,Enviar respuesta,إرسال الرد
+Reply sended successfully!,Reply sended successfully!,¡Respuesta enviada con éxito!,رد أرسل بنجاح!
+Appointments,Appointments,Equipo,تعيينات
+Patient Information,Patient Information,Información del paciente,معلومات المريض
+Patient Number,Patient Number,Número de paciente,رقم المريض
+User Details,User Details,Detalles de usuario,بيانات المستخدم
+User Overview,User Overview,Descripción general del usuario,نظرة عامة على المستخدم
+Login Logs,Login Logs,Iniciar sesión,سجلات تسجيل الدخول
+Login as Member,Login as Member,Iniciar sesión como miembro,تسجيل الدخول كعضو
+Email Logs,Email Logs,Registros de correo electrónico,سجلات البريد الإلكتروني
+Last Login,Last Login,Último acceso,آخر تسجيل دخول
+Information of User,Information of User,Información del usuario,معلومات المستخدم
+User Status,User Status,Estatus de usuario,حالة المستخدم
+2FA Verification,2FA Verification,Verificación de 2FA,2FA التحقق
+Verified,Verified,Verificado,تم التحقق
+Banned,Banned,Prohibido,محظور
+Phone Number,Phone Number,Número de teléfono,رقم التليفون
+Add Admin,Add Admin,Agregar administrador,إضافة المسؤول
+Admin Profile Image,Admin Profile Image,Imagen de perfil de administración,صورة ملف تعريف المسؤول
+Generate,Generate,Generar,يولد
+Select Role,Select Role,Rol de selección,حدد الدور
+The username field is required.,The username field is required.,Se requiere el campo de nombre de usuario.,حقل اسم المستخدم مطلوب.
+The role field is required.,The role field is required.,Se requiere el campo de roles.,حقل الدور مطلوب.
+Edit Admin,Edit Admin,Editar administrador,تحرير المسؤول
+New admin created successfully!,New admin created successfully!,¡Nuevo administrador creado con éxito!,تم إنشاء مسؤول جديد بنجاح!
+Permission Group,Permission Group,Grupo de permisos,مجموعة الإذن
+All Permissions,All Permissions,Todos los permisos,جميع الأذونات
+Permission Name,Permission Name,Nombre de permiso,اسم إذن
+Role Name,Role Name,Nombre de rol,اسم الدور
+Add New Permission,Add New Permission,Agregar nuevo permiso,أضف إذنًا جديدًا
+SL NO,SL NO,SI. NO,SL. لا
+Edit Permission,Edit Permission,Editar permiso,تحرير إذن
+Email To Admin,Email To Admin,Correo electrónico al administrador,البريد الإلكتروني إلى المسؤول
+Site Base Color,Site Base Color,Color base del sitio,لون قاعدة الموقع
+Site Name,Site Name,Nombre del sitio,اسم الموقع
+Site Title,Site Title,Título del sitio,عنوان الموقع
+OTP Expiration,OTP Expiration,Vencimiento de OTP,انتهاء صلاحية OTP
+Seconds,Seconds,Segundos,ثوان
+Activation Settings,Activation Settings,Configuración de activación,إعدادات التنشيط
+User Registration,User Registration,registro de usuario,تسجيل المستخدم
+Secure Password,Secure Password,Contraseña segura,كلمة مرور تأمين
+Agree Policy,Agree Policy,Política de acuerdo,توافق على السياسة
+Force SSL,Force SSL,Forzar SSL,قوة SSL
+Email Notification,Email Notification,Notificación de correo electrónico,إشعار البريد الإلكتروني
+Activated,Activated,Activado,مفعل
+Deactivated,Deactivated,Desactivado,إلغاء تنشيطه
+Basic settings status updated successfully!,Basic settings status updated successfully!,Estado de configuración básica actualizada correctamente!,تم تحديث حالة الإعدادات الأساسية بنجاح!
+Logo,Logo,Logo,شعار
+Favicon,Favicon,Favicón,فافيكون
+Light Version,Light Version,Version ligera,نسخة خفيفة
+Dark Version,Dark Version,Versión oscura,نسخة مظلمة
+Search Engine Optimization (SEO),Search Engine Optimization (SEO),Optimización de motores de búsqueda (SEO),تحسين محرك البحث (SEO)
+Thumbnail Image,Thumbnail Image,Imagen en miniatura,صورة مصغرة
+Social Title,Social Title,Título social,العنوان الاجتماعي
+Social Description,Social Description,Descripción social,الوصف الاجتماعي
+App Version,App Version,Version de aplicacion,نسخة التطبيق
+Splash screen updated successfully!,Splash screen updated successfully!,¡Pantalla de salpicaduras actualizada con éxito!,تم تحديث شاشة دفقة بنجاح!
+Title,Title,Título,عنوان
+Sub Title,Sub Title,Subtítulo,العنوان الفرعي
+Add New Screen,Add New Screen,Agregar nueva pantalla,أضف شاشة جديدة
+Edit Screen,Edit Screen,Pantalla de edición,تحرير الشاشة
+Onboard Screen Added Successfully!,Onboard Screen Added Successfully!,¡Pantalla a bordo agregada con éxito!,أضيفت الشاشة على متن الطائرة بنجاح!
+Onboard screen status updated successfully!.,Onboard screen status updated successfully!.,¡Estado de la pantalla a bordo actualizado correctamente!.,تم تحديث حالة الشاشة على متن الطائرة بنجاح!.
+Onboard screen information updated successfully!,Onboard screen information updated successfully!,Información de pantalla a bordo actualizada correctamente!,تم تحديث معلومات الشاشة على متن الطائرة بنجاح!
+The image field is required.,The image field is required.,Se requiere el campo de la imagen.,حقل الصورة مطلوب.
+Screen deleted successfully!,Screen deleted successfully!,¡Pantalla eliminada con éxito!,تم حذف الشاشة بنجاح!
+Android App URL,Android App URL,URL de la aplicación Android,عنوان URL لتطبيق Android
+iOS App URL,iOS App URL,URL de la aplicación iOS,عنوان URL لتطبيق iOS
+URL settings updated successfully!,URL settings updated successfully!,Configuración de URL actualizada con éxito!,تحديث إعدادات URL بنجاح!
+Import,Import,Importar,يستورد
+Download,Download,Descargar,تحميل
+Selectable,Selectable,Seleccionable,يمكن اختياره
+Language Name,Language Name,Nombre del lenguaje,اسم اللغة
+Language Code,Language Code,Código de lenguaje,رمز اللغة
+Language created successfully!,Language created successfully!,¡Lenguaje creado con éxito!,اللغة التي تم إنشاؤها بنجاح!
+Language deleted successfully!,Language deleted successfully!,Lenguaje eliminado con éxito!,تم حذف اللغة بنجاح!
+The code field is required.,The code field is required.,Se requiere el campo de código.,حقل الكود مطلوب.
+Edit Language,Edit Language,Editar lenguaje,تحرير اللغة
+Language updated successfully!,Language updated successfully!,¡Lenguaje actualizado con éxito!,تم تحديث اللغة بنجاح!
+Email Send Method,Email Send Method,Método de envío de correo electrónico,طريقة إرسال البريد الإلكتروني
+Send Mail,Send Mail,Enviar correo,ارسل بريد
+Host,Host,Anfitrión,يستضيف
+Port,Port,Puerto,ميناء
+Encryption,Encryption,Encriptación,التشفير
+Send Test Mail,Send Test Mail,Enviar correo de prueba,إرسال بريد الاختبار
+Send,Send,Enviar,يرسل
+Information updated successfully!,Information updated successfully!,Información actualizada con éxito!,تم تحديث المعلومات بنجاح!
+Email send successfully!,Email send successfully!,¡Envíe el correo electrónico con éxito!,إرسال البريد الإلكتروني بنجاح!
+Language File,Language File,Archivo de idiomas,ملف اللغة
+Heading,Heading,Título,عنوان
+Add Slider,Add Slider,Agregar control deslizante,أضف شريط التمرير
+Sub Heading,Sub Heading,Subtendente,العنوان الفرعي
+Section item added successfully!,Section item added successfully!,Artículo de sección agregado correctamente!,تم إضافة عنصر القسم بنجاح!
+Section item deleted successfully!,Section item deleted successfully!,Sección Artículo eliminado con éxito!,تم حذف عنصر القسم بنجاح!
+Edit Slider,Edit Slider,Editar control deslizante,تحرير شريط التمرير
+About Section,About Section,Acerca de la sección,حول القسم
+Section Title,Section Title,Sección de título,عنوان القسم
+Video Link,Video Link,Enlace de video,رابط الفيديو
+Counter Title,Counter Title,Contrario,عنوان العداد
+Counter Title Value,Counter Title Value,Valor del título de contador,عداد قيمة العنوان
+Section updated successfully!,Section updated successfully!,Sección actualizada con éxito!,تم تحديث القسم بنجاح!
+Add Item,Add Item,Añadir artículo,اضافة عنصر
+Faq Section,Faq Section,Sección de preguntas frecuentes,قسم الأسئلة الشائعة
+Add FAQ,Add FAQ,Agregar preguntas frecuentes,إضافة الأسئلة الشائعة
+Question,Question,Pregunta,سؤال
+Answer,Answer,Respuesta,إجابة
+Add New Faq,Add New Faq,Agregar nuevas preguntas frecuentes,أضف الأسئلة الشائعة الجديدة
+Edit Solution,Edit Solution,Solución de edición,تحرير الحل
+Add Testimonial,Add Testimonial,Agregar testimonio,إضافة شهادة
+Edit Testimonial,Edit Testimonial,Editar testimonio,تحرير شهادة
+Comment,Comment,Comentario,تعليق
+Ratings(Max 5),Ratings(Max 5),Calificaciones (máx 5),تقييمات (كحد أقصى 5)
+Testimonial Section,Testimonial Section,Sección de testimonios,قسم الشهادة
+The rating must not be greater than 5.,The rating must not be greater than 5.,La calificación no debe ser mayor de 5.,يجب ألا يكون التصنيف أكبر من 5.
+The en sub title field is required.,The en sub title field is required.,Se requiere el campo EN Sub Title.,حقل العنوان الفرعي مطلوب.
+The en heading field is required.,The en heading field is required.,Se requiere el campo de encabezado EN.,مطلوب حقل العنوان.
+The en sub heading field is required.,The en sub heading field is required.,Se requiere el campo de encabezado EN Sub.,مطلوب حقل العنوان الفرعي.
+The es title field is required.,The es title field is required.,Se requiere el campo de título de ES.,حقل عنوان ES مطلوب.
+The es heading field is required.,The es heading field is required.,Se requiere el campo de encabezado de ES.,حقل عنوان ES مطلوب.
+The es sub heading field is required.,The es sub heading field is required.,Se requiere el campo de encabezado ES Sub.,مطلوب حقل العنوان الفرعي ES.
+The ar title field is required.,The ar title field is required.,Se requiere el campo de título AR.,حقل عنوان AR مطلوب.
+The ar heading field is required.,The ar heading field is required.,Se requiere el campo de encabezado AR.,حقل عنوان AR مطلوب.
+The ar sub heading field is required.,The ar sub heading field is required.,Se requiere el campo de encabezado AR Sub.,حقل العنوان الفرعي AR مطلوب.
+The ar comment field is required.,The ar comment field is required.,Se requiere el campo de comentarios de AR.,حقل التعليق AR مطلوب.
+The es comment field is required.,The es comment field is required.,Se requiere el campo de comentarios de ES.,حقل التعليق ES مطلوب.
+The en comment field is required.,The en comment field is required.,Se requiere el campo de comentarios EN.,حقل التعليق EN مطلوب.
+The en answer field is required.,The en answer field is required.,Se requiere el campo de respuesta EN.,حقل الإجابة مطلوب.
+The en question field is required.,The en question field is required.,Se requiere el campo de la pregunta EN.,حقل أسئلة EN مطلوب.
+The es question field is required.,The es question field is required.,Se requiere el campo de la pregunta ES.,حقل أسئلة ES مطلوب.
+The es answer field is required.,The es answer field is required.,Se requiere el campo de respuesta ES.,حقل الإجابة ES مطلوب.
+The ar question field is required.,The ar question field is required.,Se requiere el campo de preguntas AR.,حقل أسئلة AR مطلوب.
+The ar answer field is required.,The ar answer field is required.,Se requiere el campo de respuesta AR.,حقل الإجابة AR مطلوب.
+The en answer edit field is required.,The en answer edit field is required.,Se requiere el campo de edición de respuesta EN.,مطلوب حقل تحرير الإجابة.
+The en question edit field is required.,The en question edit field is required.,Se requiere el campo de edición de la pregunta EN.,مطلوب حقل تحرير أسئلة EN.
+The es question edit field is required.,The es question edit field is required.,Se requiere el campo de edición de preguntas de ES.,حقل تحرير أسئلة ES مطلوب.
+The es aswer edit field is required.,The es aswer edit field is required.,Se requiere el campo de edición de ES ASWER.,مطلوب حقل تحرير ES ASWER.
+The ar question edit field is required.,The ar question edit field is required.,Se requiere el campo de edición de preguntas AR.,حقل تحرير أسئلة AR مطلوب.
+The ar answer edit field is required.,The ar answer edit field is required.,Se requiere el campo de edición de respuesta AR.,مطلوب حقل تحرير AR Ars.
+The en comment edit field is required.,The en comment edit field is required.,Se requiere el campo de edición de comentarios EN.,مطلوب حقل تحرير التعليق.
+The es comment edit field is required.,The es comment edit field is required.,Se requiere el campo de edición de comentarios de ES.,مطلوب حقل تحرير التعليق ES.
+The ar comment edit field is required.,The ar comment edit field is required.,Se requiere el campo de edición de comentarios AR.,حقل تحرير التعليق AR مطلوب.
+How Its Work Section,How Its Work Section,Cómo su sección de trabajo,كيف قسم عملها
+Add Step,Add Step,Agregar paso,أضف خطوة
+The ar item title field is required.,The ar item title field is required.,Se requiere el campo de título del artículo AR.,حقل عنوان العنصر AR مطلوب.
+The en item title field is required.,The en item title field is required.,Se requiere el campo de título de elemento ES.,حقل عنوان العنصر EN مطلوب.
+The es item title field is required.,The es item title field is required.,Se requiere el campo de título del artículo ES.,حقل عنوان العنصر ES مطلوب.
+The ar item title edit field is required.,The ar item title edit field is required.,Se requiere el campo de edición de título del elemento AR.,مطلوب حقل تحرير عنوان العنصر AR.
+The en item title edit field is required.,The en item title edit field is required.,Se requiere el campo de edición de título de elemento ES.,مطلوب حقل تحرير عنوان العنصر EN.
+The es item title edit field is required.,The es item title edit field is required.,Se requiere el campo de edición de título del elemento ES.,مطلوب حقل تحرير عنوان العنصر ES.
+Edit Items,Edit Items,Editar elementos,تعديل البنود
+Web Journal Section,Web Journal Section,Sección de diario web,قسم مجلة الويب
+Web Journal Dashboard,Web Journal Dashboard,Panel de revista web,لوحة تحكم مجلة الويب
+Add New Journal,Add New Journal,Agregar un nuevo diario,أضف مجلة جديدة
+Active Journals,Active Journals,Revistas activas,المجلات النشطة
+Deactive Journals,Deactive Journals,Diarios desactivos,المجلات اللطيفة
+New Journal Create,New Journal Create,Nuevo diario crea,مجلة جديدة إنشاء
+Icon,Icon,Icono,أيقونة
+Journal created successfully!,Journal created successfully!,Revista creada con éxito!,تم إنشاء مجلة بنجاح!
+Journal Edit Page,Journal Edit Page,Página de edición de diario,مجلة تحرير صفحة
+Journal Data Updated Successfully.,Journal Data Updated Successfully.,Datos de revista actualizados con éxito.,تم تحديث بيانات المجلة بنجاح.
+Journal deleted successfully!,Journal deleted successfully!,Journal eliminado con éxito!,تم حذف المجلة بنجاح!
+The en description field is required.,The en description field is required.,Se requiere el campo de descripción EN.,حقل الوصف EN مطلوب.
+The es description field is required.,The es description field is required.,Se requiere el campo de descripción de ES.,حقل وصف ES مطلوب.
+The ar description field is required.,The ar description field is required.,Se requiere el campo de descripción AR.,حقل وصف AR مطلوب.
+The en icon field is required.,The en icon field is required.,Se requiere el campo EN icon.,مطلوب حقل الأيقونة.
+The es icon field is required.,The es icon field is required.,Se requiere el campo de icono ES.,حقل أيقونة ES مطلوب.
+The ar icon field is required.,The ar icon field is required.,Se requiere el campo de icono AR.,مطلوب حقل أيقونة AR.
+Communication,Communication,Comunicación,تواصل
+Communication Icon,Communication Icon,Icono de comunicación,أيقونة الاتصال
+Contact Info,Contact Info,Datos de contacto,معلومات الاتصال
+Link,Link,Enlace,وصلة
+Social Links,Social Links,vínculos sociales,روابط اجتماعية
+News Letter Section,News Letter Section,Sección de la carta de noticias,قسم الرسائل الإخبارية
+Contact Section,Contact Section,Sección de contacto,قسم الاتصال
+Page Name,Page Name,Nombre de la página,اسم الصفحة
+Update Extension,Update Extension,Extensión de actualización,تمديد تحديث
+Instructions,Instructions,Instrucciones,تعليمات
+Slug,Slug,Babosa,سبيكة
+Action,Action,Acción,فعل
+Browser Push Notification Configuration,Browser Push Notification Configuration,Configuración de notificación de push del navegador,تكوين إشعار دفع المتصفح
+Method,Method,Método,طريقة
+Instance ID,Instance ID,ID de instancia,معرف مثيل
+Primary key,Primary key,Clave primaria,المفتاح الأساسي
+Broadcasting/ Internal Notification Configuration,Broadcasting/ Internal Notification Configuration,Configuración de transmisión/ notificación interna,تكوين الإذاعة/ الإخطار الداخلي
+APP ID,APP ID,ID de aplicación,معرف التطبيق
+Secret key,Secret key,Llave secreta,المفتاح السري
+Cluster,Cluster,Grupo,تَجَمَّع
+Broadcast configuration updated successfully!,Broadcast configuration updated successfully!,¡Configuración de transmisión actualizada con éxito!,تم تحديث تكوين البث بنجاح!
+Push notification configuration updated successfully!,Push notification configuration updated successfully!,¡Push Notification Configuration actualizada con éxito!,دفع تكوين إشعار تم تحديثه بنجاح!
+Edit Usefull Link,Edit Usefull Link,Editar enlace útil,تحرير رابط مفيد
+Usefull link updated successfully!,Usefull link updated successfully!,¡Enlace útil actualizado con éxito!,رابط مفيد تم تحديثه بنجاح!
+Add Link,Add Link,Añadir enlace,إضافة رابط
+Content,Content,Contenido,محتوى
+Usefull link deleted successfully!,Usefull link deleted successfully!,¡Enlace útil eliminado con éxito!,رابط مفيد تم حذفه بنجاح!
+Usefull link added successfully!,Usefull link added successfully!,¡Enlace útil agregado con éxito!,رابط مفيدة أضيفت بنجاح!
+Use for make page link (URL),Use for make page link (URL),Usar para hacer el enlace de página (URL),استخدم لجعل رابط الصفحة (URL)
+The en content field is required.,The en content field is required.,Se requiere el campo de contenido EN.,حقل المحتوى EN مطلوب.
+The es content field is required.,The es content field is required.,Se requiere el campo de contenido de ES.,حقل محتوى ES مطلوب.
+The ar content field is required.,The ar content field is required.,Se requiere el campo de contenido AR.,حقل محتوى AR مطلوب.
+The slug field is required.,The slug field is required.,Se requiere el campo de la babosa.,حقل الرخوة مطلوب.
+Notification Body,Notification Body,Cuerpo de notificación,هيئة الإخطار
+Latest Notifications,Latest Notifications,Últimas notificaciones,أحدث الإخطارات
+The body field is required.,The body field is required.,Se requiere el campo del cuerpo.,حقل الجسم مطلوب.
+Body,Body,Cuerpo,جسم
+Policy Link,Policy Link,Enlace de política,رابط السياسة
+Cookie information updated successfully!,Cookie information updated successfully!,¡Información de cookies actualizada con éxito!,تم تحديث معلومات ملفات تعريف الارتباط بنجاح!
+Server Information,Server Information,información del servidor,معلومات الخادم
+Version,Version,Versión,إصدار
+Timezone,Timezone,Zona horaria,وحدة زمنية
+App Environment,App Environment,Entorno de aplicaciones,بيئة التطبيق
+App Debug,App Debug,Depurar la aplicación,تصحيح أخطاء التطبيق
+App Mode,App Mode,Modo de aplicación,وضع التطبيق
+Database Connection,Database Connection,Conexión de base de datos,اتصال قاعدة البيانات
+Database Host,Database Host,Host de base de datos,مضيف قاعدة البيانات
+Database Port,Database Port,Puerto de base de datos,منفذ قاعدة البيانات
+Database Name,Database Name,Nombre de la base de datos,اسم قاعدة البيانات
+Database Username,Database Username,Nombre de usuario de la base de datos,قاعدة بيانات قاعدة البيانات
+PHP Version,PHP Version,Versión php,إصدار PHP
+Laravel Version,Laravel Version,Versión de Laravel,نسخة لارافيل
+Server Software,Server Software,Software de servidor,برنامج الخادم
+Server IP Address,Server IP Address,Dirección IP del servidor,عنوان IP الخادم
+Server Protocol,Server Protocol,Protocolo de servidor,بروتوكول الخادم
+Developed by,Developed by,Desarrollado por,طورت بواسطة
+Appdevs,Appdevs,Appdevs,appdevs
+Cache Clear Successfully!,Cache Clear Successfully!,"¡Cache, claro con éxito!",ذاكرة التخزين المؤقت واضح بنجاح!
+Admin Profile,Admin Profile,Perfil de administración,ملف تعريف المسؤول
+Profile Image,Profile Image,Imagen de perfil,صورة الملف الشخصي
+Zip/Postal,Zip/Postal,Código postal,الرمز البريدي
+Profile Information Updated Successfully!,Profile Information Updated Successfully!,¡Información de perfil actualizada con éxito!,معلومات الملف الشخصي تحديث بنجاح!
+Save & Change,Save & Change,Guardar cambios,حفظ وتغيير
+search Here,Search Here,Busca aquí,ابحث هنا
+Prescription,Prescription,Prescripción,روشتة
+Send Prescription,Send Prescription,Enviar receta,أرسل وصفة طبية
+pdf,pdf,pdf,بي دي إف
+Payment Method,Payment Method,Método de pago,طريقة الدفع او السداد
+Automatic Payment Method,Automatic Payment Method,Método de pago automático,طريقة الدفع التلقائي
+Gateway,Gateway,Puerta,بوابة
+Supported Currency,Supported Currency,Moneda compatible,العملة المدعومة
+Enabled Currency,Enabled Currency,Moneda habilitada,عملة ممكّنة
+Gateway Image,Gateway Image,Imagen de puerta de enlace,بوابة صورة
+Add Automatic Gateway,Add Automatic Gateway,Agregar puerta de enlace automática,إضافة بوابة تلقائية
+Gateway Name,Gateway Name,Nombre de la puerta de enlace,اسم البوابة
+Gateway Title,Gateway Title,Título de puerta de enlace,عنوان البوابة
+Supported Currencies,Supported Currencies,Monedas compatibles,العملات المدعومة
+Generate Fields,Generate Fields,Generar campos,توليد الحقول
+Value,Value,Valor,قيمة
+Update Gateway,Update Gateway,Actualización de la puerta de enlace,تحديث بوابة
+Crypto,Crypto,Cripto,تشفير
+Gateway Environment,Gateway Environment,Entorno de puerta de enlace,بيئة بوابة
+Production,Production,Producción,إنتاج
+Sandbox,Sandbox,Salvadera,صندوق الرمل
+Crypto Assets,Crypto Assets,Activos criptográficos,أصول التشفير
+Global Setting for,Global Setting for,Escenario global para,الإعداد العالمي ل
+in bellow,in bellow,a la derecha,في دار العالي
+Total Supported Currency,Total Supported Currency,Moneda total compatible,إجمالي العملة المدعومة
+Amount Limit,Amount Limit,Límite de cantidad,حد المبلغ
+Minimum,Minimum,Mínimo,الحد الأدنى
+Maximum,Maximum,Máximo,أقصى
+Charge,Charge,Cargar,تكلفة
+Fixed,Fixed,Fijado,مُثَبَّت
+Percent,Percent,Por ciento,نسبه مئويه
+The gateway name has already been taken.,The gateway name has already been taken.,El nombre de la puerta de entrada ya ha sido tomado.,تم بالفعل أخذ اسم البوابة.
+Payment gateway added successfully!,Payment gateway added successfully!,¡PAGO GIERTWAY agregado con éxito!,وأضاف بوابة الدفع بنجاح!
+Payment gateway status updated successfully!,Payment gateway status updated successfully!,Estado de la pasarela de pago actualizado correctamente!,تم تحديث حالة بوابة الدفع بنجاح!
+Image upload failed! Please try again.,Image upload failed! Please try again.,¡Falló la carga de imagen! Inténtalo de nuevo.,فشل تحميل الصورة! حاول مرة اخرى.
+Payment gateway updated successfully!,Payment gateway updated successfully!,¡Pase de pasar por la pasarela actualizada con éxito!,تم تحديث بوابة الدفع بنجاح!
+Payment gateway deleted successfully!,Payment gateway deleted successfully!,¡Pague pasarela eliminada con éxito!,تم حذف بوابة الدفع بنجاح!
+Automatic Payment Method Edit,Automatic Payment Method Edit,Método de pago automático Editar,تحرير طريقة الدفع التلقائي
+Appointment Booking Charges,Appointment Booking Charges,Cargos de reserva de citas,رسوم حجز المواعيد
+Fixed Charge,Fixed Charge,Cargo fijo,تهمة ثابتة
+Percent Charge,Percent Charge,Porcentaje de cargo,تكلفة في المئة
+Charge Updated Successfully!,Charge Updated Successfully!,¡Cargo actualizado con éxito!,تم تحديث الرسوم بنجاح!
+Useful Links,Useful Links,Enlaces útiles,روابط مفيدة
+All,All,Todo,الجميع
+Sender,Sender,Remitente,مرسل
+Hospital Package status updated successfully!,Hospital Package status updated successfully!,Estado del paquete del hospital actualizado con éxito!,حالة حزمة المستشفى تم تحديثها بنجاح!
+Are you sure to remove,Are you sure to remove,¿Estás seguro de eliminar,هل أنت متأكد من إزالته
+Admin Roles,Admin Roles,Roles de administración,أدوار المشرف
+All Admin Roles,All Admin Roles,Todos los roles de administración,جميع أدوار المشرف
+Asign Admin,Asign Admin,Asignar administrador,تعيين المشرف
+Add New Role,Add New Role,Agregar un nuevo rol,أضف دورًا جديدًا
+Edit Role,Edit Role,Rol de edición,تحرير الدور
+Are you sure to delete this role?,Are you sure to delete this role?,¿Estás seguro de eliminar este papel?,هل أنت متأكد من حذف هذا الدور؟
+Admin information updated successfully!,Admin information updated successfully!,Información de administración actualizada con éxito!,معلومات المسؤول تحديث بنجاح!
+Admin status updated successfully!,Admin status updated successfully!,Estado de administrador actualizado con éxito!,تم تحديث حالة المسؤول بنجاح!
+Admin role created successfully!,Admin role created successfully!,¡Rol de administración creado con éxito!,تم إنشاء دور المسؤول بنجاح!
+Admin role updated successfully!,Admin role updated successfully!,¡Rol de administración actualizado con éxito!,تم تحديث دور المسؤول بنجاح!
+Admin role deleted successfully!,Admin role deleted successfully!,¡Rol de administración eliminado con éxito!,تم حذف دور المسؤول بنجاح!
+Type Here,Type Here,Escriba aquí,أكتب هنا
+Choose One,Choose One,Elige uno,اختر واحدة
+Are you sure to delete this permission? It will also delete all permissions against this role.,Are you sure to delete this permission? It will also delete all permissions against this role.,¿Estás seguro de eliminar este permiso? También eliminará todos los permisos contra este papel.,هل أنت متأكد من حذف هذا الإذن؟ كما ستحذف جميع الأذونات ضد هذا الدور.
+Permission created successfully!,Permission created successfully!,¡Permiso creado con éxito!,إذن تم إنشاؤه بنجاح!
+Permission updated successfully!,Permission updated successfully!,¡Permiso actualizado con éxito!,تم تحديث إذن بنجاح!
+Permission deleted successfully!,Permission deleted successfully!,¡Permiso eliminado con éxito!,تم حذف إذن بنجاح!
+Web Version,Web Version,Versión web,إصدار الويب
+Login Section,Login Section,Sección de inicio de sesión,قسم تسجيل الدخول
+Register Section,Register Section,Sección de registro,قسم التسجيل
+Payable Amount,Payable Amount,Cantidad a pagar,مبلغ مستحق الدفع
+Select Payment Method,Select Payment Method,Seleccionar método de pago,اختار طريقة الدفع
+Cash Payment,Cash Payment,Pago en efectivo,دفع نقدا
+Online Payment,Online Payment,Pago en línea,الدفع الالكتروني
+Language switch successfully!,Language switch successfully!,¡Cambio de idioma con éxito!,تبديل اللغة بنجاح!
+Setup Page status updated successfully!,Setup Page status updated successfully!,Estado de la página de configuración actualizado correctamente!,تم تحديث حالة صفحة الإعداد بنجاح!
+Select City,Select City,Ciudad selecta,اختر مدينة
+Select State,Select State,Seleccione estado,اختر ولايه
+Patient Email,Patient Email,Correo electrónico del paciente,بريد إلكتروني للمريض
+Select Users,Select Users,Seleccionar usuarios,حدد المستخدمين
+Select Timezone,Select Timezone,Selecciona la zona horaria,اختر المجال الزمني
+Password Change,Password Change,Cambio de contraseña,تغيير كلمة السر
+No new notification found!,No new notification found!,¡No se encontró una nueva notificación!,لم يتم العثور على إشعار جديد!
+Pending Ticket,Pending Ticket,Boleto pendiente,تذكرة معلقة
+Active Ticket,Active Ticket,Boleto activo,تذكرة نشطة
+Solved Ticket,Solved Ticket,Boleto resuelto,تذكرة حل
+All Ticket,All Ticket,Todo el boleto,كل التذاكر
+Pending Tickets,Pending Tickets,Boletos pendientes,تذاكر معلقة
+Active Tickets,Active Tickets,Boletos activos,تذاكر نشطة
+Solved Tickets,Solved Tickets,Boletos resueltos,حل التذاكر
+All Tickets,All Tickets,Todas las entradas,جميع التذاكر
+View All,View All,Ver todo,عرض الكل
+Mark as Solved,Mark as Solved,Marca como se resuelve,علامة كما تم حلها
+Are you sure to mark as solved (Token:,Are you sure to mark as solved (Token:,¿Estás seguro de marcar como resuelto (Token:,هل أنت متأكد من أن تحل كما تم حلها (الرمز المميز:
+Because it's not reversible.,Because it's not reversible.,Porque no es reversible.,لأنه غير قابل للعكس.
+"This ticket is solved, you can't send message right now.","This ticket is solved, you can't send message right now.","Este boleto está resuelto, no puede enviar un mensaje en este momento.",تم حل هذه التذكرة ، لا يمكنك إرسال رسالة الآن.
+Select Language,Select Language,Seleccione el idioma,اختار اللغة
+Paypal,Paypal,Paypal,باي بال
+Stripe,Stripe,Raya,شريط
+Flutterwave,Flutterwave,Onda de aleteo,موجة الرفرفة
+SSLCommerz,SSLCommerz,SSL Comercial,إس إس إل كوميرز
+Perfect Money,Perfect Money,dinero perfecto,مال مناسب
+Razorpay,Razorpay,Razonpay,رازورباي
+CoinGate,CoinGate,Coingado,كينغات
+Support Chat,Support Chat,Chat de apoyo,دعم الدردشة

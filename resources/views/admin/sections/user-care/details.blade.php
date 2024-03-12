@@ -114,7 +114,7 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 form-group">
                         <label>{{ __("Country") }}</label>
-                        <select name="country" class="form--control select2-auto-tokenize country-select" data-placeholder="Select Country" data-old="{{ old('country',$user->address->country ?? "") }}"></select>
+                        <select name="country" class="form--control select2-auto-tokenize country-select" data-placeholder={{ __("Select Country") }} data-old="{{ old('country',$user->address->country ?? "") }}"></select>
                     </div>
                     <div class="col-xl-6 col-lg-6 form-group">
                         <label>{{ __("Phone Number") }}</label>

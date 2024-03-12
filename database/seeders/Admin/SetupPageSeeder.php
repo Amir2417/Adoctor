@@ -16,18 +16,15 @@ class SetupPageSeeder extends Seeder
      */
     public function run()
     {
-        $pages =  ["Home" => "/","Find" => "/find-doctors","About" => "/about","Faq" => "/faq","Web Journal" => "journals","Contact" => "/contact"];
-        $data = [];
-        foreach($pages as $item => $url) {
-            $data[] = [
-                'slug'          => Str::slug($item),
-                'title'         => $item,
-                'url'           => $url,
-                'last_edit_by'  => 1,
-                'created_at'    => now(),
-            ];
-        }   
+        $setup_pages = array(
+            array('slug' => 'home','title' => 'Home','url' => '/','last_edit_by' => '1','status' => '1','created_at' => '2024-03-12 04:14:08','updated_at' => '2024-03-12 04:15:43'),
+            array('slug' => 'find','title' => 'Find','url' => '/find-doctors','last_edit_by' => '1','status' => '1','created_at' => '2024-03-12 04:14:08','updated_at' => NULL),
+            array('slug' => 'about','title' => 'About','url' => '/about','last_edit_by' => '1','status' => '1','created_at' => '2024-03-12 04:14:08','updated_at' => NULL),
+            array('slug' => 'faq','title' => 'Faq','url' => '/faq','last_edit_by' => '1','status' => '1','created_at' => '2024-03-12 04:14:08','updated_at' => NULL),
+            array('slug' => 'web-journal','title' => 'Web Journal','url' => 'journals','last_edit_by' => '1','status' => '1','created_at' => '2024-03-12 04:14:08','updated_at' => NULL),
+            array('slug' => 'contact','title' => 'Contact','url' => '/contact','last_edit_by' => '1','status' => '1','created_at' => '2024-03-12 04:14:08','updated_at' => NULL)
+        );
 
-        SetupPage::insert($data);
+        SetupPage::insert($setup_pages);
     }
 }

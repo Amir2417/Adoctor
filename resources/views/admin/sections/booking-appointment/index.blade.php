@@ -39,7 +39,6 @@
                             <th>{{ __("Patient Name") }}</th>
                             <th>{{ __("Email") }}</th>
                             <th>{{ __("Doctor Name") }}</th>
-                            <th>{{ __("Created At") }}</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -50,7 +49,6 @@
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->doctors->name }}</td>
-                                <td>{{ $item->created_at->format("d-m-Y H:i:s") }}</td>
                                 <td>
                                     @include('admin.components.link.custom',[
                                         'href'          => "#send-reply",
@@ -102,7 +100,7 @@
                                 @include('admin.components.button.form-btn',[
                                     'class'         => "w-100 btn-loading",
                                     'permission'    => "admin.subscriber.send.mail",
-                                    'text'          => "Send Email",
+                                    'text'          => __("Send Email"),
                                 ])
                             </div>
                         </div>

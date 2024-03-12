@@ -37,12 +37,12 @@
                     <div class="col-xl-4 col-lg-4 form-group">
                         <label>{{ __("Timezone") }}*</label>
                         <select name="timezone" class="form--control select2-auto-tokenize timezone-select" data-old="{{ old('timezone',$basic_settings->timezone) }}">
-                            <option selected disabled>Select Timezone</option>
+                            <option selected disabled>{{ __("Select Timezone") }}</option>
                         </select>
                     </div>
                     <div class="col-xl-4 col-lg-4 form-group">
                         @include('admin.components.form.input',[
-                            'label'         => "Web Version*",
+                            'label'         => __("Web Version")."*",
                             'type'          => "text",
                             'class'         => "form--control",
                             'placeholder'   => "Write Name...",

@@ -11,7 +11,7 @@ class SetupPage extends Model
 
     protected $guarded = ['id'];
     protected $casts = [
-        'title'   => 'object',
+        'title'   => 'string',
         'details' => 'object'
     ];
 }

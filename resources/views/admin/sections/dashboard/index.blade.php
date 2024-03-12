@@ -262,7 +262,6 @@
                             <th>{{ __("Type") }}</th>
                             <th>{{ __("Doctor Name") }}</th>
                             <th>{{ __("Speciality") }}</th>
-                            <th>{{ __("Time") }}</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -278,7 +277,6 @@
                                 <td class="text-capitalize">{{ $data->type ?? "" }}</td>
                                 <td><span class="text--info">{{$data->doctors->name ?? "" }}</span></td>
                                 <td>{{ $data->doctors->speciality ?? "" }}</td>
-                                <td>{{ $data->created_at ?? "" }}</td>
                                 <td>
                                     @include('admin.components.link.custom',[
                                         'href'          => "#send-reply",

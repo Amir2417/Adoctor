@@ -38,7 +38,7 @@
                                     <li>{{ __("Email") }}:<span class="text-lowercase">{{ $patient->email ?? "" }}</span></li>
                                     <li>{{ __("Type") }}:<span>{{ $patient->type ?? "" }}</span></li>
                                     <li>{{ __("Gender") }}:<span>{{ $patient->gender ?? "" }}</span></li>
-                                    <li>{{ __("Docrtor Fees") }}:<span>{{ get_amount($patient->details->doctor_fees,get_default_currency_code()) }}</span></li>
+                                    <li>{{ __("Doctor Fees") }}:<span>{{ get_amount($patient->details->doctor_fees,get_default_currency_code()) }}</span></li>
                                     <li>{{ __("Fees & Charges") }}:<span>{{ get_amount($patient->details->total_charge,get_default_currency_code()) }}</span></li>
                                     <li>{{ __("Payable Amount") }}:<span>{{ get_amount($patient->details->payable_amount,get_default_currency_code()) }}</span></li>
                                 </ul>
@@ -50,13 +50,13 @@
                                         <div class="shedule-item">
                                             <div class="shedule-inner">
                                                 <input type="radio" id="cashPayment" class="hide-input" value="{{ global_const()::CASH_PAYMENT }}" checked name="selected_payment_method">
-                                                <label for="cashPayment" class="package--amount d-flex align-items-center justify-content-center"><img src="{{ asset("public/frontend/images/cashpay.png") }}" alt="icon">{{ __("Cash-Payment") }}</label>
+                                                <label for="cashPayment" class="package--amount d-flex align-items-center justify-content-center"><img src="{{ asset("public/frontend/images/cashpay.png") }}" alt="icon">{{ __("Cash Payment") }}</label>
                                             </div>
                                         </div>
                                         <div class="shedule-item">
                                             <div class="shedule-inner">
                                                 <input type="radio" id="onlinePayment" class="hide-input" value="" name="selected_payment_method">
-                                                <label for="onlinePayment" class="package--amount d-flex align-items-center justify-content-center"><img src="{{ asset("public/frontend/images/cashpay.png") }}" alt="icon">{{ __("Online-Payment") }}</label>
+                                                <label for="onlinePayment" class="package--amount d-flex align-items-center justify-content-center"><img src="{{ asset("public/frontend/images/onlinepay.jpg") }}" alt="icon">{{ __("Online Payment") }}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                         <div class="shedule-item">
                                             <div class="shedule-inner">
                                                 <input type="radio" id="level_{{ $item->id }}" class="hide-input" name="payment_method" value="{{ $item->alias }}">
-                                                <label for="level_{{ $item->id }}" class="package--amount d-flex align-items-center justify-content-center"><img src="{{ get_image($item->image ,'payment-gateways') }}" alt="icon">{{ $item->gateway->name }}</label>
+                                                <label for="level_{{ $item->id }}" class="package--amount d-flex align-items-center justify-content-center"><img src="{{ get_image($item->image ,'payment-gateways') }}" alt="icon">{{ __($item->gateway->name) }}</label>
                                             </div>
                                         </div>
                                         @endforeach

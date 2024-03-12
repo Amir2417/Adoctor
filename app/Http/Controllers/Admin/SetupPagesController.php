@@ -54,7 +54,7 @@ class SetupPagesController extends Controller
             return Response::error($error,null,500);
         }
 
-        $success = ['success' => ['Setup Page status updated successfully!']];
+        $success = ['success' => [__('Setup Page status updated successfully!')]];
         return Response::success($success,null,200);
     }
 }

@@ -82,7 +82,7 @@
                         @endphp
                         <label>{{ __("Country") }}</label>
                         <select name="country" class="form--control select2-auto-tokenize country-select">
-                            <option selected disabled>Select Country</option>
+                            <option selected disabled>{{ __("Select Country") }}</option>
                             @foreach ($countries as $item)
                                 <option value="{{ $item->name }}" data-id="{{ $item->id }}" {{ ($old_country == $item->name) ? "selected" : "" }}>{{ $item->name }}</option>
                             @endforeach
@@ -94,7 +94,7 @@
                         @endphp
                         <label>{{ __("State") }}</label>
                         <select name="state" class="form--control select2-auto-tokenize state-select">
-                            <option selected disabled>Select State</option>
+                            <option selected disabled>{{ __("Select State") }}</option>
                             @if ($old_state)
                                 <option selected value="{{ $old_state }}">{{ $old_state }}</option>
                             @endif
@@ -106,7 +106,7 @@
                         @endphp
                         <label>{{ __("City") }}</label>
                         <select name="city" class="form--control select2-auto-tokenize city-select">
-                            <option selected disabled>Select City</option>
+                            <option selected disabled>{{ __("Select City") }}</option>
                             @if ($old_city)
                                 <option selected value="{{ $old_city }}">{{ $old_city }}</option>
                             @endif

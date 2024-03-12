@@ -38,7 +38,6 @@
                             <th></th>
                             <th>{{ __("Patient Name") }}</th>
                             <th>{{ __("Patient Email") }}</th>
-                            <th>{{ __("Created At") }}</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -49,7 +48,6 @@
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
                                 
-                                <td>{{ $item->created_at->format("d-m-Y H:i:s") }}</td>
                                 <td>
                                     @include('admin.components.link.custom',[
                                         'href'          => "#send-reply",

@@ -7,7 +7,7 @@
                 <h4 class="title"><i class="fas fa-cloud-download-alt"></i> {{ __("Download App") }}...!</h4>
                 
             </div>
-            <p>{{ $app_settings->url_title ?? '' }}</p>
+            <p>{{ __($app_settings->url_title) ?? '' }}</p>
             <div class="footer-download d-flex justify-content-center">
                 <div class="footer-download-btn">
                     <a href="{{ $app_settings->android_url ?? "" }}" target="_blank"><img src="{{ asset('public/frontend/images/app/play_store.png')}} " alt="app"></a>

@@ -9,7 +9,7 @@
             <div class="dashboard-path">
                 <span class="main-path"><a href="{{ setRoute('user.profile.index') }}">{{__("Dashboard")}}</a></span>
                 <i class="las la-angle-right"></i>
-                <span class="active-path">{{ $breadcrumb ?? ""}}</span>
+                <span class="active-path">{{ __($breadcrumb) ?? ""}}</span>
             </div>
             
         </div>

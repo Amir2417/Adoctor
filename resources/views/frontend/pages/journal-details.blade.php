@@ -57,7 +57,11 @@
                                         <a href=""><img src="{{ get_image($item->data->image ?? '' , 'site-section') }}" alt="blog"></a>
                                     </div>
                                     <div class="popular-item-content">
-                                        <span class="date">{{ $item->created_at }}</span>
+                                        @php
+                                            $date = $item->created_at ?? "";
+                                            $formattedDate = date('M d, Y', strtotime($date));
+                                        @endphp
+                                        <span class="date">{{ $formattedDate }}</span>
                                         <h5 class="title"><a href="{{ setRoute('frontend.journal.details',$item->slug) }}">{{ $item->data->language->$app_local->title ?? '' }}</a></h5>
                                     </div>
                                 </div>

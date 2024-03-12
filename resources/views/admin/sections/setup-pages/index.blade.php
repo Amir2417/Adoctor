@@ -35,7 +35,7 @@
                     <tbody>
                         @forelse ($setup_pages as $data)
                             <tr>
-                                <td>{{ $data->title }}</td>
+                                <td>{{ __($data->title) }}</td>
                                 <td>
                                     @include('admin.components.form.switcher',[
                                         'name'          => 'status',

@@ -11,7 +11,7 @@
                         <div class="col-xl-12 col-lg-12 form-group">
                             <label for="language">{{ __("Language") }}*</label>
                             <select name="language" id="language" class="form--control nice-select">
-                                <option selected disabled>Select Language</option>
+                                <option selected disabled>{{ __("Select Language") }}</option>
                                 @foreach ($languages ?? [] as $item)
                                     <option value="{{ $item->code }}">{{ $item->name }}</option>
                                 @endforeach
