@@ -650,7 +650,6 @@ class PaymentGateway {
             $requested_amount = $transaction->details->gateway_payable;
             $validator_data = [
                 $this->currency_input_name  => $transaction->slug,
-                $this->payment_method  => $transaction->details->gateway_currency->alias,
             ];
 
             $booking_data   = DoctorAppointment::where('slug',$transaction->slug)->first();
@@ -683,7 +682,6 @@ class PaymentGateway {
                     $requested_amount = $tempData['data']->amount->requested_amount ?? 0;
                     $validator_data = [
                         $this->currency_input_name  => $tempData->data->user_record,
-                        $this->payment_method  => $tempData->data->currency->alias,
                     ];
 
                     $booking_data   = DoctorAppointment::where('slug',$tempData->data->user_record)->first();

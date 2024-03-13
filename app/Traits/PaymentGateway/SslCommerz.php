@@ -254,10 +254,10 @@ trait SslCommerz {
         if(!$output) $output = $this->output;
 
         $callback_status = $callback_data['status'] ?? "";
-        logger("callback status",[$callback_status]);
+
         
         if(isset($output['transaction']) && $output['transaction'] != null && $output['transaction']->status != global_const()::APPROVED) { // if transaction already created & status is not success
-logger("260",$output['transaction']);
+
             // Just update transaction status and update user wallet if needed
             if($callback_status == "VALID") {
 
@@ -283,12 +283,12 @@ logger("260",$output['transaction']);
                 }
             }
         }else { // need to create transaction and update status if needed
-logger("without transaction");
+
             $status = global_const()::APPROVED;
 
             if($callback_status == "VALID") {
             }else { // need to create transaction and update status if needed
-logger("valid");
+
                 $status = global_const()::APPROVED;
             }
 
