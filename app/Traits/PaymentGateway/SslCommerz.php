@@ -239,11 +239,11 @@ trait SslCommerz {
             // need to insert new transaction in database
             try{
                 
-                $transaction_response = $this->createTransaction($output, $status);
+                $this->createTransaction($output, $status);
             }catch(Exception $e) {
                 throw new Exception($e->getMessage());
             }
-            return $transaction_response;
+            return true;
         }
         
 
@@ -254,8 +254,10 @@ trait SslCommerz {
         if(!$output) $output = $this->output;
 
         $callback_status = $callback_data['status'] ?? "";
+        logger("callback status",[$callback_status]);
+        
         if(isset($output['transaction']) && $output['transaction'] != null && $output['transaction']->status != global_const()::APPROVED) { // if transaction already created & status is not success
-
+logger("260",$output['transaction']);
             // Just update transaction status and update user wallet if needed
             if($callback_status == "VALID") {
 
@@ -281,10 +283,12 @@ trait SslCommerz {
                 }
             }
         }else { // need to create transaction and update status if needed
-
+logger("without transaction");
             $status = global_const()::APPROVED;
 
             if($callback_status == "VALID") {
+            }else { // need to create transaction and update status if needed
+logger("valid");
                 $status = global_const()::APPROVED;
             }
 

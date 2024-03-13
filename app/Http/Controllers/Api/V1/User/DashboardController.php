@@ -120,7 +120,7 @@ class DashboardController extends Controller
                 'hospital_department' => $data->department->name,
                 'name'                => $data->name,
                 'slug'                => $data->slug,
-                'doctor_title'        => $data->doctor_title,
+                'doctor_title'        => $data->doctor_title ?? '',
                 'qualification'       => $data->qualification,
                 'speciality'          => $data->speciality,
                 'language'            => $data->language,

@@ -195,4 +195,9 @@ class User extends Authenticatable
             $q->where("username","like","%".$data."%");
         })->orWhere("email","like","%".$data."%")->orWhere("full_mobile","like","%".$data."%");
     }
+
+    //model guard name
+    public function modelGuardName() {
+        return "web";
+    }
 }

@@ -42,6 +42,7 @@ class PaymentGateway {
     protected $request_data;
     protected $output;
     protected $currency_input_name = "identifier";
+    protected $payment_method = "payment_method";
     protected $amount_input; //only used for callback data
     protected $project_currency = PaymentGatewayConst::PROJECT_CURRENCY_MULTIPLE;
     protected $predefined_user_wallet;
@@ -444,9 +445,7 @@ class PaymentGateway {
         if($basic_setting->email_notification == true){
             Notification::route("mail",$data->email)->notify(new patientAppointmentNotification($form_data));
         }
-        if($temp_remove == true) {
-            $this->removeTempData($output);
-        }
+        
         
         if($this->requestIsApiUser()) {
             // logout user
@@ -475,6 +474,7 @@ class PaymentGateway {
             'gateway_payable'   => $gateway_payable,
             'payment_method'    => $output['gateway']->name,
             'gateway_currency'  => [
+                'id'            => $output['currency']->id,
                 'alias'         => $output['currency']->alias,
                 'code'          => $output['currency']->currency_code,
                 'rate'          => $output['currency']->rate,
@@ -515,6 +515,7 @@ class PaymentGateway {
             'payable_amount'    => $data->details->payable_amount,
             'payment_method'    => $output['gateway']->name,
             'gateway_currency'  => [
+                'id'            => $output['currency']->id,
                 'alias'         => $output['currency']->alias,
                 'code'          => $output['currency']->currency_code,
                 'rate'          => $output['currency']->rate,
@@ -642,21 +643,27 @@ class PaymentGateway {
 
         if($transaction) {
             
-            $gateway_currency_id = $transaction->payment_gateway_currency_id;
+            $gateway_currency_id = $transaction->details->gateway_currency->id;
             $gateway_currency = PaymentGatewayCurrency::find($gateway_currency_id);
             $gateway = $gateway_currency->gateway;
            
-            $requested_amount = $transaction->request_amount;
+            $requested_amount = $transaction->details->gateway_payable;
             $validator_data = [
-                $this->currency_input_name  => $transaction->remittance_data->user_record,
+                $this->currency_input_name  => $transaction->slug,
+                $this->payment_method  => $transaction->details->gateway_currency->alias,
             ];
 
-            // $user_wallet = $transaction->creator_wallet;
-            // $this->predefined_user_wallet = $user_wallet;
-            $this->predefined_guard = $transaction->user->modelGuardName();
-            $this->predefined_user = $transaction->user;
+            $booking_data   = DoctorAppointment::where('slug',$transaction->slug)->first();
+            if($booking_data->authenticated == true){
+                $this->predefined_guard = $transaction->user->modelGuardName();
+                $this->predefined_user = $transaction->user;
+                $this->output['transaction']    = $transaction;
+            }else{
+                $this->output['transaction']    = $transaction;
+            }
+            
 
-            $this->output['transaction']    = $transaction;
+            
             
 
         }else {
@@ -676,16 +683,20 @@ class PaymentGateway {
                     $requested_amount = $tempData['data']->amount->requested_amount ?? 0;
                     $validator_data = [
                         $this->currency_input_name  => $tempData->data->user_record,
+                        $this->payment_method  => $tempData->data->currency->alias,
                     ];
 
-                    // $get_wallet_model = PaymentGatewayConst::registerWallet()[$tempData->data->creator_guard];
-                    // $user_wallet = $get_wallet_model::find($tempData->data->wallet_id);
-                    // $this->predefined_user_wallet = $user_wallet;
-                    $user    = User::where('id',$tempData->data->creator_id)->first();
-                    $this->predefined_guard = $user->modelGuardName(); // need to update
-                    $this->predefined_user = $user;
-
-                    $this->output['tempData'] = $tempData;
+                    $booking_data   = DoctorAppointment::where('slug',$tempData->data->user_record)->first();
+                    if($booking_data->authenticated == true){
+                        $user    = User::where('id',$tempData->data->creator_id)->first();
+                        $this->predefined_guard = $user->modelGuardName(); // need to update
+                        $this->predefined_user = $user;
+                        $this->output['tempData'] = $tempData;
+                    }else{
+                        
+                        $this->output['tempData'] = $tempData;
+                    }
+                    
                     
                 }
             }
