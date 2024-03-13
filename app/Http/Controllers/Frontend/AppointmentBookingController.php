@@ -284,8 +284,6 @@ class AppointmentBookingController extends Controller
             
             $temp_data = TemporaryData::where("identifier",$token)->first();
             $booking_data = DoctorAppointment::where('slug',$temp_data->data->user_record)->first();
-            
-           
 
             if(DoctorAppointment::where('callback_ref', $token)->exists()) {
                 if(!$temp_data) return redirect()->route('frontend.find.doctor')->with(['success' => ['Congratulations! Appointment Booking Confirmed Successfully.']]);;
