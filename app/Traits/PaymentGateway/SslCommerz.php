@@ -58,6 +58,7 @@ trait SslCommerz {
         }else{
             $temp_data = $this->sslCommerzJunkInsertForUnAuth($temp_record_token);
         }
+        
         $response = Http::asForm()->post($endpoint, [
             'store_id'      => $this->request_credentials->store_id,
             'store_passwd'  => $this->request_credentials->secret_key,
@@ -287,9 +288,8 @@ trait SslCommerz {
             $status = global_const()::APPROVED;
 
             if($callback_status == "VALID") {
-            }else { // need to create transaction and update status if needed
-
                 $status = global_const()::APPROVED;
+                
             }
 
             $this->createTransaction($output, $status, false);

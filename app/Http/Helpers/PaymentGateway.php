@@ -669,15 +669,17 @@ class PaymentGateway {
         }else {
             // find reference on temp table
             $tempData = TemporaryData::where('identifier',$reference)->first();
+           
             if($tempData) {
                
+                
                 $gateway_currency_id = $tempData->data->currency->id ?? null;
                
                 $gateway_currency = PaymentGatewayCurrency::find($gateway_currency_id);
                 
                 if($gateway_currency) {
-                   
                     $gateway = $gateway_currency->gateway;
+                   
                     
                     $requested_amount = $tempData['data']->amount->requested_amount ?? 0;
                     $validator_data = [

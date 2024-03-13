@@ -280,14 +280,12 @@ class AppointmentBookingController extends Controller
      */
     public function success(Request $request, $gateway){
         try{
-            
+           
             $token = PaymentGatewayHelper::getToken($request->all(),$gateway);
             
             $temp_data = TemporaryData::where("identifier",$token)->first();
-            $booking_data = DoctorAppointment::where('slug',$temp_data->data->user_record)->where('status',false)->first();
-            $booking_data_confirm = DoctorAppointment::where('slug',$temp_data->data->user_record)->where('status',true)->first();
+            $booking_data = DoctorAppointment::where('slug',$temp_data->data->user_record)->first();
             
-            if($booking_data_confirm) return back()->with(['error' => ['Already confirm the booking.']]);
            
 
             if(DoctorAppointment::where('callback_ref', $token)->exists()) {
@@ -305,7 +303,7 @@ class AppointmentBookingController extends Controller
             
             $instance = PaymentGatewayHelper::init($temp_data)->responseReceive();
             
-            
+          
             if($instance instanceof RedirectResponse) return $instance;
         }catch(Exception $e) {
             return redirect()->route("frontend.find.doctor")->with(['error' => [$e->getMessage()]]);
