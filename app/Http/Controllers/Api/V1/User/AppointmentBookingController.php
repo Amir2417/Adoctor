@@ -37,6 +37,7 @@ class AppointmentBookingController extends Controller
         
         $doctor_info = [
             'name'            => $doctor->name,
+            'slug'            => $doctor->slug,
             'doctor_title'    => $doctor->doctor_title,
             'image'           => $doctor->image,
             'qualification'   => $doctor->qualification,

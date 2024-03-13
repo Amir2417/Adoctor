@@ -34,7 +34,6 @@ class PaymentGatewaySeeder extends Seeder
 
             array('id' => '5006' ,'slug' => 'payment-method','code' => '10045','type' => 'AUTOMATIC','name' => 'CoinGate','title' => 'Crypto Payment gateway','alias' => 'coingate','image' => 'seeder/coin_gate.png','credentials' => '[{"label":"Sandbox URL","placeholder":"Enter Sandbox URL","name":"sandbox-url","value":"https:\\/\\/api-sandbox.coingate.com\\/v2"},{"label":"Sandbox App Token","placeholder":"Enter Sandbox App Token","name":"sandbox-app-token","value":"XJW4RyhT8F-xssX2PvaHMWJjYe5nsbsrbb2Uqy4m"},{"label":"Production URL","placeholder":"Enter Production URL","name":"production-url","value":"https:\\/\\/api.coingate.com\\/v2"},{"label":"Production App Token","placeholder":"Enter Production App Token","name":"production-app-token","value":null}]','supported_currencies' => '["USD","BTC","LTC","ETH","BCH","TRX","ETC","DOGE","BTG","BNB","TUSD","USDT","BSV","MATIC","BUSD","SOL","WBTC","RVN","BCD","ATOM","BTTC","EURT"]','crypto' => '1','desc' => NULL,'input_fields' => NULL,'env' => 'SANDBOX','status' => '1','last_edit_by' => '1','created_at' => '2023-08-07 10:36:30','updated_at' => '2023-08-07 12:06:12'),
 
-            
         );
 
         PaymentGateway::upsert($payment_gateways,['code'],[]);
@@ -54,8 +53,7 @@ class PaymentGatewaySeeder extends Seeder
             array('payment_gateway_id' => '5005','name' => 'Perfect Money USD','alias' => 'payment-method-perfect-money-usd-automatic','currency_code' => 'USD','currency_symbol' => '$','image' => 'seeder/perfect-money.webp','min_limit' => '1.00000000','max_limit' => '5000.00000000','percent_charge' => '2.00000000','fixed_charge' => '1.00000000','rate' => '1','created_at' => '2023-12-30 16:44:49','updated_at' => '2023-12-30 16:44:49'),
         
             array('payment_gateway_id' => '5006','name' => 'CoinGate USDT','alias' => 'payment-method-coingate-usdt-automatic','currency_code' => 'USDT','currency_symbol' => '$','image' => 'seeder/coin_gate.png','min_limit' => '1.00000000','max_limit' => '1000.00000000','percent_charge' => '3.00000000','fixed_charge' => '2.00000000','rate' => '1','created_at' => '2023-08-07 12:06:12','updated_at' => '2023-08-07 12:36:10'),
-            
-            
+                        
         );
 
         PaymentGatewayCurrency::upsert($payment_gateway_currencies,['alias'],[]);
