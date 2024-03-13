@@ -3,6 +3,14 @@ Current Version: 1.3.0
 
 Feature Update:
 1. Payment Gateway Added.
+    * Paypal
+    * Stripe
+    * Flutterwave
+    * SSLCommerz
+    * Razorpay
+    * Perfect Money
+    * Coingate
+    
 2. Language Update.
 
 1. To Run Project Please Run This Command On Your Terminal
