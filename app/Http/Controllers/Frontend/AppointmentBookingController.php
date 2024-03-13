@@ -280,7 +280,6 @@ class AppointmentBookingController extends Controller
      */
     public function success(Request $request, $gateway){
         try{
-           
             $token = PaymentGatewayHelper::getToken($request->all(),$gateway);
             
             $temp_data = TemporaryData::where("identifier",$token)->first();
