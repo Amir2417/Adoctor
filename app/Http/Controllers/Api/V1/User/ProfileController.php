@@ -190,6 +190,7 @@ class ProfileController extends Controller
                 'day'             => $data->schedules->week->day,
                 'from_time'       => $data->schedules->from_time,
                 'to_time'         => $data->schedules->to_time,
+                'details'         => $data->details,
                 'prescription'    => $data->prescription,
                 'status'          => $data->status,
                 'date'            => $date,

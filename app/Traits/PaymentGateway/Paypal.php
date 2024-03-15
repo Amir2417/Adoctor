@@ -180,9 +180,9 @@ trait Paypal
             ],
             'amount'        => json_decode(json_encode($output['amount']),true),
             'response'      => $response,
-            'creator_table' => auth()->guard(get_auth_guard())->user()->getTable() ?? '',
-            'creator_id'    => auth()->guard(get_auth_guard())->user()->id ?? '',
-            'creator_guard' => get_auth_guard() ?? '',
+            'creator_table' => auth()->guard(get_auth_guard())->user()->getTable(),
+            'creator_id'    => auth()->guard(get_auth_guard())->user()->id ,
+            'creator_guard' => get_auth_guard(),
             'user_record'   => $output['form_data']['identifier'],
         ];
         

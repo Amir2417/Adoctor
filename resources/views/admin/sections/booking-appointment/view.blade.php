@@ -84,7 +84,7 @@
     </div>
     <div class="col-lg-4 mb-30">
         <div class="booking-area">
-            <h4 class="title"><i class="fas fa-user text--base me-2"></i>{{ __("Schedule Information") }}</h4>
+            <h4 class="title"><i class="fas fa-calendar-check text--base me-2"></i>{{ __("Schedule Information") }}</h4>
             <div class="content pt-0">
                 <div class="list-wrapper">
                     <ul class="list">
@@ -100,6 +100,30 @@
                         <li>{{ __("To Time") }}:<span>{{ $parsed_to_time ?? "" }}</span></li>
                         @if (isset($appointment->prescription))
                             <li>{{ __("Prescription") }}:<span><a class="btn btn--base" href="{{ setRoute('booking.download.prescription',['slug' => $appointment->slug]) }}">{{ __("Download") }}</a></span></li>
+                        @endif
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-30">
+        <div class="booking-area">
+            <h4 class="title"><i class="fas fa-credit-card text--base me-2"></i>{{ __("Payment Method Information") }}</h4>
+            <div class="content pt-0">
+                <div class="list-wrapper">
+                    <ul class="list">
+                        @if ($appointment->details->payment_method == global_const()::CASH_PAYMENT)
+                            <li>{{__("Payment Method")}}<span>{{ $appointment->details->payment_method ?? ""}}</span></li>
+                            <li>{{__("Doctor Fees")}}<span>{{ get_amount($appointment->details->doctor_fees) ?? ""}} {{ $appointment->details->currency ?? '' }}</span></li>
+                            <li>{{__("Fees & Charges")}}<span>{{ $appointment->details->total_charge ?? ""}} {{ $appointment->details->currency ?? '' }}</span></li>
+                            <li>{{__("Payable Amount")}}<span>{{ $appointment->details->payable_amount ?? ""}} {{ $appointment->details->currency ?? '' }}</span></li>
+                        @else
+                            <li>{{__("Payment Method")}}<span>{{ $appointment->details->payment_method ?? ""}}</span></li>
+                            <li>{{__("Doctor Fees")}}<span>{{ get_amount($appointment->details->doctor_fees) ?? ""}} {{ $appointment->details->currency ?? '' }}</span></li>
+                            <li>{{__("Fees & Charges")}}<span>{{ $appointment->details->total_charge ?? ""}} {{ $appointment->details->currency ?? '' }}</span></li>
+                            <li>{{__("Exchange Rate")}}<span>1 {{ $appointment->details->currency ?? '' }} = {{ get_amount($appointment->details->gateway_currency->rate) ?? "" }} {{ $appointment->details->gateway_currency->code ?? "" }}</span></li>
+                            <li>{{__("Payable Amount")}}<span>{{ get_amount(floatval($appointment->details->gateway_payable)) }} {{ $appointment->details->gateway_currency->code ?? "" }}</span></li>
                         @endif
                         
                     </ul>

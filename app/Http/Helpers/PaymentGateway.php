@@ -466,12 +466,12 @@ class PaymentGateway {
         
         $gateway_payable  = $data->details->payable_amount * $output['currency']->rate;
         $details                   = [
-            'doctor_fees'       => $data->details->doctor_fees,
-            'fixed_charge'      => $data->details->fixed_charge,
-            'percent_charge'    => $data->details->percent_charge,
-            'total_charge'      => $data->details->total_charge,
-            'payable_amount'    => $data->details->payable_amount,
-            'gateway_payable'   => $gateway_payable,
+            'doctor_fees'       => floatval($data->details->doctor_fees),
+            'fixed_charge'      => floatval($data->details->fixed_charge),
+            'percent_charge'    => floatval($data->details->percent_charge),
+            'total_charge'      => floatval($data->details->total_charge),
+            'payable_amount'    => floatval($data->details->payable_amount),
+            'gateway_payable'   => floatval($gateway_payable),
             'payment_method'    => $output['gateway']->name,
             'gateway_currency'  => [
                 'id'            => $output['currency']->id,
@@ -507,12 +507,14 @@ class PaymentGateway {
         }else {
             $user = auth()->guard('web')->user();
         }
+        $gateway_payable  = $data->details->payable_amount * $output['currency']->rate;
         $details                   = [
-            'doctor_fees'       => $data->details->doctor_fees,
-            'fixed_charge'      => $data->details->fixed_charge,
-            'percent_charge'    => $data->details->percent_charge,
-            'total_charge'      => $data->details->total_charge,
-            'payable_amount'    => $data->details->payable_amount,
+            'doctor_fees'       => floatval($data->details->doctor_fees),
+            'fixed_charge'      => floatval($data->details->fixed_charge),
+            'percent_charge'    => floatval($data->details->percent_charge),
+            'total_charge'      => floatval($data->details->total_charge),
+            'payable_amount'    => floatval($data->details->payable_amount),
+            'gateway_payable'   => floatval($gateway_payable),
             'payment_method'    => $output['gateway']->name,
             'gateway_currency'  => [
                 'id'            => $output['currency']->id,

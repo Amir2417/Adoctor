@@ -129,7 +129,7 @@ class AppointmentBookingController extends Controller
         $fixed_charge       = $transaction_fees->fixed_charge;
         $percent_charge     = ($amount / 100) * $transaction_fees->percent_charge;
         $total_charge       = $fixed_charge + $percent_charge;
-        $payable_amount     = $amount + floatval($total_charge);
+        $payable_amount     = floatval($amount) + floatval($total_charge);
 
         $data               = [
             'doctor_fees'   => $amount,
@@ -239,11 +239,11 @@ class AppointmentBookingController extends Controller
 
         if($validated['payment_method'] == global_const()::CASH_PAYMENT){
             $data                   = [
-                'doctor_fees'       => $confirm_appointment->details->doctor_fees,
-                'fixed_charge'      => $confirm_appointment->details->fixed_charge,
-                'percent_charge'    => $confirm_appointment->details->percent_charge,
-                'total_charge'      => $confirm_appointment->details->total_charge,
-                'payable_amount'    => $confirm_appointment->details->payable_amount,
+                'doctor_fees'       => floatval($confirm_appointment->details->doctor_fees),
+                'fixed_charge'      => floatval($confirm_appointment->details->fixed_charge),
+                'percent_charge'    => floatval($confirm_appointment->details->percent_charge),
+                'total_charge'      => floatval($confirm_appointment->details->total_charge),
+                'payable_amount'    => floatval($confirm_appointment->details->payable_amount),
                 'payment_method'    => $validated['payment_method'],
                 'currency'          => get_default_currency_code(),
             ];
