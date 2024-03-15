@@ -172,7 +172,7 @@ class ProfileController extends Controller
     //user history
 
     public function history(){
-        $booking    = DoctorAppointment::with(['doctors','schedules','user'])->where('user_id',auth()->user()->id)->get()->map(function($data){
+        $booking    = DoctorAppointment::with(['doctors','schedules','user'])->where('user_id',auth()->user()->id)->where('status',true)->get()->map(function($data){
             $originalDate = $data->created_at;
             $formattedDate = Carbon::parse($originalDate);
             

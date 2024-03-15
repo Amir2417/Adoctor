@@ -16,7 +16,7 @@ class HistoryController extends Controller
     public function index(){
         $breadcrumb    = "History";
         $page_title    = "| User History";
-        $booking       = DoctorAppointment::with(['doctors','schedules','user'])->where('user_id',auth::user()->id)->orderBy('id','desc')->paginate(6);
+        $booking       = DoctorAppointment::with(['doctors','schedules','user'])->where('user_id',auth::user()->id)->where('status',true)->orderBy('id','desc')->paginate(6);
         $user          = auth()->user();
         $notifications = UserNotification::where('user_id',$user->id)->latest()->take(10)->get();
         return view('user.sections.history.index',compact(
@@ -33,7 +33,7 @@ class HistoryController extends Controller
     public function bookingDetails($slug){
         $page_title    = "| Booking Details";
         $breadcrumb    = "Booking Details";
-        $booking       =  DoctorAppointment::with(['doctors','schedules'])->where('slug',$slug)->first();
+        $booking       =  DoctorAppointment::with(['doctors','schedules'])->where('slug',$slug)->where('status',true)->first();
         $user          = auth()->user();
         $notifications = UserNotification::where('user_id',$user->id)->latest()->take(10)->get();
 
