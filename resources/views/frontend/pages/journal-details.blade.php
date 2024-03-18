@@ -10,7 +10,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <section class="blog-section ptb-120">
     <div class="container">
-        <div class="row mb-30">
+        <div class="row mb-30-none">
             <div class="col-xl-8 col-lg-7 col-md-12 mb-30">
                 <div class="row justify-content-center mb-30-none">
                     <div class="col-xl-12 mb-30">

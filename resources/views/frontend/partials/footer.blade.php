@@ -49,8 +49,7 @@
                 </div>
                 <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-sm-6 mb-30">
                     <div class="footer-widget">
-                        <h4 class="widget-title">{{ __("Download App") }}</h4>
-                        <p>{{ __($app_settings->url_title) ?? '' }}</p>
+                        <h4 class="widget-title">{{ __($app_settings->url_title) ?? '' }}</h4>
                         <ul class="footer-list two">
                             <li><a href="{{ $app_settings->android_url ?? '' }}" class="app-img" target="_blank"><img src="{{ asset('public/frontend/images/app/play_store.png')}} " alt="app"></a></li>
                             <li><a href="{{ $app_settings->iso_url ?? '' }}" class="app-img" target="_blank"><img src="{{ asset('public/frontend/images/app/app_store.png')}} " alt="app"></a></li>

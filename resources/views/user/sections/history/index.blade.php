@@ -37,7 +37,6 @@
                 </table>
             </div>
         </div>
-        
         {{ get_paginate($booking) }}
     </div>
 </div>

@@ -39,7 +39,7 @@
         </div>
         @if (count($journals) > 3)
             <div class="blog-item-btn-area text-center mt-60">
-                <a href="{{ setRoute('journals')}}" class="btn--base"><i class="las la-briefcase-medical"></i>{{ __("View More") }}</a>
+                <a href="{{ setRoute('journals')}}" class="btn--base"><i class="las la-briefcase-medical me-1"></i>{{ __("View More") }}</a>
             </div>
         @endif
         
