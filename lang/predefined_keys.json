@@ -1051,5 +1051,6 @@
     "rejected",
     "doYouSignOut",
     "enterOldPassword",
-    "Payment Method Information"
+    "Payment Method Information",
+    "somethingWentWrong!"
 ]
